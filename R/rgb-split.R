@@ -5,10 +5,10 @@ find.mode<-function(x)
 }
 
 
-split.channels.file<-function(file,channels)
+split.channels.file<-function(file,channels, rgb.folder)
 {
 test<-try({
-img<-readTIF(paste("rgb",file,sep="/"))
+img<-readTIF(paste(rgb.folder,file,sep="/"))
 
 rr<-which(channels=="red")
 gg<-which(channels=="green")
@@ -77,10 +77,20 @@ if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
 else(cat(paste0(file," OK\n")))
 }
 
-split.channels<-function(f,channels=c("red","green","blue"),cores=1)
+#' Split RGB images into channels and pixel size information
+#'
+#' @param path Path to root folder
+#' @param channels Vector of channels in images
+#' @param rgb.folder Folder with RGB images
+#' @param cores Number of cores used in parallel, cores=1 implies no parallelization
+#' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+#' @examples
+#' rgb.split("./")
+#' 
+rgb.split<-split.channels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
 {
   orig<-getwd()
-  setwd(f)
+  setwd(path)
   require(bioimagetools)
   if(cores>1)
   {
@@ -88,16 +98,16 @@ split.channels<-function(f,channels=c("red","green","blue"),cores=1)
     options("mc.cores"=cores)
   }
   
-  files<-list.files("rgb")
+  files<-list.files(rgb.folder)
   cat(paste(length(files),"files.\n"))
-                
+  if (length(files==0)){cat("Nothing to do.\n");return()}              
   if(length(list.files("red"))==0)dir.create("red")
   if(length(list.files("blue"))==0)dir.create("blue")
  # if(length(list.files("blueorig"))==0)dir.create("blueorig")
   if(length(list.files("green"))==0)dir.create("green")
   if(length(list.files("XYZmic"))==0)dir.create("XYZmic")
   
-  if(cores>1)jobs <- mclapply(files,split.channels.file,channels)
-  if(cores==1)jobs <- lapply(files,split.channels.file,channels)
+  if(cores>1)jobs <- mclapply(path,split.channels.file,channels,rgb.folder)
+  if(cores==1)jobs <- lapply(path,split.channels.file,channels,rgb.folder)
   setwd(orig)
 }
