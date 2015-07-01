@@ -7,7 +7,7 @@
 #'
 dapimask<-function(file,folder="blue"){
   test<-try({
-  blau<-readTIF(paste0(folder,file))
+  blau<-readTIF(paste0(folder,"/",file))
   mb<-apply(blau,3,mean)
   mbr<-0.3*sum(range(mb))
   mbr<-which(mbr<mb)
@@ -29,7 +29,7 @@ dapimask<-function(file,folder="blue"){
   blau2<-filterImage2d(blau,brush)
   xx<-apply(blau2,1,mean)
   yy<-apply(blau2,2,mean)
-  thresh<-c(.find.first.mode(xx),.find.first.mode(rev(xx)),.find.first.mode(yy),.find.first.mode(rev(yy)))
+  thresh<-c(find.first.mode(xx),find.first.mode(rev(xx)),find.first.mode(yy),find.first.mode(rev(yy)))
   
   b<-blau>median(thresh/2)
   #b<-blau>quantile(blau,.8)
@@ -40,7 +40,7 @@ dapimask<-function(file,folder="blue"){
   brush<-makeBrush(2*n-1,shape='box')
   mask<-erode(mask,brush)
   
-  mask0<-bwlabel3d(mask,silent=TRUE)
+  mask0<-bwlabel(mask,silent=TRUE)
   mask1<-cmoments3d(mask0,mask)
   
   which<-rev(order(mask1[,5]))[1]
@@ -68,7 +68,7 @@ if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
 else(cat(paste0(file," OK\n")))
 }  
 
-.find.first.mode<-function(x)
+find.first.mode<-function(x)
 {
   s<-sd(diff(x))
   i<-1
