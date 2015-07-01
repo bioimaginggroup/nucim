@@ -1,36 +1,13 @@
-#' automatic DAPI mask
+#' Automatic DAPI mask
 #'
-#' @param path path to folder with DAPI
-#' @param folder folder with DAPI images
-#' @param cores number of cores to use in parallel (need paralle package)
+#' @param file file to read
+#' @param folder with 
+#' @return nothing, DAPI mask image will be saved to dapimask/
 #' @export
-#' @return nothing, results are in folder dapimask
-dapimask<-function(path, folder="blue", cores=1)
-  {
-orig<-getwd()
-setwd(f)
-
-  library(bioimagetools)
-  if (cores>1)
-    {
-    require(parallel)
-  }
-files<-list.files("blue")
-cat(paste(length(files),"files.\n"))
-
-if (length(files)==0)return()
-if(length(list.files("dapimask"))==0)dir.create("dapimask")
-
-
-if(cores>1)jobs <- mclapply(files, dapimask.file, mc.preschedule=FALSE, mc.cores=cores)
-if(cores==1)jobs <- lapply(files, dapimask.file)
-setwd(orig)
-return(jobs)
-}
-
-dapimask.file<-function(file){
+#'
+dapimask<-function(file,folder="blue"){
   test<-try({
-  blau<-readTIF(paste("blue/",file,sep=""))
+  blau<-readTIF(paste0(folder,file))
   mb<-apply(blau,3,mean)
   mbr<-0.3*sum(range(mb))
   mbr<-which(mbr<mb)
