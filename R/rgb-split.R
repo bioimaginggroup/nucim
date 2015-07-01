@@ -84,6 +84,7 @@ else(cat(paste0(file," OK\n")))
 #' @param rgb.folder Folder with RGB images
 #' @param cores Number of cores used in parallel, cores=1 implies no parallelization
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+#' @export
 #' @examples
 #' rgb.split("./")
 #' 
