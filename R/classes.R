@@ -1,3 +1,12 @@
+#' Classify DAPI
+#'
+#' @param f folder
+#' @param N number of classes
+#' @param cores number of cores used in parallel (needs parallel package)
+#'
+#' @return results in classN/ and classN-n
+#' @export
+#'
 classify<-function(f,N,cores=1)
 {
 orig<-getwd()
@@ -6,8 +15,7 @@ setwd(f)
 library(bioimagetools)
 if (cores>1)
   {
-  library(parallel)
-  options("mc.cores"=cores)
+  if (!require(parallel))cores=1
   }
 
 files<-sample(list.files("blue"))
@@ -15,7 +23,7 @@ cat(paste(length(files),"files.\n"))
 if(length(list.files(paste0("class",N)))==0)dir.create(paste0("class",N))
 if(length(list.files(paste0("class",N,"-n")))==0)dir.create(paste0("class",N,"-n"))
 
-if(cores>1)jobs <- mclapply(files, classify.file, N=N, mc.preschedule=FALSE)
+if(cores>1)jobs <- mclapply(files, classify.file, N=N, mc.preschedule=FALSE, mc.cores=cores)
 if(cores==1)jobs <- lapply(files, classify.file, N=N)
 setwd(orig)
 }
