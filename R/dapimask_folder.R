@@ -8,7 +8,7 @@
 dapimask.folder<-function(path, folder="blue", cores=1)
 {
   orig<-getwd()
-  setwd(f)
+  setwd(path)
   
   library(bioimagetools)
   if (cores>1)
@@ -25,6 +25,6 @@ dapimask.folder<-function(path, folder="blue", cores=1)
   if(cores>1)jobs <- mclapply(files, dapimask, folder=folder, mc.preschedule=FALSE, mc.cores=cores)
   if(cores==1)jobs <- lapply(files, dapimask, folder=folder)
   setwd(orig)
-  return(jobs)
+  #return(jobs)
 }
 
