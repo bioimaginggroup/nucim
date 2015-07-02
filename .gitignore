@@ -2,3 +2,4 @@
 *.so
 *.Rproj
 .Rproj.user
+.Rhistory
