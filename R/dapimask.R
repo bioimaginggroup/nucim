@@ -40,7 +40,7 @@ dapimask<-function(file,folder="blue"){
   brush<-makeBrush(2*n-1,shape='box')
   mask<-erode(mask,brush)
   
-  mask0<-bwlabel(mask,silent=TRUE)
+  mask0<-bwlabel(mask)
   mask1<-cmoments3d(mask0,mask)
   
   which<-rev(order(mask1[,5]))[1]
