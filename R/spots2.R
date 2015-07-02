@@ -1,3 +1,12 @@
+#' Detects spots  
+#'
+#' @param f path to folder
+#' @param color which color, images have to be in folder with color name
+#' @param cores number of cores to use in parallel (with parallel package only)
+#'
+#' @return spot images in spot-color/, number of spots as txt files in spot-color/
+#' @export
+#'
 find.spots<-function(f,color,cores=1)
 {
     orig<-getwd()
