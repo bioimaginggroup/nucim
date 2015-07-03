@@ -2,6 +2,7 @@
 
 export(classify)
 export(dapimask)
+export(dapimask.file)
 export(dapimask.folder)
 export(find.spots)
 export(rgb.split)

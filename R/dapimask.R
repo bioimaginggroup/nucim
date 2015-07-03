@@ -1,13 +1,11 @@
-#' Automatic DAPI mask
+#' Automatic DAPI mask segmentation
 #'
-#' @param file file to read
-#' @param folder with 
-#' @return nothing, DAPI mask image will be saved to dapimask/
+#' @param blau 3d image with DAPI intensities
+#' @return mask
 #' @export
 #'
-dapimask<-function(file,folder="blue"){
-  test<-try({
-  blau<-readTIF(paste0(folder,"/",file))
+#'
+dapimask<-function(blau){
   mb<-apply(blau,3,mean)
   mbr<-0.3*sum(range(mb))
   mbr<-which(mbr<mb)
@@ -60,12 +58,7 @@ dapimask<-function(file,folder="blue"){
   #mask0<-1-outside(b,0,15)
   #mask<-array(0,dims0)
   #mask[,,small]<-array(as.integer(mask0),dim(mask0))
-  writeTIF(mask,paste("dapimask/",file,sep=""),bps=8)
-  remove(blau,mask,mbr,b2)
-  gc(verbose=FALSE)
-},silent=TRUE)
-if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
-else(cat(paste0(file," OK\n")))
+  return(mask)
 }  
 
 find.first.mode<-function(x)

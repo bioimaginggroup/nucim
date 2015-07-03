@@ -2,19 +2,17 @@
 % Please edit documentation in R/dapimask.R
 \name{dapimask}
 \alias{dapimask}
-\title{Automatic DAPI mask}
+\title{Automatic DAPI mask segmentation}
 \usage{
-dapimask(file, folder = "blue")
+dapimask(blau)
 }
 \arguments{
-\item{file}{file to read}
-
-\item{folder}{with}
+\item{blau}{3d image with DAPI intensities}
 }
 \value{
-nothing, DAPI mask image will be saved to dapimask/
+mask
 }
 \description{
-Automatic DAPI mask
+Automatic DAPI mask segmentation
 }
 

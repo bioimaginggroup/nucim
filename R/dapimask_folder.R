@@ -1,4 +1,4 @@
-#' automatic DAPI masks for folder
+#' automatic DAPI mask segmentation for folder
 #'
 #' @param path path to folder with DAPI
 #' @param folder folder with DAPI images
@@ -22,8 +22,8 @@ dapimask.folder<-function(path, folder="blue", cores=1)
   if(length(list.files("dapimask"))==0)dir.create("dapimask")
   
   
-  if(cores>1)jobs <- mclapply(files, dapimask, folder=folder, mc.preschedule=FALSE, mc.cores=cores)
-  if(cores==1)jobs <- lapply(files, dapimask, folder=folder)
+  if(cores>1)jobs <- mclapply(files, dapimask.file, folder=folder, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, dapimask.file, folder=folder)
   setwd(orig)
   #return(jobs)
 }
