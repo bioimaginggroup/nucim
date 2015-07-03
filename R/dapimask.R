@@ -24,7 +24,8 @@ dapimask<-function(blau, xymic){
   blau2<-filterImage2d(blau,brush)
   xx<-apply(blau2,1,mean)
   yy<-apply(blau2,2,mean)
-  thresh<-c(find.first.mode(xx),find.first.mode(rev(xx)),find.first.mode(yy),find.first.mode(rev(yy)))
+  temp<-list("a"=xx,"b"=rev(xx),"c"=yy,"d"=rev(yy))
+  if(require(parallel)){thresh<-unlist(mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
   
   b<-blau>median(thresh/2)
   #b<-blau>quantile(blau,.8)
