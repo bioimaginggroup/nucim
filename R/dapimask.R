@@ -1,11 +1,12 @@
 #' Automatic DAPI mask segmentation
 #'
 #' @param blau 3d image with DAPI intensities
+#' @param xymic voxel size in x/y-direction in microns
 #' @return mask
 #' @export
 #'
 #'
-dapimask<-function(blau){
+dapimask<-function(blau, xymic){
   mb<-apply(blau,3,mean)
   mbr<-0.3*sum(range(mb))
   mbr<-which(mbr<mb)
@@ -18,10 +19,6 @@ dapimask<-function(blau){
   blau<-array(blau,dims)
   blau<-blau/max(blau)
   blau<-filterImage3d(blau,"var",4,1/3,silent=TRUE)
-  
-  XYZ <- scan(paste0("XYZmic/",file,".txt"))
-  xyzmic<-XYZ/dim(blau)
-  xymic<-mean(xyzmic[1:2])
   
   brush<-makeBrush(25,shape="gaussian",sigma=.1/xymic)
   blau2<-filterImage2d(blau,brush)

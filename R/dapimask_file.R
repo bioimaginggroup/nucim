@@ -9,7 +9,10 @@
 dapimask.file<-function(file,folder="blue"){
   test<-try({
     blau<-readTIF(paste0(folder,"/",file))
-    mask<-dapimask(blau)
+    XYZ <- scan(paste0("XYZmic/",file,".txt"))
+    xyzmic<-XYZ/dim(blau)
+    xymic<-mean(xyzmic[1:2])
+    mask<-dapimask(blau,xymic)
     writeTIF(mask,paste("dapimask/",file,sep=""),bps=8)
     remove(blau,mask,mbr,b2)
     gc(verbose=FALSE)
