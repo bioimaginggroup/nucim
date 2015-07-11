@@ -42,7 +42,7 @@ find.spots.file<-function(file, dir,color)
         col2<-col2[col2!=0]
         thresh<-c()
         
-        for (i in sample(100:200,10))
+        for (i in 100:200)
         {
           temp<-hist(col2,breaks=i,plot=FALSE)
           m<-min(which(diff(temp$counts)>0))
@@ -57,8 +57,6 @@ find.spots.file<-function(file, dir,color)
         spots<-aperm(spots,c(2,1,3))
         writeTIF(spots/2^16,file=paste(dir,"/",file,sep=""),bps=16L)
         write(max(spots),file=paste(dir,"/",file,".txt",sep=""))
-        
-        
       })
     }
     
