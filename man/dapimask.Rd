@@ -4,10 +4,12 @@
 \alias{dapimask}
 \title{Automatic DAPI mask segmentation}
 \usage{
-dapimask(blau)
+dapimask(blau, xymic)
 }
 \arguments{
 \item{blau}{3d image with DAPI intensities}
+
+\item{xymic}{voxel size in x/y-direction in microns}
 }
 \value{
 mask

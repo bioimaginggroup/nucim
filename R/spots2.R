@@ -41,6 +41,7 @@ find.spots.file<-function(file, dir,color)
         col2<-col[mask==1]
         col2<-col2[col2!=0]
         thresh<-c()
+        
         for (i in sample(100:200,10))
         {
           temp<-hist(col2,breaks=i,plot=FALSE)
