@@ -4,7 +4,8 @@
 \alias{find.spots}
 \title{Detects spots}
 \usage{
-find.spots(f, color, thresh = 1, thresh.auto = TRUE, cores = 1)
+find.spots(f, color, thresh = 1, thresh.auto = TRUE, filter = NULL,
+  cores = 1)
 }
 \arguments{
 \item{f}{path to folder}

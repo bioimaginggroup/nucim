@@ -7,7 +7,7 @@
 #' @return spot images in spot-color/, number of spots as txt files in spot-color/
 #' @export
 #'
-find.spots<-function(f,color,thresh=1,thresh.auto=TRUE,cores=1)
+find.spots<-function(f,color,thresh=1,thresh.auto=TRUE,filter=NULL,cores=1)
 {
     orig<-getwd()
 setwd(f)
@@ -24,19 +24,21 @@ setwd(f)
     dir<-paste("spots-",color,sep="")
     if(length(list.files(dir))==0)dir.create(dir)
     
-    if(cores>1)jobs <- mclapply(files, find.spots.file, dir=dir,color=color,thresh=thresh,thresh.auto=thresh.auto)
-    if(cores==1)jobs <- lapply(files, find.spots.file, dir=dir,color=color,thresh=thresh,thresh.auto=thresh.auto)
+    if(cores>1)jobs <- mclapply(files, find.spots.file, dir=dir,color=color,thresh=thresh,thresh.auto=thresh.auto,filter)
+    if(cores==1)jobs <- lapply(files, find.spots.file, dir=dir,color=color,thresh=thresh,thresh.auto=thresh.auto,filter)
     
     setwd(orig)
 }
 
-find.spots.file<-function(file, dir,color,thresh,thresh.auto)
+find.spots.file<-function(file, dir,color,thresh,thresh.auto,filter)
     {
       try({
         print(file)
         
         col<-readTIF(paste(color,"/",file,sep=""))
         mask<-readTIF(paste("dapimask/",file,sep=""))
+        
+        if (!is.null(filter))col<-filter2(col,filter)
         
         col2<-col[mask==1]
         col2<-col2[col2!=0]
@@ -45,13 +47,8 @@ find.spots.file<-function(file, dir,color,thresh,thresh.auto)
           
         thresh.prop<-c()
         
-        for (i in 100:200)
-        {
-          temp<-hist(col2,breaks=i,plot=FALSE)
-          m<-min(which(diff(temp$counts)>0))
-          thresh.prop<-c(thresh.prop,temp$mids[m])
-        }
-        gc()
+        if(require(parallel))thresh.prop<-unlist(mclapply(100:200,thresh.fc,col2))
+        if(!require(parallel))thresh.prop<-unlist(lapply(100:200,thresh.fc,col2))
         
         thresh.prop<-quantile(thresh.prop,na.rm=TRUE,probs=1/2)
         #thresh<-max(thresh,na.rm=TRUE,2/3)
@@ -66,4 +63,9 @@ find.spots.file<-function(file, dir,color,thresh,thresh.auto)
       })
     }
     
-    
+thresh.fc<-function(i,col2)
+{
+  temp<-hist(col2,breaks=i,plot=FALSE)
+  m<-min(which(diff(temp$counts)>0))
+  return(temp$mids[m])
+}
