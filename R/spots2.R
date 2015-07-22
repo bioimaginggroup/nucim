@@ -40,38 +40,39 @@ setwd(f)
 #' @export
 #'
 find.spots.file<-function(file, dir,color,thresh,thresh.auto,filter)
-    {
-      try({
-        print(file)
-        
-        col<-readTIF(paste(color,"/",file,sep=""))
-        mask<-readTIF(paste("dapimask/",file,sep=""))
-        
-        if (!is.null(filter))col<-filter2(col,filter)
-        
-        col2<-col[mask==1]
-        col2<-col2[col2!=0]
-        
-        if (thresh.auto){
-          
-        thresh.prop<-c()
-        
-        if(require(parallel))thresh.prop<-unlist(mclapply(100:200,thresh.fc,col2))
-        if(!require(parallel))thresh.prop<-unlist(lapply(100:200,thresh.fc,col2))
-        
-        thresh.prop<-quantile(thresh.prop,na.rm=TRUE,probs=1/2)
-        #thresh<-max(thresh,na.rm=TRUE,2/3)
-        thresh=thresh*thresh.prop
-        }
-        
-        white<-array(ifelse(col>thresh,1,0)*mask,dim(col))
-        spots<-bwlabel3d(white)
-        #spots<-aperm(spots,c(2,1,3))
-        writeTIF(spots/2^16,file=paste(dir,"/",file,sep=""),bps=16L)
-        write(max(spots),file=paste(dir,"/",file,".txt",sep=""))
-      })
+{
+  try({
+    print(file)
+    
+    col<-readTIF(paste(color,"/",file,sep=""))
+    mask<-readTIF(paste("dapimask/",file,sep=""))
+    
+    
+    col2<-col[mask==1]
+    col2<-col2[col2!=0]
+    
+    if (thresh.auto){
+      
+      thresh.prop<-c()
+      
+      if(require(parallel))thresh.prop<-unlist(mclapply(100:200,thresh.fc,col2))
+      if(!require(parallel))thresh.prop<-unlist(lapply(100:200,thresh.fc,col2))
+      
+      thresh.prop<-quantile(thresh.prop,na.rm=TRUE,probs=1/2)
+      #thresh<-max(thresh,na.rm=TRUE,2/3)
+      thresh=thresh*thresh.prop
     }
     
+    if (!is.null(filter))col<-filter2(col,filter)
+    
+    white<-array(ifelse(col>thresh,1,0)*mask,dim(col))
+    spots<-bwlabel3d(white)
+    #spots<-aperm(spots,c(2,1,3))
+    writeTIF(spots/2^16,file=paste(dir,"/",file,sep=""),bps=16L)
+    write(max(spots),file=paste(dir,"/",file,".txt",sep=""))
+  })
+}
+
 thresh.fc<-function(i,col2)
 {
   temp<-hist(col2,breaks=i,plot=FALSE)
