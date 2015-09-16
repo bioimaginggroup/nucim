@@ -4,7 +4,8 @@
 \alias{find.spots.file}
 \title{Detects spotsfor one file}
 \usage{
-find.spots.file(file, dir, color, thresh, thresh.auto, filter)
+find.spots.file(file, dir, color, thresh = NULL, thresh.auto = FALSE,
+  thresh.quantile = 0.9, filter = NULL)
 }
 \arguments{
 \item{color}{which color, images have to be in folder with color name}
