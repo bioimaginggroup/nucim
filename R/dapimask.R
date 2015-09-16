@@ -7,7 +7,6 @@
 #'
 #'
 dapimask<-function(blau, xymic){
-  require(bioimagetools)
   mb<-apply(blau,3,mean)
   mbr<-0.3*sum(range(mb))
   mbr<-which(mbr<mb)

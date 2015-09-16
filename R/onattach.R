@@ -1,4 +1,7 @@
 .onAttach<-function(libname, pkgname)
 {
-  packageStartupMessage("Nucim, ver. 0.4.2")
+  requireNamespace("bioimagetools")
+  requireNamespace("EBImage")
+  
+  packageStartupMessage(paste0("Nucim", utils::packageVersion("nucim")))
 }
