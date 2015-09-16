@@ -39,7 +39,7 @@ setwd(f)
 #' @return spot images in spot-color/, number of spots as txt files in spot-color/
 #' @export
 #'
-find.spots.file<-function(file, dir,color,thresh,thresh.auto,filter)
+find.spots.file<-function(file, dir,color,thresh=NULL,thresh.auto=FALSE,thresh.quantile=.9,filter=NULL)
 {
   try({
     print(file)
@@ -50,6 +50,8 @@ find.spots.file<-function(file, dir,color,thresh,thresh.auto,filter)
     
     col2<-col[mask==1]
     col2<-col2[col2!=0]
+    
+    if (is.null(thresh)&!thresh.auto)thresh=quantile(col2,thresh.quantile)
     
     if (thresh.auto){
       
