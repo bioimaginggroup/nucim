@@ -23,7 +23,7 @@ cat(paste(length(files),"files.\n"))
 if(length(list.files(paste0("class",N)))==0)dir.create(paste0("class",N))
 if(length(list.files(paste0("class",N,"-n")))==0)dir.create(paste0("class",N,"-n"))
 
-if(cores>1)jobs <- mclapply(files, classify.file, N=N, mc.preschedule=FALSE, mc.cores=cores)
+if(cores>1)jobs <- parallel::mclapply(files, classify.file, N=N, mc.preschedule=FALSE, mc.cores=cores)
 if(cores==1)jobs <- lapply(files, classify.file, N=N)
 setwd(orig)
 }
@@ -36,7 +36,7 @@ test<-try({
   blau<-array(blau,dim(blau))
   blau<-round(blau*2^16)
   storage.mode(blau)<-"integer"
-    img.seg<-segment(blau,N,0.1,1/3,mask=(mask==1),maxit=50,varfixed=TRUE,
+    img.seg<-bioimagetools::segment(blau,N,0.1,1/3,mask=(mask==1),maxit=50,varfixed=TRUE,
                      inforce.nclust=TRUE, start="equal")
     classes<-array(as.integer(img.seg$class),dim(blau))
     remove(img.seg)

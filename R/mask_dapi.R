@@ -1,17 +1,15 @@
-.find.first.mode<-function(x)
-{
-  s<-sd(diff(x))
-  i<-1
-  go<-TRUE
-  while(go)
-  {
-    i<-i+1
-    if(x[i]-x[i-1]<(-1.96*s))go<-FALSE
-  }
-  return(x[i-1])
-}
-
-mask.dapi<-function(img,mic,thresh="auto")
+#' Mask DAPI in kernel
+#'
+#' @param img DAPI channel image (3d)
+#' @param mic vector of dimensions of img in microns
+#' @param thresh threshold for intensity. Can be "auto": function will try to find automatic threshold
+#'
+#' @return mask image, same dimension as img.
+#' @export
+#'
+#' @import EBImage bioimagetools
+#' 
+mask.dapi<-dapimask<-function(img,mic,thresh="auto")
 {
   mb<-apply(img,3,mean)
   mbr<-0.3*sum(range(mb))
@@ -33,7 +31,7 @@ mask.dapi<-function(img,mic,thresh="auto")
   blau2<-filterImage2d(blau,brush)
   xx<-apply(blau2,1,mean)
   yy<-apply(blau2,2,mean)
-  if(thresh=="auto")thresh<-c(.find.first.mode(xx),.find.first.mode(rev(xx)),.find.first.mode(yy),.find.first.mode(rev(yy)))
+  if(thresh=="auto")if(require(parallel)){thresh<-unlist(mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
   
   b<-blau>median(thresh/2)
   #b<-blau>quantile(blau,.8)
@@ -53,4 +51,17 @@ mask.dapi<-function(img,mic,thresh="auto")
   
   mask<-fillHull(mask)
   return(mask)
+}
+
+find.first.mode<-function(x)
+{
+  s<-sd(diff(x))
+  i<-1
+  go<-TRUE
+  while(go)
+  {
+    i<-i+1
+    if(x[i]-x[i-1]<(-1.96*s))go<-FALSE
+  }
+  return(x[i-1])
 }

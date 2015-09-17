@@ -6,7 +6,7 @@
 \usage{
 extract.spots.DHS(file, folder = "./", thresh.offset = 0.1,
   min.sum.intensity = 2, max.distance = 0.5, use.brightest = FALSE,
-  full.voxels = FALSE, output = "markers")
+  max.spots = 2, full.voxels = FALSE, output = "markers")
 }
 \arguments{
 \item{file}{File name}
@@ -20,6 +20,8 @@ extract.spots.DHS(file, folder = "./", thresh.offset = 0.1,
 \item{max.distance}{use only spots with distance to other color spot smaller than max.distance}
 
 \item{use.brightest}{Logical; use only brightest in max.distance?}
+
+\item{max.spots}{maximum of spots (per channel), only when use brightest=TRUE}
 
 \item{full.voxels}{Logical; output contains full voxels instead of rgb intensities}
 

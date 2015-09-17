@@ -6,20 +6,22 @@
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
 #' @param use.brightest Logical; use only brightest in max.distance?
+#' @param max.spots maximum of spots (per channel), only when use brightest=TRUE
 #' @param full.voxels Logical; output contains full voxels instead of rgb intensities
 #' @param output output folder
 #'
 #' @return RGB image with spots will be written to output folder
 #' @export
+#' @import bioimagetools
 #'
-extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2, max.distance=0.5, use.brightest=FALSE, full.voxels=FALSE, output="markers")
+extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxels=FALSE, output="markers")
 {
   oldwd=getwd()
   setwd(folder)
-  mask<-readTIF(paste("dapimask/",file,sep=""))
-  red<-readTIF(paste("red/",file,sep=""))
+  mask<-readTIF(paste0("dapimask/",file))
+  red<-readTIF(paste0("red/",file))
   red[mask==0]<-0
-  green<-readTIF(paste("green/",file,sep=""))
+  green<-readTIF(paste0("green/",file))
   green[mask==0]<-0
   
   red.spots<-thresh(red,offset=thresh.offset)
@@ -87,7 +89,7 @@ extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intens
       potential.green<-potential.green[-weg]
     }
     
-    if (length(potential.green)>2)
+    if (length(potential.green)>max.spots)
     {
       d=c()
       for (i in 1:length(potential.green))
@@ -115,7 +117,7 @@ extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intens
   if (!full.voxels)  for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-red[red.s==labels.red[i]]
   if (!full.voxels)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-green[green.s==labels.green[i]]
   if (full.voxels)   for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-1
-  if (!full.voxels)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-1
+  if (full.voxels)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-1
   
   blue<-readTIF(paste("blue/",file,sep=""))
   new.blue[mask==1]<-blue[mask==1]

@@ -85,17 +85,15 @@ else(cat(paste0(file," OK\n")))
 #' @param cores Number of cores used in parallel, cores=1 implies no parallelization
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
 #' @export
-#' @examples
-#' rgb.split("./")
+#' @import bioimagetools
+#' @examples rgb.split("./")
 #' 
 rgb.split<-split.channels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
 {
   orig<-getwd()
   setwd(path)
-  require(bioimagetools)
   if(cores>1)
   {
-    require(parallel)
     options("mc.cores"=cores)
   }
   
@@ -108,7 +106,7 @@ rgb.split<-split.channels<-function(path,channels=c("red","green","blue"),rgb.fo
   if(length(list.files("green"))==0)dir.create("green")
   if(length(list.files("XYZmic"))==0)dir.create("XYZmic")
   
-  if(cores>1)jobs <- mclapply(path,split.channels.file,channels,rgb.folder)
+  if(cores>1)jobs <- parallel::mclapply(path,split.channels.file,channels,rgb.folder)
   if(cores==1)jobs <- lapply(path,split.channels.file,channels,rgb.folder)
   setwd(orig)
 }
