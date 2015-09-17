@@ -6,7 +6,6 @@ colors.classes<-function(f,N,color="red,green",cores=1)
   library(bioimagetools)
   if (cores>1)
   {
-    library(parallel)
     options("mc.cores"=cores)
   }
   
@@ -16,7 +15,7 @@ colors.classes<-function(f,N,color="red,green",cores=1)
   if(length(list.files("redmask"))==0)dir.create("redmask")
   if(length(list.files("greenmask"))==0)dir.create("greenmask")
   
-  if(cores>1)jobs <- mclapply(files, colors.classes.file, N=N, color=color, mc.preschedule=FALSE)
+  if(cores>1)jobs <- parallel::mclapply(files, colors.classes.file, N=N, color=color, mc.preschedule=FALSE)
   if(cores==1)jobs <- lapply(files, colors.classes.file, N=N, color=color)
   setwd(orig)
 }

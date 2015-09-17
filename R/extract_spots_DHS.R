@@ -12,7 +12,7 @@
 #'
 #' @return RGB image with spots will be written to output folder
 #' @export
-#' @import bioimagetools
+#' @import bioimagetools fields
 #'
 extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxels=FALSE, output="markers")
 {

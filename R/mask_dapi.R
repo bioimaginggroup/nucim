@@ -22,15 +22,16 @@ mask.dapi<-dapimask<-function(img,mic,thresh="auto")
   blau[blau<0]<-0
   blau<-array(blau,dims)
   blau<-blau/max(blau)
-  blau<-filterImage3d(blau,"var",4,1/3,silent=TRUE)
+  blau<-bioimagetools::filter(blau,"var",4,1/3,silent=TRUE)
   
   xyzmic<-mic/dim(blau)
   xymic<-mean(xyzmic[1:2])
   
   brush<-makeBrush(25,shape="gaussian",sigma=.1/xymic)
-  blau2<-filterImage2d(blau,brush)
+  blau2<-EBImage::filter2(blau,brush)
   xx<-apply(blau2,1,mean)
   yy<-apply(blau2,2,mean)
+  temp<-list("a"=xx,"b"=rev(xx),"c"=yy,"d"=rev(yy))
   if(thresh=="auto")if(require(parallel)){thresh<-unlist(mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
   
   b<-blau>median(thresh/2)
@@ -42,7 +43,7 @@ mask.dapi<-dapimask<-function(img,mic,thresh="auto")
   brush<-makeBrush(2*n-1,shape='box')
   mask<-erode(mask,brush)
   
-  mask0<-bwlabel3d(mask,silent=TRUE)
+  mask0<-bwlabel3d(mask)
   mask1<-cmoments3d(mask0,mask)
   
   which<-rev(order(mask1[,5]))[1]
