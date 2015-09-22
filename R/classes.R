@@ -2,12 +2,14 @@
 #'
 #' @param f folder
 #' @param N number of classes
+#' @param beta beta parameter used in bioimagetools::segment()
+#' @param output output folder
 #' @param cores number of cores used in parallel (needs parallel package)
 #'
-#' @return results in classN/ and classN-n
+#' @return results in "output" and "output"-n
 #' @export
 #'
-classify<-function(f,N,cores=1)
+classify<-function(f,N,beta=.1,output=paste0("class",N),cores=1)
 {
 orig<-getwd()
 setwd(f)
@@ -20,15 +22,15 @@ if (cores>1)
 
 files<-sample(list.files("blue"))
 cat(paste(length(files),"files.\n"))
-if(length(list.files(paste0("class",N)))==0)dir.create(paste0("class",N))
-if(length(list.files(paste0("class",N,"-n")))==0)dir.create(paste0("class",N,"-n"))
+if(length(list.files(output))==0)dir.create(output)
+if(length(list.files(paste0(output,"-n")))==0)dir.create(paste0(output,"-n"))
 
-if(cores>1)jobs <- parallel::mclapply(files, classify.file, N=N, mc.preschedule=FALSE, mc.cores=cores)
-if(cores==1)jobs <- lapply(files, classify.file, N=N)
+if(cores>1)jobs <- parallel::mclapply(files, classify.file, N=N, beta=beta, mc.preschedule=FALSE, mc.cores=cores)
+if(cores==1)jobs <- lapply(files, classify.file, beta=beta, N=N)
 setwd(orig)
 }
 
-classify.file<-function(file,N)
+classify.file<-function(file, beta, N)
 {
 test<-try({
   mask<-readTIF(paste("dapimask/",file,sep=""))
@@ -36,19 +38,19 @@ test<-try({
   blau<-array(blau,dim(blau))
   blau<-round(blau*2^16)
   storage.mode(blau)<-"integer"
-    img.seg<-bioimagetools::segment(blau,N,0.1,1/3,mask=(mask==1),maxit=50,varfixed=TRUE,
+    img.seg<-bioimagetools::segment(blau,N,beta,1/3,mask=(mask==1),maxit=50,varfixed=TRUE,
                      inforce.nclust=TRUE, start="equal")
     classes<-array(as.integer(img.seg$class),dim(blau))
     remove(img.seg)
-    writeTIF(classes/N,paste("class",N,"/",file,sep=""),bps=8)
+    writeTIF(classes/N,paste0(output,"/",file),bps=8)
   
     classes<-classes
     classes<-classes[classes!=0]
     t=table(classes)
     print(file)
     print(t)
-    write(t,file=paste0("class",N,"-n/",file,".txt"),ncolumns=N)
-    write(t,file=paste0("class",N,"-n/",file,"-percent.txt"),ncolumns=N)
+    write(t,file=paste0(output,"-n/",file,".txt"),ncolumns=N)
+    write(t,file=paste0(output,"-n/",file,"-percent.txt"),ncolumns=N)
   
   remove(mask,blau,classes)
 gc(verbose=FALSE)
