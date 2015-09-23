@@ -25,12 +25,12 @@ cat(paste(length(files),"files.\n"))
 if(length(list.files(output))==0)dir.create(output)
 if(length(list.files(paste0(output,"-n")))==0)dir.create(paste0(output,"-n"))
 
-if(cores>1)jobs <- parallel::mclapply(files, classify.file, N=N, beta=beta, mc.preschedule=FALSE, mc.cores=cores)
-if(cores==1)jobs <- lapply(files, classify.file, beta=beta, N=N)
+if(cores>1)jobs <- parallel::mclapply(files, classify.file, N=N, beta=beta, output=output, mc.preschedule=FALSE, mc.cores=cores)
+if(cores==1)jobs <- lapply(files, classify.file, beta=beta, N=N, output=output)
 setwd(orig)
 }
 
-classify.file<-function(file, beta, N)
+classify.file<-function(file, beta, N, output)
 {
 test<-try({
   mask<-readTIF(paste("dapimask/",file,sep=""))

@@ -4,17 +4,21 @@
 \alias{classify}
 \title{Classify DAPI}
 \usage{
-classify(f, N, cores = 1)
+classify(f, N, beta = 0.1, output = paste0("class", N), cores = 1)
 }
 \arguments{
 \item{f}{folder}
 
 \item{N}{number of classes}
 
+\item{beta}{beta parameter used in bioimagetools::segment()}
+
+\item{output}{output folder}
+
 \item{cores}{number of cores used in parallel (needs parallel package)}
 }
 \value{
-results in classN/ and classN-n
+results in "output" and "output"-n
 }
 \description{
 Classify DAPI
