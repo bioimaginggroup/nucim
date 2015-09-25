@@ -14,7 +14,7 @@ mask.small<-function(f,color,n,cores=1)
   
   if(length(list.files(paste0(color,"mask")))==0)dir.create(paste0(color,"mask"))
   
-  if(cores>1)jobs <- mclapply(files,mask.small.file,color=color,n=n)
+  if(cores>1)jobs <- parallel::mclapply(files,mask.small.file,color=color,n=n)
   if(cores==1)jobs <- lapply(files,mask.small.file,color=color,n=n)
 
   setwd(orig)
@@ -34,7 +34,7 @@ mask.small.file<-function(file,color,n)
     prot[mask==0]<-pm
     
     brush<-makeBrush(25,shape="gaussian",sigma=.1/xymic)
-    prot1<-filterImage2d(prot,brush)
+    prot1<-bioimagetools::filterImage2d(prot,brush)
     
     prot1<-prot1-min(prot1)
     prot1<-prot1/max(prot1)
@@ -42,8 +42,8 @@ mask.small.file<-function(file,color,n)
     prot13<-ifelse(prot1>.5,1,0)
     prot13<-prot13*mask
     prot14<-erode(prot13)
-    prot4<-bwlabel3d(prot13,silent=TRUE)
-    prot5<-cmoments3d(prot4,prot)
+    prot4<-bioimagetools::bwlabel3d(prot13)
+    prot5<-bioimagetools::cmoments3d(prot4,prot)
         
     which<-rev(order(prot5[,5]))[1:n]
     

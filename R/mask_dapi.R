@@ -39,12 +39,12 @@ mask.dapi<-dapimask<-function(img,mic,thresh="auto")
   b2<-array(0,dims0)
   b2[,,small]<-array(as.integer(b),dim(b))
   n<-5
-  mask<-1-outside(b2,0,n)
+  mask<-1-bioimagetools::outside(b2,0,n)
   brush<-makeBrush(2*n-1,shape='box')
   mask<-erode(mask,brush)
   
-  mask0<-bwlabel3d(mask)
-  mask1<-cmoments3d(mask0,mask)
+  mask0<-bioimagetools::bwlabel3d(mask)
+  mask1<-bioimagetools::cmoments3d(mask0,mask)
   
   which<-rev(order(mask1[,5]))[1]
   

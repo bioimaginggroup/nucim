@@ -126,6 +126,6 @@ extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intens
   all[,,2,]<-new.green
   all[,,3,]<-new.blue
   print(file)
-  writeTIF(all,file=paste0(output,"/",file),bps=8L,reduce=TRUE)
+  writeTIF(all,file=paste0(output,"/",file),bps=16L,reduce=TRUE)
   setwd(oldwd)
 }

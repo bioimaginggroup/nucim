@@ -14,7 +14,7 @@ mask.dapi.file<-dapimask.file<-function(file,folder="blue"){
     xymic<-mean(xyzmic[1:2])
     mask<-dapimask(blau,xymic)
     writeTIF(mask,paste("dapimask/",file,sep=""),bps=8)
-    remove(blau,mask,mbr,b2)
+    remove(blau,mask)
     gc(verbose=FALSE)
   },silent=TRUE)
   if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))

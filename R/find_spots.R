@@ -2,6 +2,9 @@
 #'
 #' @param f path to folder
 #' @param color which color, images have to be in folder with color name
+#' @param thresh threshold
+#' @param thresh.auto Logical. Find threshold automatically?
+#' @param filter 2d-filter to use before spot detection
 #' @param cores number of cores to use in parallel (with parallel package only)
 #'
 #' @return spot images in spot-color/, number of spots as txt files in spot-color/
@@ -34,6 +37,10 @@ setwd(f)
 #'
 #' @param f path to folder
 #' @param color which color, images have to be in folder with color name
+#' @param thresh threshold
+#' @param thresh.auto Logical. Find threshold automatically?
+#' @param thresh.quantile numeric. use simple 
+#' @param filter 2d-filter to use before spot detection
 #' @param cores number of cores to use in parallel (with parallel package only)
 #'
 #' @return spot images in spot-color/, number of spots as txt files in spot-color/
