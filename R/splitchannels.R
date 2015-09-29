@@ -88,7 +88,7 @@ else(cat(paste0(file," OK\n")))
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
 #' @export
 #' @import bioimagetools
-#' @examples rgb.split("./")
+#' @examples splitchannels("./")
 #' 
 splitchannels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
 {

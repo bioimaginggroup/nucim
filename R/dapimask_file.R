@@ -6,7 +6,7 @@
 #' @export
 #'
 #'
-mask.dapi.file<-dapimask.file<-function(file,folder="blue"){
+dapimask.file<-function(file,folder="blue"){
   test<-try({
     blau<-readTIF(paste0(folder,"/",file))
     XYZ <- scan(paste0("XYZmic/",file,".txt"))

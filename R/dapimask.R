@@ -9,7 +9,7 @@
 #'
 #' @import EBImage bioimagetools
 #' 
-mask.dapi<-dapimask<-function(img,mic,thresh="auto")
+dapimask<-function(img,mic,thresh="auto")
 {
   mb<-apply(img,3,mean)
   mbr<-0.3*sum(range(mb))
@@ -22,7 +22,7 @@ mask.dapi<-dapimask<-function(img,mic,thresh="auto")
   blau[blau<0]<-0
   blau<-array(blau,dims)
   blau<-blau/max(blau)
-  blau<-bioimagetools::filter(blau,"var",4,1/3,silent=TRUE)
+  blau<-bioimagetools::filterImage3d(blau,"var",4,1/3,silent=TRUE)
   
   xyzmic<-mic/dim(blau)
   xymic<-mean(xyzmic[1:2])
