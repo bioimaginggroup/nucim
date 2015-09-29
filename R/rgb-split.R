@@ -90,7 +90,7 @@ else(cat(paste0(file," OK\n")))
 #' @import bioimagetools
 #' @examples rgb.split("./")
 #' 
-rgb.split<-split.channels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
+split.channels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
 {
   orig<-getwd()
   setwd(path)
@@ -119,4 +119,15 @@ find.mode<-function(x)
   return(d$x[which(d$y==max(d$y))[1]])
 }
 
-
+#' Split RGB images into channels and pixel size information
+#'
+#' @param path Path to root folder
+#' @param channels Vector of channels in images
+#' @param rgb.folder Folder with RGB images
+#' @param cores Number of cores used in parallel, cores=1 implies no parallelization
+#' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+#' @export
+#' @import bioimagetools
+#' @examples rgb.split("./")
+#' 
+rgb.split<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)return(split.channels(path,channels,rgb.folder,cores))
