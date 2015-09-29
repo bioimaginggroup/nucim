@@ -5,7 +5,7 @@
 #' @param cores number of cores to use in parallel (need paralle package)
 #' @export
 #' @return nothing, results are in folder dapimask
-mask.dapi.folder<-dapimask.folder<-function(path, folder="blue", cores=1)
+dapimask.folder<-function(path, folder="blue", cores=1)
 {
   orig<-getwd()
   setwd(path)

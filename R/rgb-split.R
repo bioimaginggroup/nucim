@@ -7,7 +7,7 @@
 #' @return files in "./red/", "./green", "./blue" and "./XYZmic"
 #' @export
 #'
-split.channels.file<-function(file, channels, rgb.folder)
+splitchannels.file<-function(file, channels, rgb.folder)
 {
 test<-try({
 img<-readTIF(paste(rgb.folder,file,sep="/"))
@@ -90,7 +90,7 @@ else(cat(paste0(file," OK\n")))
 #' @import bioimagetools
 #' @examples rgb.split("./")
 #' 
-split.channels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
+splitchannels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
 {
   orig<-getwd()
   setwd(path)
@@ -130,4 +130,4 @@ find.mode<-function(x)
 #' @import bioimagetools
 #' @examples rgb.split("./")
 #' 
-rgb.split<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)return(split.channels(path,channels,rgb.folder,cores))
+rgbsplit<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)return(split.channels(path,channels,rgb.folder,cores))

@@ -5,7 +5,7 @@
 #' @return list with red, green, blue channels and size in microns.
 #' @export
 #'
-split.channel<-function(img, preprocess=TRUE)
+splitchannel<-function(img, preprocess=TRUE)
 {
     
     D<-length(dim(img))
