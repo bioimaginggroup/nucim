@@ -1,11 +1,13 @@
-find.mode<-function(x)
-{
-  d<-density(x)
-  return(d$x[which(d$y==max(d$y))[1]])
-}
-
-
-split.channels.file<-function(file,channels, rgb.folder)
+#' Split channels into files and extracts size in microns
+#'
+#' @param file file name
+#' @param channels e.g. c("red","green","blue")
+#' @param rgb.folder folder with file
+#'
+#' @return files in "./red/", "./green", "./blue" and "./XYZmic"
+#' @export
+#'
+split.channels.file<-function(file, channels, rgb.folder)
 {
 test<-try({
 img<-readTIF(paste(rgb.folder,file,sep="/"))
@@ -110,3 +112,11 @@ rgb.split<-split.channels<-function(path,channels=c("red","green","blue"),rgb.fo
   if(cores==1)jobs <- lapply(path,split.channels.file,channels,rgb.folder)
   setwd(orig)
 }
+
+find.mode<-function(x)
+{
+  d<-density(x)
+  return(d$x[which(d$y==max(d$y))[1]])
+}
+
+

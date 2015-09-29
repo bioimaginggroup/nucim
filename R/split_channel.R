@@ -1,10 +1,11 @@
-.find.mode<-function(x)
-{
-  d<-density(x)
-  return(d$x[which(d$y==max(d$y))[1]])
-}
-
-split.channel<-function(img)
+#' Split RGB channels
+#'
+#' @param img 
+#'
+#' @return list with red, green, blue channels and size in microns.
+#' @export
+#'
+split.channel<-function(img, preprocess=TRUE)
 {
     
     D<-length(dim(img))
@@ -22,24 +23,25 @@ split.channel<-function(img)
       blue<-img[,,seq(3,Z,by=3)]  
     }
     
-    red<-red-.find.mode(red)
-    green<-green-.find.mode(green)
-    bluecut<-blue-.find.mode(blue)
+    if (preprocess)
+      {
+      red<-red-find.mode(red)
+      green<-green-find.mode(green)
+      blue<-blue-find.mode(blue)
     
     red[red<0]<-0
     green[green<0]<-0
-    bluecut[bluecut<0]<-0
+    blue[blue<0]<-0
     
     red<-red-min(red)
     green<-green-min(green)
-    bluecut<-bluecut-min(bluecut)
     blue<-blue-min(blue)
     
     red<-red/max(red)
     green<-green/max(green)
     blue<-blue/max(blue)
-    bluecut<-bluecut/max(bluecut)
-        
+    }
+    
     Xmic<-attr(img,"x.resolution")
     Ymic<-attr(img,"y.resolution")
     Zmic<-as.numeric(attr(img,"slices"))*as.numeric(attr(img,"spacing"))

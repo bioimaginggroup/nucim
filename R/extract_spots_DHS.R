@@ -119,7 +119,7 @@ extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intens
   if (full.voxels)   for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-1
   if (full.voxels)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-1
   
-  blue<-readTIF(paste("blue/",file,sep=""))
+  blue<-readTIF(paste("class/",file,sep=""))
   new.blue[mask==1]<-blue[mask==1]
   all<-readTIF(paste("rgb/",file,sep=""))
   all[,,1,]<-new.red
