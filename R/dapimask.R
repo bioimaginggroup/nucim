@@ -32,8 +32,10 @@ dapimask<-function(img,mic,thresh="auto")
   xx<-apply(blau2,1,mean)
   yy<-apply(blau2,2,mean)
   temp<-list("a"=xx,"b"=rev(xx),"c"=yy,"d"=rev(yy))
-  if(thresh=="auto")if(require(parallel)){thresh<-unlist(parallel::mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
-  
+  if(thresh=="auto"){
+    if(require(parallel)){thresh<-unlist(parallel::mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
+  thresh=median(thresh, na.rm=TRUE)
+    }
   b<-blau>median(thresh/2)
   #b<-blau>quantile(blau,.8)
   b2<-array(0,dims0)
@@ -59,10 +61,12 @@ find.first.mode<-function(x)
   s<-sd(diff(x))
   i<-1
   go<-TRUE
-  while(go)
+  try({
+    while(go)
   {
     i<-i+1
     if(x[i]-x[i-1]<(-1.96*s))go<-FALSE
-  }
+    }
+  })
   return(x[i-1])
 }
