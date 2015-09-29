@@ -108,8 +108,8 @@ splitchannels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",c
   if(length(list.files("green"))==0)dir.create("green")
   if(length(list.files("XYZmic"))==0)dir.create("XYZmic")
   
-  if(cores>1)jobs <- parallel::mclapply(files,split.channels.file,channels,rgb.folder)
-  if(cores==1)jobs <- lapply(files,split.channels.file,channels,rgb.folder)
+  if(cores>1)jobs <- parallel::mclapply(files,splitchannels.file,channels,rgb.folder)
+  if(cores==1)jobs <- lapply(files,splitchannels.file,channels,rgb.folder)
   setwd(orig)
 }
 
@@ -130,4 +130,4 @@ find.mode<-function(x)
 #' @import bioimagetools
 #' @examples rgb.split("./")
 #' 
-rgbsplit<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)return(split.channels(path,channels,rgb.folder,cores))
+rgbsplit<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)return(splitchannels(path,channels,rgb.folder,cores))
