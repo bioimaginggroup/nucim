@@ -67,6 +67,6 @@ find.first.mode<-function(x)
     i<-i+1
     if(x[i]-x[i-1]<(-1.96*s))go<-FALSE
     }
-  })
+  },silent=TRUE)
   return(x[i-1])
 }
