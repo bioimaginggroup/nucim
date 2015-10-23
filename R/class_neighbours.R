@@ -15,6 +15,37 @@ class.neighbours<-function(img,N, N.max=7)
   ret<-unlist(ret)
   return(t(matrix(ret,nrow=7)))
 }
+
+
+#' class.neighbours.folder
+#'
+#' @param inputfolder Input folder
+#' @param outputfolder Output folder
+#' @param N Max class
+#'
+#' @return plots
+#' @export
+#'
+class.neighbours.folder<-function(inputfolder,outputfolder, N=7)
+{
+  if(!dir.exists(inputfolder)){print(paste(inputfolder,"not found."));return(NULL)}
+    
+  if(!dir.exists(outputfolder))dir.create(outputfolder)
+    
+  files<-list.files(inputfolder)
+  for (i in files)
+  {
+    img<-readTIF(paste0(inputfolder,i,sep="/"))
+    img<-round(img*7,0)
+    temp<-class.neighbours(img,1:N,N.max=N)
+    for (j in 1:N)
+      plot(temp[j,])
+  }
+
+    
+    
+}
+
 class.neighbours.one<-function(N, img, N.max=7)
 {  
   w<-which(img==N, arr.ind=TRUE)
