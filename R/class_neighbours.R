@@ -57,6 +57,12 @@ class.neighbours.one<-function(N, img, N.max=7)
   w5[,3]<-w5[,3]-1
   w6[,3]<-w6[,3]+1
   w<-rbind(w1,w2,w3,w4,w5,w6)
+  w<-w[w[,1]>0,]
+  w<-w[w[,2]>0,]
+  w<-w[w[,3]>0,]
+  w<-w[w[,1]<=dim(img)[1],]
+  w<-w[w[,2]<=dim(img)[2],]
+  w<-w[w[,3]<=dim(img)[3],]
   ii<-img[w]
   ii<-ii[ii!=0]
   ret<-table.n(ii,N.max)
