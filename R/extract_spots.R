@@ -15,7 +15,8 @@ extract.spots<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=
   oldwd=getwd()
   setwd(folder)
   mask<-readTIF(paste0("dapimask/",file))
-  red<-readTIF(paste0("red/",file))
+
+    red<-readTIF(paste0("red/",file))
   red[mask==0]<-0
   green<-readTIF(paste0("green/",file))
   green[mask==0]<-0
@@ -48,7 +49,8 @@ extract.spots<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=
   
   blue<-readTIF(paste("class7/",file,sep=""))
   new.blue[mask==1]<-blue[mask==1]
-  all<-readTIF(paste("rgb/",file,sep=""))
+  
+  all<-array(0,c(dim(new.blue)[1:2],3,dim(new.blue)[3]))
   all[,,1,]<-new.red
   all[,,2,]<-new.green
   all[,,3,]<-new.blue
