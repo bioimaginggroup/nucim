@@ -12,7 +12,7 @@
 dapimask<-function(img,mic,thresh="auto")
 {
   mb<-apply(img,3,mean)
-  mbr<-0.3*sum(range(mb))
+  mbr<-0.8*quantile(mb,0.01)+0.2*quantile(mb,0.99)
   mbr<-which(mbr<mb)
   small<-min(mbr):max(mbr)
   dims0<-dim(img)
