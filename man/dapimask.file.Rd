@@ -4,12 +4,16 @@
 \alias{dapimask.file}
 \title{Automatic DAPI mask segmentation for files}
 \usage{
-dapimask.file(file, folder = "blue")
+dapimask.file(file, folder = "blue", pixelsize = NULL, size = NULL)
 }
 \arguments{
 \item{file}{file to read}
 
 \item{folder}{with}
+
+\item{pixelsize}{real pixelsize of image (in nanometers), if NULL (default), look in folder XYZmic}
+
+\item{size}{real size of image (in microns), if NULL (dafault), look in folder XYZmic}
 }
 \value{
 nothing, DAPI mask image will be saved to dapimask/
