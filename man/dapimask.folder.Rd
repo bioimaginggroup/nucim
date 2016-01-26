@@ -4,12 +4,14 @@
 \alias{dapimask.folder}
 \title{automatic DAPI mask segmentation for folder}
 \usage{
-dapimask.folder(path, folder = "blue", cores = 1)
+dapimask.folder(path, folder = "blue", size = NULL, cores = 1)
 }
 \arguments{
 \item{path}{path to folder with DAPI}
 
 \item{folder}{folder with DAPI images}
+
+\item{size}{real size of image (in microns), if NULL (dafault), look in folder XYZmic}
 
 \item{cores}{number of cores to use in parallel (need paralle package)}
 }

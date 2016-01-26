@@ -2,10 +2,11 @@
 #'
 #' @param path path to folder with DAPI
 #' @param folder folder with DAPI images
+#' @param size real size of image (in microns), if NULL (dafault), look in folder XYZmic
 #' @param cores number of cores to use in parallel (need paralle package)
 #' @export
 #' @return nothing, results are in folder dapimask
-dapimask.folder<-function(path, folder="blue", cores=1)
+dapimask.folder<-function(path, folder="blue", size=NULL, cores=1)
 {
   orig<-getwd()
   setwd(path)
@@ -22,8 +23,8 @@ dapimask.folder<-function(path, folder="blue", cores=1)
   if(length(list.files("dapimask"))==0)dir.create("dapimask")
   
   
-  if(cores>1)jobs <- parallel::mclapply(files, dapimask.file, folder=folder, mc.preschedule=FALSE, mc.cores=cores)
-  if(cores==1)jobs <- lapply(files, dapimask.file, folder=folder)
+  if(cores>1)jobs <- parallel::mclapply(files, dapimask.file, folder=folder, size=size, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, dapimask.file, folder=folder, size=size)
   setwd(orig)
   #return(jobs)
 }
