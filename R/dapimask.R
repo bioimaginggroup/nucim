@@ -11,13 +11,21 @@
 #' 
 dapimask<-function(img,mic,thresh="auto")
 {
-  mb<-apply(img,3,mean)
+  if (length(dim(img))==3)
+     {
+    mb<-apply(img,3,mean)
   mbr<-0.8*quantile(mb,0.01)+0.2*quantile(mb,0.99)
   mbr<-which(mbr<mb)
   small<-min(mbr):max(mbr)
   dims0<-dim(img)
   blau<-img[,,small]
   dims<-dim(blau)
+  }
+  else
+    {
+      blau=img
+      dims<-dim(blau)
+      }
   blau<-blau-median(blau)
   blau[blau<0]<-0
   blau<-array(blau,dims)
@@ -27,7 +35,7 @@ dapimask<-function(img,mic,thresh="auto")
   xyzmic<-mic/dim(blau)
   xymic<-mean(xyzmic[1:2])
   
-  brush<-makeBrush(25,shape="gaussian",sigma=.1/xymic)
+  brush<-EBImage::makeBrush(25,shape="gaussian",sigma=.1/xymic)
   blau2<-EBImage::filter2(blau,brush)
   xx<-apply(blau2,1,mean)
   yy<-apply(blau2,2,mean)
@@ -38,21 +46,36 @@ dapimask<-function(img,mic,thresh="auto")
     }
   b<-blau>median(thresh/2)
   #b<-blau>quantile(blau,.8)
-  b2<-array(0,dims0)
+  if (length(dim(img))==3)
+    {
+    b2<-array(0,dims0)
   b2[,,small]<-array(as.integer(b),dim(b))
+  }
+  else
+  {
+    b2=b
+  }
   n<-5
   mask<-1-bioimagetools::outside(b2,0,n)
   brush<-makeBrush(2*n-1,shape='box')
   mask<-erode(mask,brush)
   
-  mask0<-bioimagetools::bwlabel3d(mask)
+  if (length(dim(img))==3)
+  {
+    mask0<-bioimagetools::bwlabel3d(mask)
   mask1<-bioimagetools::cmoments3d(mask0,mask)
-  
   which<-rev(order(mask1[,5]))[1]
+  }
+  else
+  {
+    mask0<-EBImage::bwlabel(mask)
+    mask1<-EBImage::computeFeatures(mask0[,,1,1],mask[,,1,1],methods.ref="computeFeatures.basic")
+    which<-rev(order(mask1[,6]))[1]
+  }
   
   mask<-ifelse(mask0==which,1,0)
   
-  mask<-fillHull(mask)
+  mask<-EBImage::fillHull(mask)
   return(mask)
 }
 
