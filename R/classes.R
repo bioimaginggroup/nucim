@@ -59,3 +59,39 @@ if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
 else(cat(paste0(file," OK\n")))
 
 }
+
+#' Classify DAPI
+#'
+#' @param blue DAPI channel (image)
+#' @param mask mask (image)
+#' @param N number of classes
+#' @param beta smoothing parameter used in potts model
+#' @param z number of cores used in parallel (needs parallel package)
+#'
+#' @return image with classes
+#' @export
+#'
+classify.single<-function(blue, mask, N, beta, z=1/3)
+{
+  blue<-array(blue,dim(blue))
+  blue<-round(blue*2^16)
+  storage.mode(blue)<-"integer"
+  img.seg<-bioimagetools::segment(blue,N,beta,1/3,mask=(mask==1),maxit=50,varfixed=TRUE,
+                                  inforce.nclust=TRUE, start="equal")
+  classes<-array(as.integer(img.seg$class),dim(blue))
+  return(classes)
+}
+#' Classify DAPI from class image
+#'
+#' @param class classes image
+#' @param N number of classes
+#'
+#' @return table with number of voxels per class
+#' @export
+#'
+classify.table<-function(class, N)
+{
+  class<-class[class!=0]
+  t=bioimagetools::table.n(class,N)
+  return(t)
+}

@@ -3,6 +3,8 @@
 export(class.neighbours)
 export(class.neighbours.folder)
 export(classify)
+export(classify.single)
+export(classify.table)
 export(compute.distance2border)
 export(dapimask)
 export(dapimask.file)
