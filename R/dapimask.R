@@ -32,7 +32,7 @@ dapimask<-function(img,mic,thresh="auto")
   blau<-blau/max(blau)
   blau<-bioimagetools::filterImage3d(blau,"var",4,1/3,silent=TRUE)
   
-  xyzmic<-mic/dim(blau)
+  xyzmic<-mic/dim(img)
   xymic<-mean(xyzmic[1:2])
   
   brush<-EBImage::makeBrush(25,shape="gaussian",sigma=.1/xymic)
