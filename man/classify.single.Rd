@@ -4,7 +4,7 @@
 \alias{classify.single}
 \title{Classify DAPI}
 \usage{
-classify.single(blue, mask, N, beta, z = 1/3)
+classify.single(blue, mask, N, beta = 0.1, z = 1/3)
 }
 \arguments{
 \item{blue}{DAPI channel (image)}
@@ -13,9 +13,9 @@ classify.single(blue, mask, N, beta, z = 1/3)
 
 \item{N}{number of classes}
 
-\item{beta}{smoothing parameter used in potts model}
+\item{beta}{smoothing parameter used in potts model (default: 0.1)}
 
-\item{z}{number of cores used in parallel (needs parallel package)}
+\item{z}{scaling parameter: size of voxel in X-/Y-direction divided by the size of voxel in Z-direction (slice scaling parameter: size of voxel in X-/Y-direction divided by the size of voxel in Z-direction (slice thickness))}
 }
 \value{
 image with classes

@@ -7,7 +7,7 @@
 #' @return mask image, same dimension as img.
 #' @export
 #'
-#' @import EBImage bioimagetools
+#' @import EBImage bioimagetools stats
 #' 
 dapimask<-function(img,mic,thresh="auto")
 {

@@ -1,7 +1,7 @@
 Package: nucim
-Version: 0.4.16
-Date: 2016-09-23
-Title: Nucleus imaging
+Version: 0.5.0
+Date: 2016-10-13
+Title: Nucleus imaging toolbox
 Author: Volker Schmid
 Maintainer: Volker Schmid <stats@volkerschmid.de>
 Depends:
