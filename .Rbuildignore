@@ -3,3 +3,4 @@
 ^.*\.dropbox\.attr$
 test
 INSTALL
+^cran-comments\.md$
