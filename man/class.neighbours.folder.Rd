@@ -11,7 +11,8 @@ class.neighbours.folder(inputfolder, outputfolder, N = 7)
 
 \item{outputfolder}{Output folder}
 
-\item{N}{Max class}
+\item{N}{Max class
+#'}
 }
 \value{
 plots

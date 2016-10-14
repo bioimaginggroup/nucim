@@ -7,16 +7,12 @@
 #' @param cores number of cores to use in parallel (need paralle package)
 #' @export
 #' @return nothing, results are in folder dapimask
+#' 
 dapimask.folder<-function(path, folder="blue", pixelsize=NULL, size=NULL, cores=1)
 {
   orig<-getwd()
   setwd(path)
   
-  library(bioimagetools)
-  if (cores>1)
-  {
-    require(parallel)
-  }
   files<-list.files(folder)
   cat(paste(length(files),"files.\n"))
   

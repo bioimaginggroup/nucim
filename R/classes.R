@@ -9,16 +9,10 @@
 #' @return results in "output" and "output"-n
 #' @export
 #'
-classify<-function(f,N,beta=.1,output=paste0("class",N),cores=1)
+classify.folder<-function(f,N,beta=.1,output=paste0("class",N),cores=1)
 {
 orig<-getwd()
 setwd(f)
-  
-library(bioimagetools)
-if (cores>1)
-  {
-  if (!require(parallel))cores=1
-  }
 
 files<-sample(list.files("blue"))
 cat(paste(length(files),"files.\n"))
@@ -42,7 +36,8 @@ test<-try({
                      inforce.nclust=TRUE, start="equal")
     classes<-array(as.integer(img.seg$class),dim(blau))
     remove(img.seg)
-    writeTIF(classes/N,paste0(output,"/",file),bps=8)
+    gc()
+    bioimagetools::writeTIF(classes/N,paste0(output,"/",file),bps=8)
   
     classes<-classes
     classes<-classes[classes!=0]
@@ -71,7 +66,7 @@ else(cat(paste0(file," OK\n")))
 #' @return image with classes
 #' @export
 #'
-classify.single<-function(blue, mask, N, beta, z=1/3)
+classify<-function(blue, mask, N, beta, z=1/3)
 {
   blue<-array(blue,dim(blue))
   blue<-round(blue*2^16)

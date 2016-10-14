@@ -12,7 +12,7 @@
 #'
 #' @return RGB image with spots will be written to output folder
 #' @export
-#' @import bioimagetools fields
+#' @import bioimagetools fields EBImage
 #'
 extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxels=FALSE, output="markers")
 {
@@ -24,8 +24,8 @@ extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intens
   green<-readTIF(paste0("green/",file))
   green[mask==0]<-0
   
-  red.spots<-thresh(red,offset=thresh.offset)
-  green.spots<-thresh(green,offset=thresh.offset)
+  red.spots<-EBImage::thresh(red,offset=thresh.offset)
+  green.spots<-EBImage::thresh(green,offset=thresh.offset)
   
   red.s<-bwlabel3d(red.spots)
   green.s<-bwlabel3d(green.spots)

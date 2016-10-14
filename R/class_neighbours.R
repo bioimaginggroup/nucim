@@ -3,15 +3,16 @@
 #' @param img Class image
 #' @param N which class
 #' @param N.max maximum class (default: 7)
-#'
+#' @param cores number of cores used in parallel (needs parallel package)
+#' @import parallel
 #' @return vector of length N.max
 #' @export
 #'
-class.neighbours<-function(img,N, N.max=7)
+class.neighbours<-function(img,N, N.max=7,cores=1)
 {
   if (length(N)==1)return(class.neighbours.one(N, img, N.max))
-  if(require(parallel))ret<-mclapply(N,class.neighbours.one, img, N.max)
-  if(!require(parallel))ret<-lapply(N,class.neighbours.one, img, N.max)
+  if(cores>1)ret<-parallel::mclapply(N,class.neighbours.one, img, N.max, mc.cores=cores)
+  if(cores==1)ret<-lapply(N,class.neighbours.one, img, N.max)
   ret<-unlist(ret)
   return(t(matrix(ret,nrow=7)))
 }
@@ -22,7 +23,8 @@ class.neighbours<-function(img,N, N.max=7)
 #' @param inputfolder Input folder
 #' @param outputfolder Output folder
 #' @param N Max class
-#'
+#' #'
+#' @import bioimagetools 
 #' @return plots
 #' @export
 #'
@@ -35,11 +37,11 @@ class.neighbours.folder<-function(inputfolder,outputfolder, N=7)
   files<-list.files(inputfolder)
   for (i in files)
   {
-    img<-readTIF(paste0(inputfolder,i,sep="/"))
+    img<-bioimagetools::readTIF(paste0(inputfolder,i,sep="/"))
     img<-round(img*7,0)
     temp<-class.neighbours(img,1:N,N.max=N)
     for (j in 1:N)
-      plot(temp[j,])
+      graphics::plot(temp[j,])
   }
 
     
@@ -65,6 +67,6 @@ class.neighbours.one<-function(N, img, N.max=7)
   w<-w[w[,3]<=dim(img)[3],]
   ii<-img[w]
   ii<-ii[ii!=0]
-  ret<-table.n(ii,N.max)
+  ret<-bioimagetools::table.n(ii,N.max)
   return(ret)
 }

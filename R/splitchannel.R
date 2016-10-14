@@ -1,6 +1,7 @@
 #' Split RGB channels
 #'
-#' @param img 
+#' @param img rgb image
+#' @param preprocess logical. Should preprocessing be applied?
 #'
 #' @return list with red, green, blue channels and size in microns.
 #' @export

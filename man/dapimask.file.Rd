@@ -4,7 +4,8 @@
 \alias{dapimask.file}
 \title{Automatic DAPI mask segmentation for files}
 \usage{
-dapimask.file(file, folder = "blue", pixelsize = NULL, size = NULL)
+dapimask.file(file, folder = "blue", pixelsize = NULL, size = NULL,
+  cores = 1)
 }
 \arguments{
 \item{file}{file to read}
@@ -14,6 +15,8 @@ dapimask.file(file, folder = "blue", pixelsize = NULL, size = NULL)
 \item{pixelsize}{real pixelsize of image (in nanometers), if NULL (default), look in folder XYZmic}
 
 \item{size}{real size of image (in microns), if NULL (dafault), look in folder XYZmic}
+
+\item{cores}{Number of cores available for parallel computing}
 }
 \value{
 nothing, DAPI mask image will be saved to dapimask/

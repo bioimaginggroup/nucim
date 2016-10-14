@@ -6,7 +6,7 @@
 #'
 #' @return files in "./red/", "./green", "./blue" and "./XYZmic"
 #' @export
-#'
+#' @import bioimagetools
 splitchannels.file<-function(file, channels, rgb.folder)
 {
 test<-try({
@@ -88,9 +88,9 @@ else(cat(paste0(file," OK\n")))
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
 #' @export
 #' @import bioimagetools
-#' @examples splitchannels("./")
+#' @examples splitchannels.folder("./")
 #' 
-splitchannels<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
+splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
 {
   orig<-getwd()
   setwd(path)

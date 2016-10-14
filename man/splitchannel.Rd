@@ -7,7 +7,9 @@
 splitchannel(img, preprocess = TRUE)
 }
 \arguments{
-\item{img}{}
+\item{img}{rgb image}
+
+\item{preprocess}{logical. Should preprocessing be applied?}
 }
 \value{
 list with red, green, blue channels and size in microns.

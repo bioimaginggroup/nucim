@@ -9,15 +9,14 @@
 #'
 #' @return images in output"-"color"-"N
 #' @export
+#' @import stats parallel bioimagetools
 #'
 compute.distance2border<-function(f,color,N,from.spots=FALSE,output="dist2border",cores=1)
 {
   orig<-getwd()
   setwd(f)
-  library(bioimagetools)
   if (cores>1)
   {
-    library(parallel)
     options("mc.cores"=cores)
   }
   
@@ -66,7 +65,7 @@ compute.distance2border.nospots.file<-function(file,N,color, output)
     #  sdd<-sdd+1
     #  thresh<-mcol2+sdd*sdcol2
     #}
-    thresh<-quantile(col2,1-1000/length(col2))
+    thresh<-stats::quantile(col2,1-1000/length(col2))
     
     points<-NULL
     X<-dim(class)[1]

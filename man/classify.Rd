@@ -4,21 +4,21 @@
 \alias{classify}
 \title{Classify DAPI}
 \usage{
-classify(f, N, beta = 0.1, output = paste0("class", N), cores = 1)
+classify(blue, mask, N, beta, z = 1/3)
 }
 \arguments{
-\item{f}{folder}
+\item{blue}{DAPI channel (image)}
+
+\item{mask}{mask (image)}
 
 \item{N}{number of classes}
 
-\item{beta}{beta parameter used in bioimagetools::segment()}
+\item{beta}{smoothing parameter used in potts model}
 
-\item{output}{output folder}
-
-\item{cores}{number of cores used in parallel (needs parallel package)}
+\item{z}{number of cores used in parallel (needs parallel package)}
 }
 \value{
-results in "output" and "output"-n
+image with classes
 }
 \description{
 Classify DAPI

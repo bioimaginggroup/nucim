@@ -3,13 +3,13 @@
 #' @param img DAPI channel image (3d)
 #' @param mic vector of dimensions of img in microns
 #' @param thresh threshold for intensity. Can be "auto": function will try to find automatic threshold
-#'
+#' @param cores number of cores available for parallel computing
 #' @return mask image, same dimension as img.
 #' @export
 #'
-#' @import EBImage bioimagetools
+#' @import EBImage bioimagetools stats
 #' 
-dapimask<-function(img,mic,thresh="auto")
+dapimask<-function(img,mic,thresh="auto", cores=1)
 {
   if (length(dim(img))==3)
      {
@@ -41,7 +41,7 @@ dapimask<-function(img,mic,thresh="auto")
   yy<-apply(blau2,2,mean)
   temp<-list("a"=xx,"b"=rev(xx),"c"=yy,"d"=rev(yy))
   if(thresh=="auto"){
-    if(require(parallel)){thresh<-unlist(parallel::mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
+    if(cores>1){thresh<-unlist(parallel::mclapply(temp,find.first.mode,mc.cores=4))}else{thresh<-unlist(lapply(temp,find.first.mode))}
   thresh=median(thresh, na.rm=TRUE)
     }
   b<-blau>median(thresh/2)
@@ -81,7 +81,7 @@ dapimask<-function(img,mic,thresh="auto")
 
 find.first.mode<-function(x)
 {
-  s<-sd(diff(x))
+  s<-stats::sd(diff(x))
   i<-1
   go<-TRUE
   try({

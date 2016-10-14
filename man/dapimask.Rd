@@ -4,7 +4,7 @@
 \alias{dapimask}
 \title{Mask DAPI in kernel}
 \usage{
-dapimask(img, mic, thresh = "auto")
+dapimask(img, mic, thresh = "auto", cores = 1)
 }
 \arguments{
 \item{img}{DAPI channel image (3d)}
@@ -12,6 +12,8 @@ dapimask(img, mic, thresh = "auto")
 \item{mic}{vector of dimensions of img in microns}
 
 \item{thresh}{threshold for intensity. Can be "auto": function will try to find automatic threshold}
+
+\item{cores}{number of cores available for parallel computing}
 }
 \value{
 mask image, same dimension as img.

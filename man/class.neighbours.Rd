@@ -4,7 +4,7 @@
 \alias{class.neighbours}
 \title{Class neighbourhood distribution}
 \usage{
-class.neighbours(img, N, N.max = 7)
+class.neighbours(img, N, N.max = 7, cores = 1)
 }
 \arguments{
 \item{img}{Class image}
@@ -12,6 +12,8 @@ class.neighbours(img, N, N.max = 7)
 \item{N}{which class}
 
 \item{N.max}{maximum class (default: 7)}
+
+\item{cores}{number of cores used in parallel (needs parallel package)}
 }
 \value{
 vector of length N.max

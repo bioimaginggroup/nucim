@@ -5,9 +5,13 @@
 \title{Detects spotsfor one file}
 \usage{
 find.spots.file(file, dir, color, thresh = NULL, thresh.auto = FALSE,
-  thresh.quantile = 0.9, filter = NULL)
+  thresh.quantile = 0.9, filter = NULL, cores = 1)
 }
 \arguments{
+\item{file}{file}
+
+\item{dir}{directory for results}
+
 \item{color}{which color, images have to be in folder with color name}
 
 \item{thresh}{threshold}
@@ -17,8 +21,6 @@ find.spots.file(file, dir, color, thresh = NULL, thresh.auto = FALSE,
 \item{thresh.quantile}{numeric. use simple}
 
 \item{filter}{2d-filter to use before spot detection}
-
-\item{f}{path to folder}
 
 \item{cores}{number of cores to use in parallel (with parallel package only)}
 }
