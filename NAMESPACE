@@ -19,5 +19,8 @@ export(splitchannels.folder)
 import(EBImage)
 import(bioimagetools)
 import(fields)
+<<<<<<< HEAD
 import(parallel)
+=======
+>>>>>>> refs/remotes/origin/master
 import(stats)

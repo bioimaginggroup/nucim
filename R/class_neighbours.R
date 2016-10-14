@@ -37,7 +37,7 @@ class.neighbours.folder<-function(inputfolder,outputfolder, N=7)
   files<-list.files(inputfolder)
   for (i in files)
   {
-    img<-bioimagetools::readTIF(paste0(inputfolder,i,sep="/"))
+    img<-bioimagetools::readTIF(paste(inputfolder,i,sep="/"))
     img<-round(img*7,0)
     temp<-class.neighbours(img,1:N,N.max=N)
     for (j in 1:N)
