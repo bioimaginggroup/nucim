@@ -7,8 +7,8 @@ Maintainer: Volker Schmid <stats@volkerschmid.de>
 biocViews:
 Depends:
     R (>= 3.0.0),
-    EBImage,
-    bioimagetools
+    bioimagetools,
+    EBImage
 Imports:
     fields,
     parallel
