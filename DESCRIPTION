@@ -6,11 +6,11 @@ Author: Volker Schmid
 Maintainer: Volker Schmid <stats@volkerschmid.de>
 biocViews:
 Depends:
-    R (>= 3.0.0)
+    R (>= 3.0.0),
     EBImage,
-    bioimagetools,
+    bioimagetools
 Imports:
-    fields
+    fields,
     parallel
 Description: Code for analysis of microscopy images of nuclei.
 License: GPL-3
