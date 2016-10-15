@@ -4,14 +4,13 @@ Version: 0.5.3
 Date: 2016-10-14
 Author: Volker Schmid
 Maintainer: Volker Schmid <stats@volkerschmid.de>
+biocViews:
 Depends:
     R (>= 3.0.0)
-biocViews:
-    EBImage
-Imports:
+    EBImage,
     bioimagetools,
+Imports:
     fields
-Suggests:
     parallel
 Description: Code for analysis of microscopy images of nuclei.
 License: GPL-3
