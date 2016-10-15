@@ -4,7 +4,7 @@ Version: 0.5.4
 Date: 2016-10-15
 Author: Volker Schmid
 Maintainer: Volker Schmid <stats@volkerschmid.de>
-Additional_repositories: https://bioconductor.org
+Additional_repositories: https://www.bioconductor.org/packages/release
 Depends: R (>= 3.0.0), bioimagetools
 Suggests: EBImage
 Imports: fields, parallel
