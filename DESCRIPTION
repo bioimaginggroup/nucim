@@ -5,8 +5,7 @@ Date: 2016-10-15
 Author: Volker Schmid
 Maintainer: Volker Schmid <stats@volkerschmid.de>
 Additional_repositories: http://bioconductor.statistik.tu-dortmund.de/
-Depends: R (>= 3.0.0), bioimagetools
-Suggests: EBImage
+Depends: R (>= 3.0.0), EBImage, bioimagetools
 Imports: fields, parallel
 Description: Code for analysis of microscopy images of nuclei.
 License: GPL-3
