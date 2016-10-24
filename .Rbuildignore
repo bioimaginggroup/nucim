@@ -5,3 +5,4 @@ test
 INSTALL
 ^cran-comments\.md$
 LICENSE
+no_cran
