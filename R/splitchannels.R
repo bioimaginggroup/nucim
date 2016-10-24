@@ -121,14 +121,9 @@ splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder=
 #' @rdname nucim-deprecated
 #' @name nucim-deprecated
 #' @docType package
-#' @param path Path to root folder
-#' @param channels Vector of channels in images
-#' @param rgb.folder Folder with RGB images
-#' @param cores Number of cores used in parallel, cores=1 implies no parallelization
+#' @param ... parameters for splitchannels.folder
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
 #' @export
-#' @import bioimagetools
-#' @examples splitchannels.folder("./")
 #' 
 splitchannels<-function(...){
  .Deprecated("splitchannels.folder",package="nucim")

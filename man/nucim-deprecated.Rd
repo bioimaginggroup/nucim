@@ -10,13 +10,7 @@
 splitchannels(...)
 }
 \arguments{
-\item{path}{Path to root folder}
-
-\item{channels}{Vector of channels in images}
-
-\item{rgb.folder}{Folder with RGB images}
-
-\item{cores}{Number of cores used in parallel, cores=1 implies no parallelization}
+\item{...}{parameters for splitchannels.folder}
 }
 \value{
 Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
@@ -25,9 +19,5 @@ Nothing, folders red, green, blue and XYZmic include seperate channels and pixel
 These functions are provided for compatibility with older version of
 the yourPackageName package.  They may eventually be completely
 removed.
-}
-\examples{
-splitchannels.folder("./")
-
 }
 
