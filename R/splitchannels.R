@@ -113,7 +113,29 @@ splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder=
   setwd(orig)
 }
 
-find.mode<-function(x)
+#' Split RGB images into channels and pixel size information
+#'
+#' These functions are provided for compatibility with older version of
+#' the yourPackageName package.  They may eventually be completely
+#' removed.
+#' @rdname nucim-deprecated
+#' @name nucim-deprecated
+#' @docType package
+#' @param path Path to root folder
+#' @param channels Vector of channels in images
+#' @param rgb.folder Folder with RGB images
+#' @param cores Number of cores used in parallel, cores=1 implies no parallelization
+#' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+#' @export
+#' @import bioimagetools
+#' @examples splitchannels.folder("./")
+#' 
+splitchannels<-function(...){
+ .Deprecated("splitchannels.folder",package="nucim")
+ splitchannels.folder(...)
+ }
+
+  find.mode<-function(x)
 {
   d<-density(x)
   return(d$x[which(d$y==max(d$y))[1]])
