@@ -35,7 +35,7 @@ colors.in.classes(classes, color1, color2 = NULL, mask = array(TRUE,
 
 \item{col2}{Name of color 2}
 
-\item{test}{Compute tests}
+\item{test}{Compute tests: "Wilcoxon" for Wilcoxon rank-sum (Mann-Whitney U), chisq for Chi-squared test}
 
 \item{plot}{Plot barplots}
 

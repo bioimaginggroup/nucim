@@ -12,7 +12,7 @@
 #' @param sd2 For automatic threshold of color2
 #' @param col1 Name of color 1
 #' @param col2 Name of color 2
-#' @param test Compute tests
+#' @param test Compute tests: "Wilcoxon" for Wilcoxon rank-sum (Mann-Whitney U), chisq for Chi-squared test 
 #' @param plot Plot barplots
 #' @param beside a logical value. If FALSE, the columns of height are portrayed as stacked bars, and if TRUE the columns are portrayed as juxtaposed bars.
 #' @param ylim limits for the y axis (plot)
@@ -26,6 +26,7 @@
 #' @return Table of classes with color 1 (and 2)
 #' @export
 #' @import stats
+#' @importFrom graphics barplot
 colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(classes)),N=max(classes,na.rm=TRUE),type="tresh",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE,plot=TRUE,beside=TRUE,ylim=NULL,...)
 {
   no2<-ifelse(is.null(color2),TRUE,FALSE)
@@ -61,12 +62,12 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   type==("intensity")
   {
     weight<-color1
-    color1<-color1>0
+    color1<-color1>ifelse(is.null(thresh1),0,thresh1)
     weight<-weight[color1]
     
     if (!no2){
       weight2<-color2
-      color2<-color2>0
+      color2<-color2>ifelse(is.null(thresh2),0,thresh2)
       weight2<-weight2[color2]
     }
   }
@@ -79,7 +80,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   
   t3<-t30<-0
   if(!no2){
-    t30<-table.n(classes[color2],N, weight)
+    t30<-table.n(classes[color2],N, weight2)
     t3<-t30/sum(t30)
   }
   
@@ -88,24 +89,44 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     if (!no2)tt<-rbind(tt,t3)
     colo<-c("grey",col1)
     if (!no2)colo<-c(colo,col2)
-    print(ylim)
     if (is.null(ylim))ylim=c(0,max(c(t1,t2,t3)))
-    print(ylim)
-  graphics::barplot(tt,ylim=ylim,beside=beside,col=colo,...)
+  barplot(tt,ylim=ylim,beside=beside,col=colo,...)
   }
-  if (test==TRUE)
+  if (test=="Wilcoxon"|test=="U")
   {
     ch1<-wilcox.test(classes,classes[color1])
-    print("Test dapi vs. channel 1")
-    print(ch1)
+    cat("Wilcoxon rank-sum test DAPI vs. channel 1: p-value = ")
+    cat(ch1$p.value)
+    cat("\n")
+    
     if (!no2)
     {
-      print("Test dapi vs. channel 2")
+      cat("Wilcoxon rank-sum test DAPI vs. channel 2: p-value = ")
       ch2<-wilcox.test(classes,classes[color2])
-      print(ch2)
-      print("Test channel 1 vs. channel 2")
+      cat(ch2$p.value)
+      cat("\n")
+      cat("Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = ")
       ch3<-wilcox.test(classes[color1],classes[color2])
-      print(ch3)
+      cat(ch3$p.value)
+      cat("\n")
+    }
+  }
+  if (test=="chisq")
+  {
+    ch1<-chisq.test(rbind(t10,t20))
+    cat("Chi-squared test DAPI vs. channel 1: p-value = ")
+    cat(ch1$p.value)
+    cat("\n")
+    if (!no2)
+    {
+      cat("Chi-squared test DAPI vs. channel 2: p-value = ")
+      ch2<-chisq.test(rbind(t10,t30))
+      cat(ch2$p.value)
+      cat("\n")
+      cat("Chi-squared test channel 1 vs. channel 2: p-value = ")
+      ch3<-chisq.test(rbind(t20,t30),simulate.p.value = TRUE, B=10000)
+      cat(ch3$p.value)
+      cat("\n")
     }
   }
   
@@ -123,7 +144,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     ret1[["thresh"]]<-ret
   }
 
-  if(test)
+  if(is.character(test))
   {
     ret1[["test1"]]<-ch1
     if (!no2)
