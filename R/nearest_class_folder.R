@@ -1,0 +1,45 @@
+#' Find all distances to next neighbour of all classes for folders
+#'
+#' @param path path to folder 
+#' @param N number of classes, default: 7
+#' @param voxelsize real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic
+#' @param cores number of cores to use in parallel (needs parallel package)
+#' @export
+#' @return nothing, results are in folder distances in RData format
+#' @import bioimagetools
+#' 
+nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1)
+{
+  orig<-getwd()
+  setwd(path)
+  
+  files<-list.files(paste0("class",N))
+  cat(paste(length(files),"files.\n"))
+  
+  if (length(files)==0)return()
+  if(length(list.files("distances"))==0)dir.create("distances")
+  
+  if(cores>1)jobs <- parallel::mclapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize)
+  setwd(orig)
+  #return(jobs)
+}
+
+nearestClassDistances.files<-function(file,N=7,voxelsize=NULL,cores=1)
+{
+  test<-try({
+    class<-readClassTIF(paste0("class",N,"/",file))
+    if (is.null(voxelsize)){
+      XYZ <- scan(paste0("XYZmic/",file,".txt"))
+      voxelsize<-XYZ/dim(class)
+    }
+    mask<-readClassTIF(paste0("dapimask/",file))
+    distances<-nearestClassDistances(class,voxelsize,classes=N,cores=cores)
+    remove(class,mask)
+    gc(verbose=FALSE)
+    save(distances,file=paste0("distances/",file,".RData"))
+  },silent=TRUE)
+if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
+else(cat(paste0(file," OK\n")))
+}
+

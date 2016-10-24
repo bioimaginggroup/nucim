@@ -16,7 +16,7 @@ dapimask.folder(path, folder = "blue", pixelsize = NULL, size = NULL,
 
 \item{size}{real size of image (in microns), if NULL (default), look in folder XYZmic}
 
-\item{cores}{number of cores to use in parallel (need paralle package)}
+\item{cores}{number of cores to use in parallel (need parallel package)}
 }
 \value{
 nothing, results are in folder dapimask
