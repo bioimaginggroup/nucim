@@ -4,11 +4,13 @@
 #' @param N number of classes, default: 7
 #' @param voxelsize real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic
 #' @param cores number of cores to use in parallel (needs parallel package)
+#' @param method method for summarising distances, either "min" or "quantile"
+#' @param qu quantile for method="quantile", default: 0.01
 #' @export
 #' @return nothing, results are in folder distances in RData format
 #' @import bioimagetools
 #' 
-nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1)
+nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1, method="quantile", qu=0.01)
 {
   orig<-getwd()
   setwd(path)
@@ -21,11 +23,11 @@ nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1)
   
   if(cores>1)jobs <- parallel::mclapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize, mc.preschedule=FALSE, mc.cores=cores)
   if(cores==1)jobs <- lapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize)
-  
+
   if(cores>1)dist <- parallel::mclapply(files, ncd.helper, method=method, qu=qu, mc.preschedule=FALSE, mc.cores=cores)
   if(cores==1)dist <- lapply(files, ncd.helper, method=method, qu=qu, voxelsize=voxelsize)
   
-  dist<-array(unlist(dist),c(length(files,N,N)))
+  dist<-array(unlist(dist),c(length(files),N,N))
   
   mfrow=ceiling(N^(2/3))
   mfrow=c(ceiling(N/mfrow),mfrow)

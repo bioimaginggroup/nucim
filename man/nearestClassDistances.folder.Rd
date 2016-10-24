@@ -4,7 +4,8 @@
 \alias{nearestClassDistances.folder}
 \title{Find all distances to next neighbour of all classes for folders}
 \usage{
-nearestClassDistances.folder(path, N = 7, voxelsize = NULL, cores = 1)
+nearestClassDistances.folder(path, N = 7, voxelsize = NULL, cores = 1,
+  method = "quantile", qu = 0.01)
 }
 \arguments{
 \item{path}{path to folder}
@@ -14,6 +15,10 @@ nearestClassDistances.folder(path, N = 7, voxelsize = NULL, cores = 1)
 \item{voxelsize}{real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic}
 
 \item{cores}{number of cores to use in parallel (needs parallel package)}
+
+\item{method}{method for summarising distances, either "min" or "quantile"}
+
+\item{qu}{quantile for method="quantile", default: 0.01}
 }
 \value{
 nothing, results are in folder distances in RData format
