@@ -4,7 +4,7 @@
 #' @param folder folder with DAPI images
 #' @param pixelsize real pixelsize of image (in nanometers), if NULL (default), look in folder XYZmic
 #' @param size real size of image (in microns), if NULL (default), look in folder XYZmic
-#' @param cores number of cores to use in parallel (need paralle package)
+#' @param cores number of cores to use in parallel (need parallel package)
 #' @export
 #' @return nothing, results are in folder dapimask
 #' 
