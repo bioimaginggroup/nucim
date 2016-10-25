@@ -118,9 +118,7 @@ splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder=
 #' These functions are provided for compatibility with older version of
 #' the yourPackageName package.  They may eventually be completely
 #' removed.
-#' @rdname nucim-deprecated
-#' @name nucim-deprecated
-#' @docType package
+#’ @rdname nucim-deprecated
 #' @param ... parameters for splitchannels.folder
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
 #' @export

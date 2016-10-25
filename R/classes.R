@@ -91,3 +91,18 @@ classify.table<-function(class, N)
   t=bioimagetools::table.n(class,N)
   return(t)
 }
+
+#' Classify DAPI
+#'
+#' These functions are provided for compatibility with older version of
+#' the yourPackageName package.  They may eventually be completely
+#' removed.
+#’ @rdname nucim-deprecated
+#' @param ... parameters for classify
+#' @return image with classes
+#' @export
+#' 
+classify.single<-function(...){
+  .Deprecated("classify",package="nucim")
+  classify(...)
+}
