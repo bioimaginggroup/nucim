@@ -21,10 +21,18 @@ nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1, metho
   if (length(files)==0)return()
   if(length(list.files("distances"))==0)dir.create("distances")
   
-  if(cores>1)jobs <- parallel::mclapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize, mc.preschedule=FALSE, mc.cores=cores)
+  if (cores>1)
+  {
+    ff<-length(files)
+    cores1=min(floor(sqrt(cores)),ff)
+    cores2=floor(cores/cores1)
+  }
+  
+  if(cores>1)jobs <- parallel::mclapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize, cores=cores2, mc.preschedule=FALSE, mc.cores=cores1,  mc.allow.recursive = TRUE)
   if(cores==1)jobs <- lapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize)
 
-  if(cores>1)dist <- parallel::mclapply(files, ncd.helper, method=method, qu=qu, mc.preschedule=FALSE, mc.cores=cores)
+  cat("Prepare plot")
+  if(cores>1)dist <- parallel::mclapply(files, ncd.helper, method=method, qu=qu, cores=cores2, mc.preschedule=FALSE, mc.cores=cores1)
   if(cores==1)dist <- lapply(files, ncd.helper, method=method, qu=qu, voxelsize=voxelsize)
   
   dist<-array(unlist(dist),c(length(files),N,N))
@@ -40,16 +48,18 @@ nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1, metho
 
   setwd(orig)
   
-  
   #return(jobs)
 }
 
-ncd.helper<-function(file, method="quantile", qu=0)
+ncd.helper<-function(file, method="quantile", qu=0, cores=1)
 {
   load(file)
   N<-length(distances)
-  if (method=="quantile")distances<-lapply(distances,ncd.helper.qu,qu=qu)
-  if (method=="min")distances<-lapply(distances,ncd.helper.min)
+  if (cores>1)if (method=="quantile")distances<-mclapply(distances,ncd.helper.qu,qu=qu, mc.cores=cores)
+  if (cores==1)if (method=="quantile")distances<-lapply(distances,ncd.helper.qu,qu=qu)
+  if (cores>1)if (method=="min")distances<-mclapply(distances,ncd.helper.min, mc.cores=cores)
+  if (cores==1)if (method=="min")distances<-lapply(distances,ncd.helper.min)
+  
   distances<-array(unlist(distances),c(N,N))
   return(distances)
 }
@@ -66,6 +76,8 @@ ncd.helper.min<-function(dist)
 
 nearestClassDistances.files<-function(file,N=7,voxelsize=NULL,cores=1)
 {
+  cat(file)
+  cat("\n")
   test<-try({
     class<-readClassTIF(paste0("class",N,"/",file))
     if (is.null(voxelsize)){
@@ -73,6 +85,7 @@ nearestClassDistances.files<-function(file,N=7,voxelsize=NULL,cores=1)
       voxelsize<-XYZ/dim(class)
     }
     mask<-readClassTIF(paste0("dapimask/",file))
+    cat(".")
     distances<-nearestClassDistances(class,voxelsize,classes=N,cores=cores)
     remove(class,mask)
     gc(verbose=FALSE)
