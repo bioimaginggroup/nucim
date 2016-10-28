@@ -1,4 +1,4 @@
-#' Title Compute colors in classes distribution
+#' Compute colors in classes distribution
 #'
 #' @param classes Image of classes
 #' @param color1 Image of first color
@@ -156,7 +156,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   return(ret1)
 }
 
-#' Title Compute colors in classes distribution for folders
+#' Compute colors in classes distribution for folders
 #'
 #' @param path Path to root folder
 #' @param color1 Image of first color

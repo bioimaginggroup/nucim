@@ -2,7 +2,7 @@
 % Please edit documentation in R/colorsinclasses.R
 \name{colors.in.classes}
 \alias{colors.in.classes}
-\title{Title Compute colors in classes distribution}
+\title{Compute colors in classes distribution}
 \usage{
 colors.in.classes(classes, color1, color2 = NULL, mask = array(TRUE,
   dim(classes)), N = max(classes, na.rm = TRUE), type = "tresh",
@@ -49,7 +49,7 @@ colors.in.classes(classes, color1, color2 = NULL, mask = array(TRUE,
 Table of classes with color 1 (and 2)
 }
 \description{
-Title Compute colors in classes distribution
+Compute colors in classes distribution
 }
 \details{
 Type of spot definitions:
