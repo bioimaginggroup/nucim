@@ -25,7 +25,7 @@
 #'
 #' @return Table of classes with color 1 (and 2)
 #' @export
-#' @import stats
+#' @import stats bioimagetools
 #' @importFrom graphics barplot
 colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(classes)),N=max(classes,na.rm=TRUE),type="tresh",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE,plot=TRUE,beside=TRUE,ylim=NULL,...)
 {
@@ -187,18 +187,17 @@ colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensi
   files<-list.files("dapimask")
   cat(paste(length(files),"files.\n"))
   
-  if (cores>1)parallel::mclapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
-  if (cores==1)lapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
-
+  if (cores>1)jobs<-parallel::mclapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
+  if (cores==1)jobs<-lapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
 }
 
 colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensity",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE)
 {
-  classes<-readClassTIF(paste0("class",N,"/",file))
-  color1img <- readTIF(paste0(color1,"/",file))
-  if (!is.null(color2))color2img <- readTIF(paste0(color2,"/",file))
+  classes<-bioimagetools::readClassTIF(paste0("class",N,"/",file))
+  color1img <- bioimagetools::readTIF(paste0(color1,"/",file))
+  if (!is.null(color2))color2img <- bioimagetools::readTIF(paste0(color2,"/",file))
   if (is.null(color2))color2img <- NULL
-  mask <- readTIF(paste0("dapimask/",file))
+  mask <- bioimagetools::readTIF(paste0("dapimask/",file))
   
   cic <- colors.in.classes(classes,color1img,color2=color2img,mask=mask,N=N,type=type,thresh1=thresh1,thresh2=thresh2,sd1=sd1,sd2=sd2,col1=col1,col2=col2,test=test,plot=FALSE)
   
