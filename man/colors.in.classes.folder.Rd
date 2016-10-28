@@ -2,7 +2,7 @@
 % Please edit documentation in R/colorsinclasses.R
 \name{colors.in.classes.folder}
 \alias{colors.in.classes.folder}
-\title{Split RGB images into channels and pixel size information}
+\title{Title Compute colors in classes distribution for folders}
 \usage{
 colors.in.classes.folder(path, color1, color2 = NULL, N = 7,
   type = "intensity", thresh1 = NULL, thresh2 = NULL, sd1 = 2,
@@ -37,6 +37,6 @@ colors.in.classes.folder(path, color1, color2 = NULL, N = 7,
 Results are in folder colorsinclasses
 }
 \description{
-Split RGB images into channels and pixel size information
+Title Compute colors in classes distribution for folders
 }
 

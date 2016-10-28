@@ -6,7 +6,7 @@
 #'
 #' @return plots
 #' @export
-plotclassify.folder<-function(path, N=7, cores=1)
+plot_classify.folder<-function(path, N=7, cores=1)
 {
   orig<-getwd()
   setwd(path)

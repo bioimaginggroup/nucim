@@ -8,7 +8,7 @@
 #' @export
 #' @return plots
 #' 
-plotnearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile", qu=0.01)
+plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile", qu=0.01)
 {
   orig<-getwd()
   setwd(path)

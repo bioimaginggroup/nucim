@@ -156,7 +156,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   return(ret1)
 }
 
-#' Split RGB images into channels and pixel size information
+#' Title Compute colors in classes distribution for folders
 #'
 #' @param path Path to root folder
 #' @param color1 Image of first color
@@ -177,17 +177,13 @@ colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensi
 {
   orig<-getwd()
   setwd(path)
-  if(cores>1)
-  {
-    options("mc.cores"=cores)
-  }
   
   if(length(list.files("colorsinclasses"))==0)dir.create("colorsinclasses")
   
   files<-list.files("dapimask")
   cat(paste(length(files),"files.\n"))
   
-  if (cores>1)jobs<-parallel::mclapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
+  if (cores>1)jobs<-parallel::mclapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2, mc.cores=cores)
   if (cores==1)jobs<-lapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
 }
 
@@ -198,15 +194,16 @@ colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensit
   if (!is.null(color2))color2img <- bioimagetools::readTIF(paste0(color2,"/",file))
   if (is.null(color2))color2img <- NULL
   mask <- bioimagetools::readTIF(paste0("dapimask/",file))
-  
+  print(color2)
   cic <- colors.in.classes(classes,color1img,color2=color2img,mask=mask,N=N,type=type,thresh1=thresh1,thresh2=thresh2,sd1=sd1,sd2=sd2,col1=col1,col2=col2,test=test,plot=FALSE)
-  
-  C <- 4+!is.null(color2)*2
+
+  C <- 4+2*!is.null(color2)
   cic<-data.frame(array(unlist(cic),c(N,C)))
   namescic<-c("dapi.perc","col1.perc")
   if (!is.null(color2))namescic<-c(namescic,"col2.perc")
   namescic<-c(namescic,"dapi.n","col1.n")
   if (!is.null(color2))namescic<-c(namescic,"col2.n")
+  
   names(cic)<-namescic
   
   utils::write.table(cic,file=paste0("colorsinclasses/",file,".txt"),row.names = FALSE)
