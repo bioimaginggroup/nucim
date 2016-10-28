@@ -155,3 +155,61 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   }
   return(ret1)
 }
+
+#' Split RGB images into channels and pixel size information
+#'
+#' @param path Path to root folder
+#' @param color1 Image of first color
+#' @param color2 Image of second color
+#' @param N Maximum number of classes
+#' @param type Type of spot definition, see details
+#' @param thresh1 Threshold for first color image
+#' @param thresh2 Threshold for second color image
+#' @param sd1 For automatic threshold, that is: mean(color1)+sd1*sd(color1)
+#' @param sd2 For automatic threshold of color2
+#' @param col1 Name of color 1
+#' @param col2 Name of color 2
+#' @param cores Number of cores used in parallel, cores=1 implies no parallelization
+#' @return Results are in folder colorsinclasses
+#' @export
+#' 
+colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensity", thresh1=NULL, thresh2=NULL, sd1=2, sd2=2, col1="green", col2="red", cores=1)
+{
+  orig<-getwd()
+  setwd(path)
+  if(cores>1)
+  {
+    options("mc.cores"=cores)
+  }
+  
+  if(length(list.files("colorsinclasses"))==0)dir.create("colorsinclasses")
+  
+  files<-list.files("dapimask")
+  cat(paste(length(files),"files.\n"))
+  
+  if (cores>1)parallel::mclapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
+  if (cores==1)lapply(files,colors.in.classes.files, color1=color1, color2=color2, type="type", thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
+
+}
+
+colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensity",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE)
+{
+  classes<-readClassTIF(paste0("class",N,"/",file))
+  color1img <- readTIF(paste0(color1,"/",file))
+  if (!is.null(color2))color2img <- readTIF(paste0(color2,"/",file))
+  if (is.null(color2))color2img <- NULL
+  mask <- readTIF(paste0("dapimask/",file))
+  
+  cic <- colors.in.classes(classes,color1img,color2=color2img,mask=mask,N=N,type=type,thresh1=thresh1,thresh2=thresh2,sd1=sd1,sd2=sd2,col1=col1,col2=col2,test=test,plot=FALSE)
+  
+  C <- 4+!is.null(color2)*2
+  cic<-data.frame(array(unlist(cic),c(N,C)))
+  namescic<-c("dapi.perc","col1.perc")
+  if (!is.null(color2))namescic<-c(namescic,"col2.perc")
+  namescic<-c(namescic,"dapi.n","col1.n")
+  if (!is.null(color2))namescic<-c(namescic,"col2.n")
+  names(cic)<-namescic
+  
+  utils::write.table(cic,file=paste0("colorsinclasses/",file,".txt"),row.names = FALSE)
+}
+  

@@ -3,14 +3,12 @@
 #' @param path path to folder 
 #' @param N number of classes, default: 7
 #' @param voxelsize real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic
-#' @param cores number of cores to use in parallel (needs parallel package)
-#' @param method method for summarising distances, either "min" or "quantile"
-#' @param qu quantile for method="quantile", default: 0.01
+#' @param cores number of cores to use in parallel (needs parallel package if cores>1)
 #' @export
 #' @return nothing, results are in folder distances in RData format
 #' @import bioimagetools
 #' 
-nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1, method="quantile", qu=0.01)
+nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1)
 {
   orig<-getwd()
   setwd(path)
@@ -30,49 +28,11 @@ nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1, metho
   
   if(cores>1)jobs <- parallel::mclapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize, cores=cores2, mc.preschedule=FALSE, mc.cores=cores1,  mc.allow.recursive = TRUE)
   if(cores==1)jobs <- lapply(files, nearestClassDistances.files, N=N, voxelsize=voxelsize)
-
-  cat("Prepare plot")
-  if(cores>1)dist <- parallel::mclapply(files, ncd.helper, method=method, qu=qu, cores=cores2, mc.preschedule=FALSE, mc.cores=cores1)
-  if(cores==1)dist <- lapply(files, ncd.helper, method=method, qu=qu, voxelsize=voxelsize)
-  
-  dist<-array(unlist(dist),c(length(files),N,N))
-  
-  mfrow=ceiling(N^(2/3))
-  mfrow=c(ceiling(N/mfrow),mfrow)
-  graphics::par(mfrow=mfrow)
-  m<-apply(dist,2:3,mean)
-  for (i in 1:N)
-    graphics::barplot(m[i,])
-
-  
-
   setwd(orig)
   
   #return(jobs)
 }
 
-ncd.helper<-function(file, method="quantile", qu=0, cores=1)
-{
-  load(file)
-  N<-length(distances)
-  if (cores>1)if (method=="quantile")distances<-mclapply(distances,ncd.helper.qu,qu=qu, mc.cores=cores)
-  if (cores==1)if (method=="quantile")distances<-lapply(distances,ncd.helper.qu,qu=qu)
-  if (cores>1)if (method=="min")distances<-mclapply(distances,ncd.helper.min, mc.cores=cores)
-  if (cores==1)if (method=="min")distances<-lapply(distances,ncd.helper.min)
-  
-  distances<-array(unlist(distances),c(N,N))
-  return(distances)
-}
-ncd.helper.qu<-function(dist,qu)
-{
-  dist<-lapply(dist,quantile,probs=qu)
-  return(dist)
-}
-ncd.helper.min<-function(dist)
-{
-  dist<-lapply(dist,min)
-  return(dist)
-}
 
 nearestClassDistances.files<-function(file,N=7,voxelsize=NULL,cores=1)
 {

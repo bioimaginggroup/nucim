@@ -45,7 +45,7 @@ test<-try({
     print(file)
     print(t)
     write(t,file=paste0(output,"-n/",file,".txt"),ncolumns=N)
-    write(t,file=paste0(output,"-n/",file,"-percent.txt"),ncolumns=N)
+    write(t/sum(t),file=paste0(output,"-n/",file,"-percent.txt"),ncolumns=N)
   
   remove(mask,blau,classes)
 gc(verbose=FALSE)
@@ -95,9 +95,8 @@ classify.table<-function(class, N)
 #' Classify DAPI
 #'
 #' These functions are provided for compatibility with older version of
-#' the yourPackageName package.  They may eventually be completely
+#' the nucim package.  They may eventually be completely
 #' removed.
-#' @rdname nucim-deprecated
 #' @param ... parameters for classify
 #' @return image with classes
 #' @export
