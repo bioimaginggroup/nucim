@@ -97,7 +97,7 @@ classify.table<-function(class, N)
 #' These functions are provided for compatibility with older version of
 #' the yourPackageName package.  They may eventually be completely
 #' removed.
-#’ @rdname nucim-deprecated
+#' @rdname nucim-deprecated
 #' @param ... parameters for classify
 #' @return image with classes
 #' @export
