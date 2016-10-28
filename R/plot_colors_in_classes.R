@@ -28,6 +28,6 @@ plot_colors.in.classes.folder<-function(path,col1="green",col2="red")
   if (l==2)colo=c("gray",col1)
   if (l==3)colo=c("gray",col1,col2)
   
-  barplot.with.ci.23(cic,l,method="minmax",col=colo)
+  barplot.with.intervall.23(cic,l,method="minmax",col=colo)
     
 }

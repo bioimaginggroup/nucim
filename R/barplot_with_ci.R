@@ -1,4 +1,14 @@
-barplot.with.ci<-function(x,method="minmax",ylim=NULL,...){
+#' Barplot with Intervals
+#'
+#' @param x matrix
+#' @param method method for intervals, so far only "minmax"
+#' @param ylim limits for y axis. Default:NULL is ylim=c(0,max(interval))
+#' @param ... additional parameters forwarded to barplot
+#'
+#' @return plot
+#' @export
+#'
+barplot.with.interval<-function(x,method="minmax",ylim=NULL,...){
   N<-dim(x)[1]
   mi<-apply(x,1,min)
   ma<-apply(x,1,max)
@@ -10,7 +20,18 @@ barplot.with.ci<-function(x,method="minmax",ylim=NULL,...){
   for (j in 1:N)graphics::lines((j-0.4)+c(-.2,.2),rep(ma[j],2))
 }
 
-barplot.with.ci.23<-function(x,l,method="minmax",ylim=NULL,...){
+#' Barplot with Intervals for two or three bars beside
+#'
+#' @param x array
+#' @param l number of bars beside (second dimension of x)
+#' @param method method for intervals, so far only "minmax"
+#' @param ylim limits for y axis. Default:NULL is ylim=c(0,max(interval))
+#' @param ... additional parameters forwarded to barplot
+#'
+#' @return plot
+#' @export
+#'
+barplot.with.interval.23<-function(x,l,method="minmax",ylim=NULL,...){
   N<-dim(x)[1]
   mi<-apply(x,1:2,min)
   ma<-apply(x,1:2,max)
