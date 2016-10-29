@@ -17,7 +17,7 @@ plot_classify.folder<-function(path, N=7, cores=1)
   if(cores>1)tables <- parallel::mclapply(files, read.table.helper, N=N, mc.cores=cores)
   if(cores>1)tables <- lapply(files, read.table.helper, N=N)
   tables<-array(unlist(tables),c(N,length(tables)))
-  barplot.with.ci(tables,xlab="classes",ylab="percentage")
+  barplot_with_interval(tables,xlab="classes",ylab="percentage")
 }
 
 read.table.helper<-function(file, N){

@@ -37,7 +37,7 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
   ma<-apply(dist,1:2, max)
   for (i in 1:N)
   {
-    barplot.with.ci(dist[i,,],xlab=paste("neighbours of class",i))
+    barplot_with_interval(dist[i,,],xlab=paste("neighbours of class",i))
   }
   setwd(orig)
   return()

@@ -1,4 +1,4 @@
-#' Title Extract spots for DHS FISH
+#' Title Extract spots using information from two channels
 #'
 #' @param file File name
 #' @param folder Folder
@@ -7,25 +7,53 @@
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
 #' @param use.brightest Logical; use only brightest in max.distance?
 #' @param max.spots maximum of spots (per channel), only when use brightest=TRUE
-#' @param full.voxels Logical; output contains full voxels instead of rgb intensities
+#' @param full.voxel Logical; output contains full voxel instead of rgb intensities
 #' @param output output folder
 #'
 #' @return RGB image with spots will be written to output folder
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxels=FALSE, output="markers")
+extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE, output="markers")
 {
   oldwd=getwd()
   setwd(folder)
   mask<-readTIF(paste0("dapimask/",file))
   red<-readTIF(paste0("red/",file))
-  red[mask==0]<-0
   green<-readTIF(paste0("green/",file))
+  size<-scan(paste0("XYZmic/",file,".txt"))
+  
+  result <- extract.spots.combined(red, green, mask, size, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel)
+    
+  writeTIF(result$red,file=paste0(output,"/",file,"-red.tif"),bps=16L,reduce=TRUE)
+  writeTIF(result$green,file=paste0(output,"/",file,"-green.tif"),bps=16L,reduce=TRUE)
+  setwd(oldwd)
+}
+
+#' Title Extract spots using information from two channels
+#'
+#' @param red image
+#' @param green image
+#' @param mask image mask
+#' @param size real size of image in microns
+#' @param thresh.offset Thresh offest used in EBImage::thresh() 
+#' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
+#' @param max.distance use only spots with distance to other color spot smaller than max.distance
+#' @param use.brightest Logical; use only brightest in max.distance?
+#' @param max.spots maximum of spots (per channel), only when use brightest=TRUE
+#' @param full.voxel Logical; output contains full voxel instead of rgb intensities
+#'
+#' @return RGB image with spots will be written to output folder
+#' @export
+#' @import bioimagetools fields EBImage
+#'
+extract.spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE)
+{
+  red[mask==0]<-0
   green[mask==0]<-0
   
-  red.spots<-EBImage::thresh(red,offset=thresh.offset)
-  green.spots<-EBImage::thresh(green,offset=thresh.offset)
+  red.spots<-thresh(red,offset=thresh.offset)
+  green.spots<-thresh(green,offset=thresh.offset)
   
   red.s<-bwlabel3d(red.spots)
   green.s<-bwlabel3d(green.spots)
@@ -39,8 +67,7 @@ extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.
   if (is.null(dim(red.c)))red.c<-rbind(array(red.c,c(1,length(red.c))),c(0,0,0))
   if (is.null(dim(green.c)))green.c<-rbind(array(green.c,c(1,length(green.c))),c(100,100,10))
   
-  xyz<-scan(paste0("XYZmic/",file,".txt"))
-  xyz<-xyz/dim(red)
+  xyz<-size/dim(mask)
   for (i in 1:dim(red.c)[1])red.c[i,2:4]<-red.c[i,2:4]*xyz
   for (i in 1:dim(green.c)[1])green.c[i,2:4]<-green.c[i,2:4]*xyz
   
@@ -114,18 +141,10 @@ extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.
   new.red<-array(0,dim(red))
   new.green<-array(0,dim(red))
   new.blue<-array(0,dim(red))
-  if (!full.voxels)  for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-red[red.s==labels.red[i]]
-  if (!full.voxels)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-green[green.s==labels.green[i]]
-  if (full.voxels)   for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-1
-  if (full.voxels)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-1
-  
-  blue<-readTIF(paste("class7/",file,sep=""))
-  new.blue[mask==1]<-blue[mask==1]
-  all<-readTIF(paste("rgb/",file,sep=""))
-  all[,,1,]<-new.red
-  all[,,2,]<-new.green
-  all[,,3,]<-new.blue
-  print(file)
-  writeTIF(all,file=paste0(output,"/",file),bps=16L,reduce=TRUE)
-  setwd(oldwd)
+  if (!full.voxel)  for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-red[red.s==labels.red[i]]
+  if (!full.voxel)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-green[green.s==labels.green[i]]
+  if (full.voxel)   for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-1
+  if (full.voxel)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-1
+
+  return(list("red"=new.red,"green"=new.green))
 }

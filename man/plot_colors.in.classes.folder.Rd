@@ -7,11 +7,11 @@
 plot_colors.in.classes.folder(path, col1 = "green", col2 = "red")
 }
 \arguments{
-\item{path}{}
+\item{path}{path to folder}
 
-\item{col1}{}
+\item{col1}{color of channel 1}
 
-\item{col2}{}
+\item{col2}{color of channel 2}
 }
 \value{
 plot

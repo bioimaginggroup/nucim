@@ -1,14 +1,13 @@
 #' Test for colors in classes distribution for folders
 #'
-#' @param path 
-#' @param col1 
-#' @param col2 
+#' @param path path to folder
+#' @param test "Wilcoxon", "wilcox" or "U" for Wilcoxon rank-sum (Mann-Whitney U), chisq for Chi-squared test 
 #'
-#' @return plot
+#' @return test results
 #' @export
 #' @import stats
 #'
-test_colors.in.classes.folder<-function(path,test="chisq")
+t_colors.in.classes.folder<-function(path,test="wilcox")
 {
   orig<-getwd()
   setwd(path)

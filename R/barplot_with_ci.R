@@ -8,7 +8,7 @@
 #' @return plot
 #' @export
 #'
-barplot.with.interval<-function(x,method="minmax",ylim=NULL,...){
+barplot_with_interval<-function(x,method="minmax",ylim=NULL,...){
   N<-dim(x)[1]
   mi<-apply(x,1,min)
   ma<-apply(x,1,max)
@@ -31,7 +31,7 @@ barplot.with.interval<-function(x,method="minmax",ylim=NULL,...){
 #' @return plot
 #' @export
 #'
-barplot.with.interval.23<-function(x,l,method="minmax",ylim=NULL,...){
+barplot_with_interval_23<-function(x,l,method="minmax",ylim=NULL,...){
   N<-dim(x)[1]
   mi<-apply(x,1:2,min)
   ma<-apply(x,1:2,max)

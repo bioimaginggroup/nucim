@@ -1,8 +1,8 @@
 #' Plot for colors in classes distribution for folders
 #'
-#' @param path 
-#' @param col1 
-#' @param col2 
+#' @param path path to folder
+#' @param col1 color of channel 1
+#' @param col2 color of channel 2
 #'
 #' @return plot
 #' @export
@@ -17,7 +17,7 @@ plot_colors.in.classes.folder<-function(path,col1="green",col2="red")
   if (l==2)colo=c("grey",col1)
   if (l==3)colo=c("grey",col1,col2)
   
-  barplot.with.interval.23(cic,l,method="minmax",col=colo)
+  barplot_with_interval_23(cic,l,method="minmax",col=colo)
     
 }
 
