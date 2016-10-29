@@ -94,7 +94,8 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   }
   if (test=="Wilcoxon"|test=="U")
   {
-    ch1<-wilcox.test(classes,classes[color1])
+    ch1<-wilcox.test(rep(1:N,round(100*t1)),rep(1:N,round(100*t2)))
+    #ch1<-wilcox.test(classes,classes[color1])
     cat("Wilcoxon rank-sum test DAPI vs. channel 1: p-value = ")
     cat(ch1$p.value)
     cat("\n")
@@ -102,11 +103,13 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     if (!no2)
     {
       cat("Wilcoxon rank-sum test DAPI vs. channel 2: p-value = ")
-      ch2<-wilcox.test(classes,classes[color2])
+      ch2<-wilcox.test(rep(1:N,round(100*t1)),rep(1:N,round(100*t3)))
+      #ch2<-wilcox.test(classes,classes[color2])
       cat(ch2$p.value)
       cat("\n")
       cat("Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = ")
-      ch3<-wilcox.test(classes[color1],classes[color2])
+      ch3<-wilcox.test(rep(1:N,round(100*t2)),rep(1:N,round(100*t3)))
+      #ch3<-wilcox.test(classes[color1],classes[color2])
       cat(ch3$p.value)
       cat("\n")
     }

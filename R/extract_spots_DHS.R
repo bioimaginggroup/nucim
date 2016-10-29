@@ -14,7 +14,7 @@
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-extract.spots.DHS<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxels=FALSE, output="markers")
+extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxels=FALSE, output="markers")
 {
   oldwd=getwd()
   setwd(folder)
