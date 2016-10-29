@@ -19,12 +19,12 @@ extract.spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensi
   orig<-getwd()
   setwd(path)
   
-  files<-list.files(path)
+  files<-list.files(paste0(path,"/red"))
   cat(paste(length(files),"files.\n"))
   
   if (length(files)==0)return()
-  if(length(list.files(paste0(output,"_red"))==0))dir.create(paste0(output,"_red"))
-  if(length(list.files(paste0(output,"_green"))==0))dir.create(paste0(output,"_green"))
+  if(length(list.files(paste0(output,"_red")))==0)dir.create(paste0(output,"_red"))
+  if(length(list.files(paste0(output,"_green")))==0)dir.create(paste0(output,"_green"))
         
   if(cores>1)jobs <- parallel::mclapply(files, extract.spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output, mc.preschedule=FALSE, mc.cores=cores)
   if(cores==1)jobs <- lapply(files, extract.spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output)
@@ -53,15 +53,17 @@ extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.
 {
   oldwd=getwd()
   setwd(folder)
-  mask<-readTIF(paste0("dapimask/",file))
-  red<-readTIF(paste0("red/",file))
-  green<-readTIF(paste0("green/",file))
+  #try({
+  mask<-bioimagetools::readTIF(paste0("dapimask/",file))
+  red<-bioimagetools::readTIF(paste0("red/",file))
+  green<-bioimagetools::readTIF(paste0("green/",file))
   size<-scan(paste0("XYZmic/",file,".txt"))
   
   result <- extract.spots.combined(red, green, mask, size, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel)
     
   writeTIF(result$red,file=paste0(output,"_red/",file),bps=16L,reduce=TRUE)
   writeTIF(result$green,file=paste0(output,"_green/",file),bps=16L,reduce=TRUE)
+  #})
   setwd(oldwd)
 }
 
@@ -86,7 +88,6 @@ extract.spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.
 {
   red[mask==0]<-0
   green[mask==0]<-0
-  
   red.spots<-thresh(red,offset=thresh.offset)
   green.spots<-thresh(green,offset=thresh.offset)
   
@@ -106,6 +107,17 @@ extract.spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.
   for (i in 1:dim(red.c)[1])red.c[i,2:4]<-red.c[i,2:4]*xyz
   for (i in 1:dim(green.c)[1])green.c[i,2:4]<-green.c[i,2:4]*xyz
   
+  rdist <- function(x,y)
+  {
+    I<-dim(x)[1]
+    J<-dim(y)[1]
+    index.x<-rep(1:I,each=J)
+    index.y<-rep(1:J,I)
+    x<-x[index.x,]
+    y<-y[index.y,]
+    d<-array(sqrt(apply((x-y)^2,1,sum)),c(J,I))
+    return(t(d))
+  }
   rd<-rdist(red.c[,2:4],green.c[,2:4])
   
   potential <- which(rd<max.distance,arr.ind=TRUE)
