@@ -90,7 +90,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     colo<-c("grey",col1)
     if (!no2)colo<-c(colo,col2)
     if (is.null(ylim))ylim=c(0,max(c(t1,t2,t3)))
-  barplot(tt,ylim=ylim,beside=beside,col=colo,...)
+  barplot(tt,ylim=ylim,beside=beside,col=colo,names.arg = 1:N,...)
   }
   if (test=="Wilcoxon"|test=="U")
   {

@@ -1,3 +1,38 @@
+#' Title Extract spots using information from two channels for folder
+#'
+#' @param path path to folder
+#' @param thresh.offset Thresh offest used in EBImage::thresh() 
+#' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
+#' @param max.distance use only spots with distance to other color spot smaller than max.distance
+#' @param use.brightest Logical; use only brightest in max.distance?
+#' @param max.spots maximum of spots (per channel), only when use brightest=TRUE
+#' @param full.voxel Logical; output contains full voxel instead of rgb intensities
+#' @param output output folder
+#' @param cores number of cores we can use of parallel computing (needs parallel package if cores>1)
+#'
+#' @return RGB image with spots will be written to output folder
+#' @export
+#' @import bioimagetools fields EBImage
+#'
+extract.spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE, output="markers", cores=1)
+{
+  orig<-getwd()
+  setwd(path)
+  
+  files<-list.files(path)
+  cat(paste(length(files),"files.\n"))
+  
+  if (length(files)==0)return()
+  if(length(list.files(paste0(output,"_red"))==0))dir.create(paste0(output,"_red"))
+  if(length(list.files(paste0(output,"_green"))==0))dir.create(paste0(output,"_green"))
+        
+  if(cores>1)jobs <- parallel::mclapply(files, extract.spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, extract.spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output)
+  setwd(orig)
+  #return(jobs)
+}
+
+
 #' Title Extract spots using information from two channels
 #'
 #' @param file File name
@@ -25,8 +60,8 @@ extract.spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.
   
   result <- extract.spots.combined(red, green, mask, size, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel)
     
-  writeTIF(result$red,file=paste0(output,"/",file,"-red.tif"),bps=16L,reduce=TRUE)
-  writeTIF(result$green,file=paste0(output,"/",file,"-green.tif"),bps=16L,reduce=TRUE)
+  writeTIF(result$red,file=paste0(output,"_red/",file),bps=16L,reduce=TRUE)
+  writeTIF(result$green,file=paste0(output,"_green/",file),bps=16L,reduce=TRUE)
   setwd(oldwd)
 }
 
