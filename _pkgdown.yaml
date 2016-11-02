@@ -1,0 +1,22 @@
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Articles"
+      href: articles/index.html
+    - text: "bioimagetools"
+      href: http://bioimaginggroup.github.io/nucim
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/bioimaginggroup
+home:
+  links:
+  - text: nucim github
+    href: https://github.com/bioimaginggroup/nucim
+articles:
+- title: "Vignettes"
+  contents:
+  - DAPIclassification
