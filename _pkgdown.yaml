@@ -1,0 +1,20 @@
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Articles"
+      href: articles/index.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://example.com
+home:
+  links:
+  - text: nucim R package
+    href: http://bioimaginggroup.github.io/nucim
+articles:
+- title: "vignettes"
+  contents:
+  - DAPIclassification
