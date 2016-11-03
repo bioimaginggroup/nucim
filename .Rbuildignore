@@ -6,5 +6,5 @@ INSTALL
 ^cran-comments\.md$
 LICENSE
 no_cran
-^.*\.yaml
 docs
+_pkgdown.yaml
