@@ -9,4 +9,4 @@ no_cran
 docs
 _pkgdown.yaml
 ^.gi*
-*/*.gi
+*.git
