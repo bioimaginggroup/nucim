@@ -8,6 +8,5 @@ LICENSE
 no_cran
 docs
 _pkgdown.yaml
-.git
-.gitignore
-*/.git
+^.gi*
+*/*.gi
