@@ -89,7 +89,7 @@ spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.inte
 
   red.s<-bioimagetools::spots(red, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
   green.s<-bioimagetools::spots(green, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
-  
+
   red.c<-bioimagetools::cmoments3d(red.s,red)
   green.c<-bioimagetools::cmoments3d(green.s,green)
   
