@@ -6,7 +6,7 @@
 \usage{
 spots.combined(red, green, mask, size, thresh.offset = 0.1,
   min.sum.intensity = 2, max.distance = 0.5, use.brightest = FALSE,
-  max.spots = 2, full.voxel = FALSE)
+  max.spots = NA, full.voxel = FALSE)
 }
 \arguments{
 \item{red}{image}

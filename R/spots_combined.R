@@ -84,7 +84,7 @@ spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.inte
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE)
+spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=NA, full.voxel=FALSE)
 {
   red.s<-bioimagetools::spots(red, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
   green.s<-bioimagetools::spots(green, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
@@ -177,9 +177,11 @@ spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.inte
   labels.red<-red.c[potential.red,1]
   labels.green<-green.c[potential.green,1]
   
-  new.red<-array(0,dim(red))
-  new.green<-array(0,dim(red))
-  new.blue<-array(0,dim(red))
+  new.red<-array(0,dim(mask))
+  new.green<-array(0,dim(mask))
+  red.s[is.na(red.s)]=0
+  green.s[is.na(green.s)]=0
+  
   if (!full.voxel)  for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-red[red.s==labels.red[i]]
   if (!full.voxel)  for (i in 1:length(labels.green))new.green[green.s==labels.green[i]]<-green[green.s==labels.green[i]]
   if (full.voxel)   for (i in 1:length(labels.red))new.red[red.s==labels.red[i]]<-1

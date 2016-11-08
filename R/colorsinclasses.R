@@ -72,15 +72,15 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     }
   }
   
-  t10<-table.n(classes,N,percentage = FALSE)
+  t10<-bioimagetools::table.n(classes,m=N,percentage = FALSE)
   t1<-t10/sum(t10)
   
-  t20<-table.n(classes[color1],N, weight=weight, percentage = FALSE)
+  t20<-bioimagetools::table.n(classes[color1],m=N, percentage = FALSE, weight=weight)
   t2<-t20/sum(t20)
   
   t3<-t30<-0
   if(!no2){
-    t30<-table.n(classes[color2],N, weight=weight2, percentage = FALSE)
+    t30<-bioimagetools::table.n(classes[color2],m=N, percentage = FALSE, weight=weight2)
     t3<-t30/sum(t30)
   }
   
