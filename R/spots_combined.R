@@ -1,4 +1,4 @@
-#' Title Extract spots using information from two channels for folder
+#' Find spots using information from two channels for folder
 #'
 #' @param path path to folder
 #' @param thresh.offset Thresh offest used in EBImage::thresh() 
@@ -26,14 +26,14 @@ spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensity=2,max
   if(length(list.files(paste0(output,"_red")))==0)dir.create(paste0(output,"_red"))
   if(length(list.files(paste0(output,"_green")))==0)dir.create(paste0(output,"_green"))
         
-  if(cores>1)jobs <- parallel::mclapply(files, extract.spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output, mc.preschedule=FALSE, mc.cores=cores)
-  if(cores==1)jobs <- lapply(files, extract.spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output)
+  if(cores>1)jobs <- parallel::mclapply(files, spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output)
   setwd(orig)
   #return(jobs)
 }
 
 
-#' Title Extract spots using information from two channels
+#' Find spots using information from two channels
 #'
 #' @param file File name
 #' @param folder Folder
@@ -59,7 +59,7 @@ spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.inte
   green<-bioimagetools::readTIF(paste0("green/",file))
   size<-scan(paste0("XYZmic/",file,".txt"))
   
-  result <- extract.spots.combined(red, green, mask, size, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel)
+  result <- spots.combined(red, green, mask, size, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel)
     
   writeTIF(result$red,file=paste0(output,"_red/",file),bps=16L,reduce=TRUE)
   writeTIF(result$green,file=paste0(output,"_green/",file),bps=16L,reduce=TRUE)
@@ -67,7 +67,7 @@ spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.inte
   setwd(oldwd)
 }
 
-#' Title Extract spots using information from two channels
+#' Find spots using information from two channels
 #'
 #' @param red image
 #' @param green image
@@ -92,19 +92,6 @@ spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.inte
   red.c<-bioimagetools::cmoments3d(red.s,red)
   green.c<-bioimagetools::cmoments3d(green.s,green)
   
-  red[mask==0]<-0
-  green[mask==0]<-0
-  red.spots<-thresh(red,offset=thresh.offset)
-  green.spots<-thresh(green,offset=thresh.offset)
-  
-  red.s<-spots(red, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
-  green.s<-spots(green, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
-  
-  red.c<-cmoments3d(red.s,red)
-  green.c<-cmoments3d(green.s,green)
-  
->>>>>>> 081f47c6b60fe7b0e1c03a7d1d00a76611a8de1b:R/extract_spots_combined.R
->>>>>>> 27d0c19c7f756a44802011a3e768323629561ff7
   if (is.null(dim(red.c)))red.c<-rbind(array(red.c,c(1,length(red.c))),c(0,0,0))
   if (is.null(dim(green.c)))green.c<-rbind(array(green.c,c(1,length(green.c))),c(100,100,10))
   

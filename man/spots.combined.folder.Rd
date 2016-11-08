@@ -2,7 +2,7 @@
 % Please edit documentation in R/spots_combined.R
 \name{spots.combined.folder}
 \alias{spots.combined.folder}
-\title{Title Extract spots using information from two channels for folder}
+\title{Find spots using information from two channels for folder}
 \usage{
 spots.combined.folder(path, thresh.offset = 0.1, min.sum.intensity = 2,
   max.distance = 0.5, use.brightest = FALSE, max.spots = 2,
@@ -31,6 +31,6 @@ spots.combined.folder(path, thresh.offset = 0.1, min.sum.intensity = 2,
 RGB image with spots will be written to output folder
 }
 \description{
-Title Extract spots using information from two channels for folder
+Find spots using information from two channels for folder
 }
 
