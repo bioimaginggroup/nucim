@@ -59,7 +59,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   }
   
   weight <- weight2 <- NULL
-  type==("intensity")
+  if (type=="intensity")
   {
     weight<-color1
     color1<-color1>ifelse(is.null(thresh1),0,thresh1)
@@ -82,6 +82,12 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   if(!no2){
     t30<-bioimagetools::table.n(classes[color2],m=N, percentage = FALSE, weight=weight2)
     t3<-t30/sum(t30)
+  }
+  
+  if (type=="intensity")
+  {
+    t20=round(sum(color1)*t2)
+    if(!no2)t30=round(sum(color2)*t3)
   }
   
   if(plot){
@@ -116,18 +122,18 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   }
   if (test=="chisq")
   {
-    ch1<-chisq.test(rbind(t10,t20))
+    ch1<-suppressWarnings(chisq.test(rbind(t10,t20)))
     cat("Chi-squared test DAPI vs. channel 1: p-value = ")
     cat(ch1$p.value)
     cat("\n")
     if (!no2)
     {
       cat("Chi-squared test DAPI vs. channel 2: p-value = ")
-      ch2<-chisq.test(rbind(t10,t30))
+      ch2<-suppressWarnings(chisq.test(rbind(t10,t30)))
       cat(ch2$p.value)
       cat("\n")
       cat("Chi-squared test channel 1 vs. channel 2: p-value = ")
-      ch3<-chisq.test(rbind(t20,t30),simulate.p.value = TRUE, B=10000)
+      ch3<-suppressWarnings(chisq.test(rbind(t20,t30),0))
       cat(ch3$p.value)
       cat("\n")
     }
