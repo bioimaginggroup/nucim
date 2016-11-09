@@ -84,12 +84,6 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     t3<-t30/sum(t30)
   }
   
-  if (type=="intensity")
-  {
-    t20=round(sum(color1)*t2)
-    if(!no2)t30=round(sum(color2)*t3)
-  }
-  
   if(plot){
     tt<-rbind(t1,t2)
     if (!no2)tt<-rbind(tt,t3)
@@ -98,9 +92,24 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     if (is.null(ylim))ylim=c(0,max(c(t1,t2,t3)))
   barplot(tt,ylim=ylim,beside=beside,col=colo,names.arg = 1:N,...)
   }
-  if (test=="Wilcoxon"|test=="U")
+  
+  if(type=="intensity")
   {
-    ch1<-wilcox.test(rep(1:N,round(100*t1)),rep(1:N,round(100*t2)))
+    th1<-ifelse(is.null(thresh1),0,thresh1)
+    if(!no2)th2<-ifelse(is.null(thresh2),0,thresh2)
+    # correct for weighting
+    t200=round(t20*(1-th1)*2)
+    if(!no2)t300=round(t30*(1-th2)*2)
+  }
+  else
+  {
+    t200=t20
+    if(!no2)t300=t30
+  }
+  
+  if (test=="Wilcox"|test=="Wilcoxon"|test=="U")
+  {
+    ch1<-wilcox.test(rep(1:N,t10),rep(1:N,t200))
     #ch1<-wilcox.test(classes,classes[color1])
     cat("Wilcoxon rank-sum test DAPI vs. channel 1: p-value = ")
     cat(ch1$p.value)
@@ -109,12 +118,12 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     if (!no2)
     {
       cat("Wilcoxon rank-sum test DAPI vs. channel 2: p-value = ")
-      ch2<-wilcox.test(rep(1:N,round(100*t1)),rep(1:N,round(100*t3)))
+      ch2<-wilcox.test(rep(1:N,t10),rep(1:N,t300))
       #ch2<-wilcox.test(classes,classes[color2])
       cat(ch2$p.value)
       cat("\n")
       cat("Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = ")
-      ch3<-wilcox.test(rep(1:N,round(100*t2)),rep(1:N,round(100*t3)))
+      ch3<-wilcox.test(rep(1:N,t200),rep(1:N,t300))
       #ch3<-wilcox.test(classes[color1],classes[color2])
       cat(ch3$p.value)
       cat("\n")
@@ -122,18 +131,18 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   }
   if (test=="chisq")
   {
-    ch1<-suppressWarnings(chisq.test(rbind(t10,t20)))
+    ch1<-nucim.chisq.test(t10,t200)
     cat("Chi-squared test DAPI vs. channel 1: p-value = ")
     cat(ch1$p.value)
     cat("\n")
     if (!no2)
     {
       cat("Chi-squared test DAPI vs. channel 2: p-value = ")
-      ch2<-suppressWarnings(chisq.test(rbind(t10,t30)))
+      ch2<-nucim.chisq.test(t10,t300)
       cat(ch2$p.value)
       cat("\n")
       cat("Chi-squared test channel 1 vs. channel 2: p-value = ")
-      ch3<-suppressWarnings(chisq.test(rbind(t20,t30),0))
+      ch3<-nucim.chisq.test(t200,t300)
       cat(ch3$p.value)
       cat("\n")
     }
@@ -165,6 +174,12 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   return(ret1)
 }
 
+nucim.chisq.test<-function(t1,t2)
+{
+  matrix<-rbind(t1,t2)+10^{-5}
+  ch<-suppressWarnings(chisq.test(matrix))
+  return(ch)
+}
 #' Compute colors in classes distribution for folders
 #'
 #' @param path Path to root folder

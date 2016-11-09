@@ -73,7 +73,7 @@ classify<-function(blue, mask, N, beta=0.1, z=1/3)
   blue<-round(blue*2^16)
   storage.mode(blue)<-"integer"
   img.seg<-bioimagetools::segment(blue,N,beta,z,mask=(mask==1),maxit=50,varfixed=TRUE,
-                                  inforce.nclust=TRUE, start="equal")
+                                  inforce.nclust=TRUE, start="equal", silent=TRUE)
   classes<-array(as.integer(img.seg$class),dim(blue))
   return(classes)
 }
