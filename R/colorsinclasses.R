@@ -110,22 +110,19 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   if (test=="Wilcox"|test=="Wilcoxon"|test=="U")
   {
     ch1<-wilcox.test(rep(1:N,t10),rep(1:N,t200))
-    #ch1<-wilcox.test(classes,classes[color1])
-    cat("Wilcoxon rank-sum test DAPI vs. channel 1: p-value = ")
-    cat(ch1$p.value)
+    cat("Wilcoxon rank-sum test DAPI vs. channel 1: p-value ")
+    nucim.print.p(ch1$p.value,8)
     cat("\n")
     
     if (!no2)
     {
       cat("Wilcoxon rank-sum test DAPI vs. channel 2: p-value = ")
       ch2<-wilcox.test(rep(1:N,t10),rep(1:N,t300))
-      #ch2<-wilcox.test(classes,classes[color2])
-      cat(ch2$p.value)
+      nucim.print.p(ch2$p.value,8)
       cat("\n")
       cat("Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = ")
       ch3<-wilcox.test(rep(1:N,t200),rep(1:N,t300))
-      #ch3<-wilcox.test(classes[color1],classes[color2])
-      cat(ch3$p.value)
+      nucim.print.p(ch3$p.value,8)
       cat("\n")
     }
   }
@@ -133,17 +130,17 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   {
     ch1<-nucim.chisq.test(t10,t200)
     cat("Chi-squared test DAPI vs. channel 1: p-value = ")
-    cat(ch1$p.value)
+    nucim.print.p(ch1$p.value,8)
     cat("\n")
     if (!no2)
     {
       cat("Chi-squared test DAPI vs. channel 2: p-value = ")
       ch2<-nucim.chisq.test(t10,t300)
-      cat(ch2$p.value)
+      nucim.print.p(ch2$p.value,8)
       cat("\n")
       cat("Chi-squared test channel 1 vs. channel 2: p-value = ")
       ch3<-nucim.chisq.test(t200,t300)
-      cat(ch3$p.value)
+      nucim.print.p(ch3$p.value,8)
       cat("\n")
     }
   }
@@ -174,6 +171,20 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   return(ret1)
 }
 
+nucim.print.p<-function(p,n)
+{
+  p=round(p,n)
+  if (p==0){
+    cat("< 5e-")
+    cat(n+1)
+  }
+  else
+  {
+    cat("= ")
+    cat(p)      
+    cat("\n")
+  }
+}
 nucim.chisq.test<-function(t1,t2)
 {
   matrix<-rbind(t1,t2)+10^{-5}
