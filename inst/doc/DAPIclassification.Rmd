@@ -1,12 +1,12 @@
 ---
-title: "Classification using DAPI intensity"
+title: "Chromatin compaction classification using DAPI intensity"
+author: "Volker Schmid"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Put the title of your vignette here}
+  %\VignetteIndexEntry{Chromatin compaction classification using DAPI intensity}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
-  
----
+  %\VignetteEncoding{UTF-8}---
 ## Preparation
 
     setRepositories(ind=c(1,2))

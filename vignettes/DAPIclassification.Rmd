@@ -1,12 +1,12 @@
 ---
 title: "Chromatin compaction classification using DAPI intensity"
+author: "Volker Schmid"
 date: "`r Sys.Date()`"
-output: pdf_document
+output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteEngine{knitr::rmarkdownr}
   %\VignetteIndexEntry{Chromatin compaction classification using DAPI intensity}
-  %\VignetteEncoding{UTF-8}
----
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}---
 ## Preparation
 
     setRepositories(ind=c(1,2))
