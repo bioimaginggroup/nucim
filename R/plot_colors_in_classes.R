@@ -21,7 +21,7 @@ plot_colors.in.classes.folder<-function(path,col1="green",col2="red")
     
 }
 
-loadcic<-function(){
+loadcic<-function(percentage=TRUE){
   files<-list.files("colorsinclasses")
   cat(paste(length(files),"files.\n"))
   
@@ -32,6 +32,7 @@ loadcic<-function(){
   f<-length(cic)
   cic <- array(unlist(cic),c(N,l,f))
   l<-l/2
-  cic<-cic[,1:l,]
+  if (percentage)cic<-cic[,1:l,]
+  if (!percentage)cic<-cic[,l+(1:l),]
   return(cic)
 }

@@ -33,7 +33,7 @@ test<-try({
   blau<-round(blau*2^16)
   storage.mode(blau)<-"integer"
     img.seg<-bioimagetools::segment(blau,N,beta,1/3,mask=(mask==1),maxit=50,varfixed=TRUE,
-                     inforce.nclust=TRUE, start="equal")
+                     inforce.nclust=TRUE, start="equal", silent=TRUE)
     classes<-array(as.integer(img.seg$class),dim(blau))
     remove(img.seg)
     gc()

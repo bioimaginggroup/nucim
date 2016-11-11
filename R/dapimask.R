@@ -4,12 +4,13 @@
 #' @param mic vector of dimensions of img in microns
 #' @param thresh threshold for intensity. Can be "auto": function will try to find automatic threshold
 #' @param cores number of cores available for parallel computing
-#' @return mask image, same dimension as img.
+#' @param silent Keep silent?
+#' @return mask image, array with same dimension as img.
 #' @export
 #'
 #' @import EBImage bioimagetools stats
 #' 
-dapimask<-function(img,mic,thresh="auto", cores=1)
+dapimask<-function(img,mic,thresh="auto", silent=FALSE, cores=1)
 {
   if (length(dim(img))==3)
      {

@@ -4,7 +4,7 @@
 \alias{t_colors.in.classes.folder}
 \title{Test for colors in classes distribution for folders}
 \usage{
-t_colors.in.classes.folder(path, test = "wilcox")
+t_colors.in.classes.folder(path, test = "Wilcoxon")
 }
 \arguments{
 \item{path}{path to folder}

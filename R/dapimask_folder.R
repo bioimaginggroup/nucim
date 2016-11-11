@@ -19,8 +19,8 @@ dapimask.folder<-function(path, folder="blue", pixelsize=NULL, size=NULL, cores=
   if (length(files)==0)return()
   if(length(list.files("dapimask"))==0)dir.create("dapimask")
   
-  if(cores>1)jobs <- parallel::mclapply(files, dapimask.file, folder=folder, pixelsize=pixelsize, size=size, mc.preschedule=FALSE, mc.cores=cores)
-  if(cores==1)jobs <- lapply(files, dapimask.file, folder=folder, pixelsize=pixelsize, size=size)
+  if(cores>1)jobs <- parallel::mclapply(files, dapimask.file, folder=folder, pixelsize=pixelsize, size=size, silent=TRUE, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, dapimask.file, folder=folder, pixelsize=pixelsize, size=size, silent=TRUE)
   setwd(orig)
   #return(jobs)
 }

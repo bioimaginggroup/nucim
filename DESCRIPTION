@@ -1,6 +1,6 @@
 Package: nucim
 Title: Nucleus Imaging Toolbox
-Version: 0.5.53
+Version: 0.5.54
 Date: 2016-11-11
 Author: Volker Schmid [aut, cre]
 Authors@R: c(person("Volker", "Schmid", role = c("aut", "cre"),

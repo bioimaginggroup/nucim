@@ -7,7 +7,7 @@
 #' @export
 #' @import stats
 #'
-t_colors.in.classes.folder<-function(path,test="wilcox")
+t_colors.in.classes.folder<-function(path,test="Wilcoxon")
 {
   orig<-getwd()
   setwd(path)
@@ -16,16 +16,19 @@ t_colors.in.classes.folder<-function(path,test="wilcox")
   if (test=="chisq"){
     cic<-apply(cic,1:2,sum)
     cat("Chi-squared test\n
-        DAPI vs. color 1, p-value = ")
-    cat(chisq.test(cic[,1],cic[,2],simulate.p.value=TRUE)$p.value)
+        DAPI vs. color 1, p-value ")
+    ch1<-nucim.chisq.test(cic[,1],cic[,2])
+    nucim.print.p(ch1$p.value,8)
     cat("\n")
     if (dim(cic)[2]==3)
       {
-      cat("DAPI vs. color 2, p-value = ")
-      cat(chisq.test(cic[,1],cic[,3],simulate.p.value=TRUE)$p.value)
+      cat("DAPI vs. color 2, p-value ")
+      ch2<-nucim.chisq.test(cic[,1],cic[,3])
+      nucim.print.p(ch2$p.value,8)
       cat("\n")
       cat("color1 vs. color 2, p-value = ")
-      cat(chisq.test(cic[,2],cic[,3],simulate.p.value=TRUE)$p.value)
+      ch3<-nucim.chisq.test(cic[,2],cic[,3])
+      nucim.print.p(ch3$p.value,8)
       cat("\n")
     }
   }
@@ -43,17 +46,20 @@ t_colors.in.classes.folder<-function(path,test="wilcox")
     }
         
     cat("Wilcoxon Rank Sum test\n
-        DAPI vs. color 1, p-value = ")
-    cat(wilcox.test(cic2[[1]],cic2[[2]])$p.value)
+        DAPI vs. color 1, p-value ")
+    ch1=wilcox.test(cic2[[1]],cic2[[2]])
+    nucim.print.p(ch1$p.value,8)
     cat("\n")
     
     if (dim(cic)[2]==3)
     {
-      cat("DAPI vs. color 2, p-value = ")
-      cat(wilcox.test(cic[[1]],cic[[3]])$p.value)
+      cat("DAPI vs. color 2, p-value ")
+      ch2=wilcox.test(cic2[[1]],cic2[[3]])
+      nucim.print.p(ch2$p.value,8)
       cat("\n")
-      cat("color1 vs. color 2, p-value = ")
-      cat(wilcox.test(cic[[2]],cic[[3]])$p.value)
+      cat("color1 vs. color 2, p-value ")
+      ch3=wilcox.test(cic2[[2]],cic2[[3]])
+      nucim.print.p(ch3$p.value,8)
       cat("\n")
     }
   }
