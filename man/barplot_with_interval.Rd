@@ -4,7 +4,8 @@
 \alias{barplot_with_interval}
 \title{Barplot with Intervals}
 \usage{
-barplot_with_interval(x, method = "minmax", ylim = NULL, ...)
+barplot_with_interval(x, method = "minmax", qu = c(0, 1), ylim = NULL,
+  ...)
 }
 \arguments{
 \item{x}{matrix}

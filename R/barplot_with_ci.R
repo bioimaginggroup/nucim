@@ -8,10 +8,16 @@
 #' @return plot
 #' @export
 #'
-barplot_with_interval<-function(x,method="minmax",ylim=NULL,...){
+barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,...){
   N<-dim(x)[1]
-  mi<-apply(x,1,min)
-  ma<-apply(x,1,max)
+  mi<-switch(method,
+             "minmax" = apply(x,1,min),
+             "quantile" = apply(x,1,qu[1])
+  )
+  ma<-switch(method,
+             "minmax" = apply(x,1,max),
+             "quantile" = apply(x,1,qu[2])
+  )
   me<-apply(x,1,mean)
   if (is.null(ylim))ylim=c(0,max(ma))
   graphics::barplot(me,ylim=ylim,width=0.8,space=.25,names.arg=1:N,...)
