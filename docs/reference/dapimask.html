@@ -87,7 +87,7 @@
     <p>Mask DAPI in kernel</p>
     
 
-    <pre><span class='fu'>dapimask</span>(<span class='no'>img</span>, <span class='no'>mic</span>, <span class='kw'>thresh</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre><span class='fu'>dapimask</span>(<span class='no'>img</span>, <span class='no'>mic</span>, <span class='kw'>thresh</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -97,13 +97,15 @@
       <dd>vector of dimensions of img in microns</dd>
       <dt>thresh</dt>
       <dd>threshold for intensity. Can be &quot;auto&quot;: function will try to find automatic threshold</dd>
+      <dt>silent</dt>
+      <dd>Keep silent?</dd>
       <dt>cores</dt>
       <dd>number of cores available for parallel computing</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>mask image, same dimension as img.</p>
+    <p>mask image, array with same dimension as img.</p>
     
 
   </div>

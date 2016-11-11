@@ -87,7 +87,7 @@
     <p>Split channels into files and extracts size in microns</p>
     
 
-    <pre><span class='fu'>splitchannels.file</span>(<span class='no'>file</span>, <span class='no'>channels</span>, <span class='no'>rgb.folder</span>)</pre>
+    <pre><span class='fu'>splitchannels.file</span>(<span class='no'>file</span>, <span class='no'>channels</span>, <span class='no'>rgb.folder</span>, <span class='kw'>normalize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -97,6 +97,8 @@
       <dd>e.g. c(&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;)</dd>
       <dt>rgb.folder</dt>
       <dd>folder with file</dd>
+      <dt>normalize</dt>
+      <dd>boolean. Should we try to do some normalization?</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
