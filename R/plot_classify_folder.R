@@ -2,11 +2,12 @@
 #'
 #' @param path path to folder 
 #' @param N number of classes, default: 7
+#' @param col color of bars, either one or a vector of hex RGB characters 
 #' @param cores number of cores to use in parallel (needs parallel package if cores>1)
 #'
 #' @return plots
 #' @export
-plot_classify.folder<-function(path, N=7, cores=1)
+plot_classify.folder<-function(path, N=7, cores=1 ,col=grey(0.7))
 {
   orig<-getwd()
   setwd(path)
@@ -17,7 +18,7 @@ plot_classify.folder<-function(path, N=7, cores=1)
   if(cores>1)tables <- parallel::mclapply(files, read.table.helper, N=N, mc.cores=cores)
   if(cores>1)tables <- lapply(files, read.table.helper, N=N)
   tables<-array(unlist(tables),c(N,length(tables)))
-  barplot_with_interval(tables,xlab="classes",ylab="percentage")
+  barplot_with_interval(tables,xlab="chromatin compaction levels",ylab="percentage",col=col)
 }
 
 read.table.helper<-function(file, N){

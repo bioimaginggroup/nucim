@@ -46,7 +46,7 @@ nearestClassDistances.files<-function(file,N=7,voxelsize=NULL,cores=1)
     }
     mask<-readClassTIF(paste0("dapimask/",file))
     cat(".")
-    distances<-bioimagetools::nearestClassDistances(class,voxelsize,classes=N,cores=cores)
+    distances<-bioimagetools::nearestClassDistances(class,voxelsize,classes=N,cores=cores,silent=TRUE)
     remove(class,mask)
     gc(verbose=FALSE)
     save(distances,file=paste0("distances/",file,".RData"))
