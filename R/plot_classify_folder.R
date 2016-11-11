@@ -6,8 +6,10 @@
 #' @param cores number of cores to use in parallel (needs parallel package if cores>1)
 #'
 #' @return plots
+#' @importFrom grDevices grey
+#' @import utils
 #' @export
-plot_classify.folder<-function(path, N=7, cores=1 ,col=grey(0.7))
+plot_classify.folder<-function(path, N=7, cores=1 ,col=grDevices::grey(0.7))
 {
   orig<-getwd()
   setwd(path)
