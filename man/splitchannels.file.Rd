@@ -4,7 +4,7 @@
 \alias{splitchannels.file}
 \title{Split channels into files and extracts size in microns}
 \usage{
-splitchannels.file(file, channels, rgb.folder)
+splitchannels.file(file, channels, rgb.folder, normalize = FALSE)
 }
 \arguments{
 \item{file}{file name}
@@ -12,6 +12,8 @@ splitchannels.file(file, channels, rgb.folder)
 \item{channels}{e.g. c("red","green","blue")}
 
 \item{rgb.folder}{folder with file}
+
+\item{normalize}{boolean. Should we try to do some normalization?}
 }
 \value{
 files in "./red/", "./green", "./blue" and "./XYZmic"
