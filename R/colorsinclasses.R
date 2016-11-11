@@ -228,7 +228,6 @@ colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensit
   if (!is.null(color2))color2img <- bioimagetools::readTIF(paste0(color2,"/",file))
   if (is.null(color2))color2img <- NULL
   mask <- bioimagetools::readTIF(paste0("dapimask/",file))
-  print(color2)
   cic <- colors.in.classes(classes,color1img,color2=color2img,mask=mask,N=N,type=type,thresh1=thresh1,thresh2=thresh2,sd1=sd1,sd2=sd2,col1=col1,col2=col2,test=test,plot=FALSE)
 
   C <- 4+2*!is.null(color2)
