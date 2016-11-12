@@ -7,7 +7,6 @@ navbar:
       href: reference/index.html
     - text: "Articles"
       href: articles/index.html
-bioimagetools
   right:
     - text: "bioimagetools"
       href: http://bioimaginggroup.github.io/bioimagetools
