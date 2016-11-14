@@ -13,7 +13,7 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
   orig<-getwd()
   setwd(path)
   
-  files<-list.files(paste0("class",N))
+  files<-list.files("distances")
   cat(paste(length(files),"files.\n"))
   
   if (cores>1)
@@ -44,7 +44,8 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
 }
 ncd.helper<-function(file, method="quantile", qu=0, cores=1)
 {
-  load(paste0("distances/",file,".RData"))
+  try({
+    load(paste0("distances/",file))
   N<-length(distances)
   if (cores>1)if (method=="quantile")distances<-parallel::mclapply(distances,ncd.helper.qu,qu=qu, mc.cores=cores)
   if (cores==1)if (method=="quantile")distances<-lapply(distances,ncd.helper.qu,qu=qu)
@@ -53,6 +54,7 @@ ncd.helper<-function(file, method="quantile", qu=0, cores=1)
   
   distances<-array(unlist(distances),c(N,N))
   return(distances)
+  })
 }
 ncd.helper.qu<-function(dist,qu)
 {

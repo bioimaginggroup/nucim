@@ -6,15 +6,22 @@
 #' @param cores number of cores to use in parallel (needs parallel package if cores>1)
 #' @export
 #' @return nothing, results are in folder distances in RData format
-#' @import bioimagetools
+#' @import bioimagetools stringr
 #' 
-nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, cores=1)
+nearestClassDistances.folder<-function(path, N=7, voxelsize=NULL, add=FALSE, cores=1)
 {
   orig<-getwd()
   setwd(path)
   
   files<-list.files(paste0("class",N))
+  if(add)
+    {
+    files2<-list.files("distances")
+    files<-comparefilelist(files,files2)
+  }
   cat(paste(length(files),"files.\n"))
+  
+  
   
   if (length(files)==0)return()
   if(length(list.files("distances"))==0)dir.create("distances")

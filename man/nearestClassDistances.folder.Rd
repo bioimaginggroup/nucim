@@ -4,7 +4,8 @@
 \alias{nearestClassDistances.folder}
 \title{Find all distances to next neighbour of all classes for folders}
 \usage{
-nearestClassDistances.folder(path, N = 7, voxelsize = NULL, cores = 1)
+nearestClassDistances.folder(path, N = 7, voxelsize = NULL, add = FALSE,
+  cores = 1)
 }
 \arguments{
 \item{path}{path to folder}
