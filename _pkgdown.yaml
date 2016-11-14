@@ -1,3 +1,7 @@
+templates:
+  params:
+    bootswatch: cerulean
+    
 navbar:
   type: inverse
   left:
@@ -14,10 +18,12 @@ navbar:
       href: http://bioimaginggroup.github.io
     - icon: fa-github fa-lg
       href: https://github.com/bioimaginggroup/nucim
+
 home:
   links:
   - text: nucim R package
     href: http://bioimaginggroup.github.io/nucim
+
 articles:
 - title: "Vignettes"
   contents:

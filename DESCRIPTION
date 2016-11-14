@@ -1,7 +1,7 @@
 Package: nucim
 Title: Nucleus Imaging Toolbox
-Version: 0.5.55
-Date: 2016-11-11
+Version: 0.5.56
+Date: 2016-11-14
 Author: Volker Schmid [aut, cre]
 Authors@R: c(person("Volker", "Schmid", role = c("aut", "cre"),
 		     email = "volker.schmid@lmu.de"))
@@ -10,7 +10,7 @@ Depends: R (>= 3.0.0), EBImage, bioimagetools (>= 0.3.36)
 Imports: fields, parallel
 Description: Code for analysis of microscopy images of nuclei.
 License: GPL-3
-URL: https://bioimaginggroup.github.io/nucim
+URL: https://gitub.com/bioimaginggroup/nucim
 RoxygenNote: 5.0.1
 Suggests: knitr,
     rmarkdown
