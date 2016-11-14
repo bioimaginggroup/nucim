@@ -1,4 +1,4 @@
-#' automatic DAPI mask segmentation for folder
+#' Automatic DAPI mask segmentation for folder
 #'
 #' @param path path to folder with DAPI
 #' @param folder folder with DAPI images

@@ -4,14 +4,17 @@
 \alias{barplot_with_interval_23}
 \title{Barplot with Intervals for two or three bars beside}
 \usage{
-barplot_with_interval_23(x, l, method = "minmax", ylim = NULL, ...)
+barplot_with_interval_23(x, l, method = "minmax", qu = c(0, 1),
+  ylim = NULL, ...)
 }
 \arguments{
 \item{x}{array}
 
 \item{l}{number of bars beside (second dimension of x)}
 
-\item{method}{method for intervals, so far only "minmax"}
+\item{method}{method for intervals: "minmax" (default) or "quantile"}
+
+\item{qu}{vector of two quantiles for method="quantile}
 
 \item{ylim}{limits for y axis. Default:NULL is ylim=c(0,max(interval))}
 

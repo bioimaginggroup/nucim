@@ -6,7 +6,8 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Chromatin compaction classification using DAPI intensity}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}---
+  %\VignetteEncoding{UTF-8}
+---
 ## Preparation
 
     setRepositories(ind=c(1,2))

@@ -8,9 +8,9 @@ Authors@R: c(person("Volker", "Schmid", role = c("aut", "cre"),
 Maintainer: Volker Schmid <volker.schmid@lmu.de>
 Depends: R (>= 3.0.0), EBImage, bioimagetools (>= 0.3.36)
 Imports: fields, parallel
-Description: Code for analysis of microscopy images of nuclei.
+Description: Code for quantitative analysis of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
 License: GPL-3
-URL: https://gitub.com/bioimaginggroup/nucim
+URL: https://bioimaginggroup.github.io/nucim
 RoxygenNote: 5.0.1
 Suggests: knitr,
     rmarkdown

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dapimask_folder.R
 \name{dapimask.folder}
 \alias{dapimask.folder}
-\title{automatic DAPI mask segmentation for folder}
+\title{Automatic DAPI mask segmentation for folder}
 \usage{
 dapimask.folder(path, folder = "blue", pixelsize = NULL, size = NULL,
   cores = 1)
@@ -22,6 +22,6 @@ dapimask.folder(path, folder = "blue", pixelsize = NULL, size = NULL,
 nothing, results are in folder dapimask
 }
 \description{
-automatic DAPI mask segmentation for folder
+Automatic DAPI mask segmentation for folder
 }
 

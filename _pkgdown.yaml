@@ -12,19 +12,19 @@ navbar:
     - text: "Articles"
       href: articles/index.html
   right:
-    - text: "bioimagetools"
-      href: http://bioimaginggroup.github.io/bioimagetools
     - text: "Bioimaging Group"
       href: http://bioimaginggroup.github.io
     - icon: fa-github fa-lg
-      href: https://github.com/bioimaginggroup/nucim
+      href: https://github.com
 
 home:
   links:
-  - text: nucim R package
-    href: http://bioimaginggroup.github.io/nucim
+  - text: nucim source code
+    href: https://github.com/bioimaginggroup/nucim
+  - text: "bioimagetools"
+    href: http://bioimaginggroup.github.io/bioimagetools
 
 articles:
-- title: "Vignettes"
+- title: "How to..."
   contents:
   - DAPIclassification
