@@ -14,6 +14,8 @@ nearestClassDistances.folder(path, N = 7, voxelsize = NULL, add = FALSE,
 
 \item{voxelsize}{real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic}
 
+\item{add}{if TRUE, only process images which have not been processed before (i.e. have been added to classN)}
+
 \item{cores}{number of cores to use in parallel (needs parallel package if cores>1)}
 }
 \value{

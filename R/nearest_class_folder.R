@@ -3,6 +3,7 @@
 #' @param path path to folder 
 #' @param N number of classes, default: 7
 #' @param voxelsize real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic
+#' @param add if TRUE, only process images which have not been processed before (i.e. have been added to classN)
 #' @param cores number of cores to use in parallel (needs parallel package if cores>1)
 #' @export
 #' @return nothing, results are in folder distances in RData format

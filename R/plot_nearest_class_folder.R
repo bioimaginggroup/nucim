@@ -40,7 +40,7 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
     barplot_with_interval(dist[i,,],xlab=paste("neighbours of class",i))
   }
   setwd(orig)
-  return()
+  cat("\n")
 }
 ncd.helper<-function(file, method="quantile", qu=0, cores=1)
 {
