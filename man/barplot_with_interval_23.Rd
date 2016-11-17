@@ -12,7 +12,7 @@ barplot_with_interval_23(x, l, method = "minmax", qu = c(0, 1),
 
 \item{l}{number of bars beside (second dimension of x)}
 
-\item{method}{method for intervals: "minmax" (default) or "quantile"}
+\item{method}{method for intervals: "minmax" (default), "quantile" or "sd"}
 
 \item{qu}{vector of two quantiles for method="quantile}
 

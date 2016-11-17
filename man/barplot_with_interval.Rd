@@ -10,7 +10,7 @@ barplot_with_interval(x, method = "minmax", qu = c(0, 1), ylim = NULL,
 \arguments{
 \item{x}{matrix}
 
-\item{method}{method for intervals: "minmax" (default) or "quantile"}
+\item{method}{method for intervals: "minmax" (default), "quantile" or "sd"}
 
 \item{qu}{vector of two quantiles for method="quantile}
 
