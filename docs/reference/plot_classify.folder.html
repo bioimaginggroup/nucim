@@ -87,7 +87,8 @@
     <p>Plot barplot for classified images in a folder</p>
     
 
-    <pre><span class='fu'>plot_classify.folder</span>(<span class='no'>path</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>grDevices</span><span class='kw'>::</span><span class='fu'>grey</span>(<span class='fl'>0.7</span>))</pre>
+    <pre><span class='fu'>plot_classify.folder</span>(<span class='no'>path</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>grDevices</span><span class='kw'>::</span><span class='fu'>grey</span>(<span class='fl'>0.7</span>),
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"sd"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -99,6 +100,8 @@
       <dd>number of cores to use in parallel (needs parallel package if cores&gt;1)</dd>
       <dt>col</dt>
       <dd>color of bars, either one or a vector of hex RGB characters</dd>
+      <dt>method</dt>
+      <dd>method for error bars (&quot;sd&quot;, &quot;minmax&quot;, &quot;quartile&quot;)</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>

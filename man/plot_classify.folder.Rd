@@ -4,7 +4,8 @@
 \alias{plot_classify.folder}
 \title{Plot barplot for classified images in a folder}
 \usage{
-plot_classify.folder(path, N = 7, cores = 1, col = grDevices::grey(0.7))
+plot_classify.folder(path, N = 7, cores = 1, col = grDevices::grey(0.7),
+  method = "sd")
 }
 \arguments{
 \item{path}{path to folder}
@@ -14,6 +15,8 @@ plot_classify.folder(path, N = 7, cores = 1, col = grDevices::grey(0.7))
 \item{cores}{number of cores to use in parallel (needs parallel package if cores>1)}
 
 \item{col}{color of bars, either one or a vector of hex RGB characters}
+
+\item{method}{method for error bars ("sd", "minmax", "quartile")}
 }
 \value{
 plots
