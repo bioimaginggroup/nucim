@@ -4,12 +4,13 @@
 #' @param method method for intervals: "minmax" (default), "quantile" or "sd"
 #' @param qu vector of two quantiles for method="quantile
 #' @param ylim limits for y axis. Default:NULL is ylim=c(0,max(interval))
+#' @param horiz boolean: horizontal bars?
 #' @param ... additional parameters forwarded to barplot
 #'
 #' @return plot
 #' @export
 #'
-barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,...){
+barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALSE,...){
   N<-dim(x)[1]
   me<-switch(method,
              "minmax" = apply(x,1,mean),
@@ -27,10 +28,19 @@ barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,...){
              "sd" = me+apply(x,1,sd)
   )
   if (is.null(ylim))ylim=c(0,max(ma))
-  graphics::barplot(me,ylim=ylim,width=0.8,space=.25,names.arg=1:N,...)
-  for (j in 1:N)graphics::lines(rep(j-0.4,2),c(mi[j],ma[j]),lwd=1)
-  for (j in 1:N)graphics::lines((j-0.4)+c(-.2,.2),rep(mi[j],2))
-  for (j in 1:N)graphics::lines((j-0.4)+c(-.2,.2),rep(ma[j],2))
+  if(!horiz)
+    {
+    graphics::barplot(me,ylim=ylim,width=0.8,space=0.25,names.arg=1:N,...)
+    for (j in 1:N)graphics::lines(rep(j-0.4,2),c(mi[j],ma[j]),lwd=1)
+    for (j in 1:N)graphics::lines((j-0.4)+c(-.2,.2),rep(mi[j],2))
+    for (j in 1:N)graphics::lines((j-0.4)+c(-.2,.2),rep(ma[j],2))
+  }
+  if(horiz){
+    graphics::barplot(rev(me),xlim=ylim,space=.5,border=FALSE,names.arg=N:1,horiz=TRUE,las=1,...)
+    for (j in 1:N)graphics::lines(c(mi[j],ma[j]),rep(N*1.5-1.5*j+1,2),lwd=1)
+    for (j in 1:N)graphics::lines(rep(mi[j],2),(N*1.5-1.5*j+1)+c(-.2,.2),lwd=1)
+    for (j in 1:N)graphics::lines(rep(ma[j],2),(N*1.5-1.5*j+1)+c(-.2,.2),lwd=1)
+  }
 }
 
 #' Barplot with Intervals for two or three bars beside

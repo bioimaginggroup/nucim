@@ -35,9 +35,10 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
   m<-apply(dist,1:2,mean)
   mi<-apply(dist,1:2, min)
   ma<-apply(dist,1:2, max)
+  ylim=c(0,max(ma))
   for (i in 1:N)
   {
-    barplot_with_interval(dist[i,,],xlab=paste("minimal distance of next neighbour of class",i))
+    barplot_with_interval(dist[i,,],xlab=paste("distance to nearest neighbour\nclass",i),horiz=TRUE)
   }
   setwd(orig)
   cat("\n")

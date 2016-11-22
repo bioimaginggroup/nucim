@@ -5,7 +5,7 @@
 \title{Barplot with Intervals}
 \usage{
 barplot_with_interval(x, method = "minmax", qu = c(0, 1), ylim = NULL,
-  ...)
+  horiz = FALSE, ...)
 }
 \arguments{
 \item{x}{matrix}
@@ -15,6 +15,8 @@ barplot_with_interval(x, method = "minmax", qu = c(0, 1), ylim = NULL,
 \item{qu}{vector of two quantiles for method="quantile}
 
 \item{ylim}{limits for y axis. Default:NULL is ylim=c(0,max(interval))}
+
+\item{horiz}{boolean: horizontal bars?}
 
 \item{...}{additional parameters forwarded to barplot}
 }
