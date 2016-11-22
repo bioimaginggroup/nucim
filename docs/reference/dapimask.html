@@ -87,14 +87,14 @@
     <p>Mask DAPI in kernel</p>
     
 
-    <pre><span class='fu'>dapimask</span>(<span class='no'>img</span>, <span class='no'>mic</span>, <span class='kw'>thresh</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre><span class='fu'>dapimask</span>(<span class='no'>img</span>, <span class='no'>mic</span>, <span class='kw'>thresh</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>img</dt>
       <dd>DAPI channel image (3d)</dd>
       <dt>mic</dt>
-      <dd>vector of dimensions of img in microns</dd>
+      <dd>vector of size of img in microns</dd>
       <dt>thresh</dt>
       <dd>threshold for intensity. Can be &quot;auto&quot;: function will try to find automatic threshold</dd>
       <dt>silent</dt>

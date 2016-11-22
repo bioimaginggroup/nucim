@@ -12,7 +12,7 @@ nearestClassDistances.folder(path, N = 7, voxelsize = NULL, add = FALSE,
 
 \item{N}{number of classes, default: 7}
 
-\item{voxelsize}{real voxesize of image (in nanometers), if NULL (default), look in folder XYZmic}
+\item{voxelsize}{real size of voxels (in microns), if NULL (default), look in folder XYZmic}
 
 \item{add}{if TRUE, only process images which have not been processed before (i.e. have been added to classN)}
 

@@ -4,7 +4,7 @@
 \alias{dapimask.file}
 \title{Automatic DAPI mask segmentation for files}
 \usage{
-dapimask.file(file, folder = "blue", pixelsize = NULL, size = NULL,
+dapimask.file(file, folder = "blue", voxelsize = NULL, size = NULL,
   silent = FALSE, cores = 1)
 }
 \arguments{
@@ -12,7 +12,7 @@ dapimask.file(file, folder = "blue", pixelsize = NULL, size = NULL,
 
 \item{folder}{with}
 
-\item{pixelsize}{real pixelsize of image (in nanometers), if NULL (default), look in folder XYZmic}
+\item{voxelsize}{real size of voxel (in microns), if NULL (default), look in folder XYZmic}
 
 \item{size}{real size of image (in microns), if NULL (dafault), look in folder XYZmic}
 

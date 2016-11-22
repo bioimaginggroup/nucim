@@ -4,7 +4,7 @@
 \alias{dapimask.folder}
 \title{Automatic DAPI mask segmentation for folder}
 \usage{
-dapimask.folder(path, folder = "blue", pixelsize = NULL, size = NULL,
+dapimask.folder(path, folder = "blue", voxelsize = NULL, size = NULL,
   cores = 1)
 }
 \arguments{
@@ -12,7 +12,7 @@ dapimask.folder(path, folder = "blue", pixelsize = NULL, size = NULL,
 
 \item{folder}{folder with DAPI images}
 
-\item{pixelsize}{real pixelsize of image (in nanometers), if NULL (default), look in folder XYZmic}
+\item{voxelsize}{real size of voxel (in microns), if NULL (default), look in folder XYZmic}
 
 \item{size}{real size of image (in microns), if NULL (default), look in folder XYZmic}
 

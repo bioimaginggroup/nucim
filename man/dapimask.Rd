@@ -4,12 +4,12 @@
 \alias{dapimask}
 \title{Mask DAPI in kernel}
 \usage{
-dapimask(img, mic, thresh = "auto", silent = FALSE, cores = 1)
+dapimask(img, mic, thresh = "auto", silent = TRUE, cores = 1)
 }
 \arguments{
 \item{img}{DAPI channel image (3d)}
 
-\item{mic}{vector of dimensions of img in microns}
+\item{mic}{vector of size of img in microns}
 
 \item{thresh}{threshold for intensity. Can be "auto": function will try to find automatic threshold}
 

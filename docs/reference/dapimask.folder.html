@@ -87,7 +87,7 @@
     <p>Automatic DAPI mask segmentation for folder</p>
     
 
-    <pre><span class='fu'>dapimask.folder</span>(<span class='no'>path</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='st'>"blue"</span>, <span class='kw'>pixelsize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre><span class='fu'>dapimask.folder</span>(<span class='no'>path</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='st'>"blue"</span>, <span class='kw'>voxelsize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -96,8 +96,8 @@
       <dd>path to folder with DAPI</dd>
       <dt>folder</dt>
       <dd>folder with DAPI images</dd>
-      <dt>pixelsize</dt>
-      <dd>real pixelsize of image (in nanometers), if NULL (default), look in folder XYZmic</dd>
+      <dt>voxelsize</dt>
+      <dd>real size of voxel (in microns), if NULL (default), look in folder XYZmic</dd>
       <dt>size</dt>
       <dd>real size of image (in microns), if NULL (default), look in folder XYZmic</dd>
       <dt>cores</dt>

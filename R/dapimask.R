@@ -1,7 +1,7 @@
 #' Mask DAPI in kernel
 #'
 #' @param img DAPI channel image (3d)
-#' @param mic vector of dimensions of img in microns
+#' @param mic vector of size of img in microns
 #' @param thresh threshold for intensity. Can be "auto": function will try to find automatic threshold
 #' @param cores number of cores available for parallel computing
 #' @param silent Keep silent?
@@ -10,7 +10,7 @@
 #'
 #' @import EBImage bioimagetools stats
 #' 
-dapimask<-function(img,mic,thresh="auto", silent=FALSE, cores=1)
+dapimask<-function(img, mic, thresh="auto", silent=TRUE, cores=1)
 {
   if (length(dim(img))==3)
      {
@@ -31,7 +31,7 @@ dapimask<-function(img,mic,thresh="auto", silent=FALSE, cores=1)
   blau[blau<0]<-0
   blau<-array(blau,dims)
   blau<-blau/max(blau)
-  blau<-bioimagetools::filterImage3d(blau,"var",4,1/3,silent=TRUE)
+  blau<-bioimagetools::filterImage3d(blau,"var",4,1/3,silent=silent)
   
   xyzmic<-mic/dim(img)
   xymic<-mean(xyzmic[1:2])
@@ -77,6 +77,7 @@ dapimask<-function(img,mic,thresh="auto", silent=FALSE, cores=1)
   mask<-ifelse(mask0==which,1,0)
   
   mask<-EBImage::fillHull(mask)
+  
   return(mask)
 }
 

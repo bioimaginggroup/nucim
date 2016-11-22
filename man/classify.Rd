@@ -4,7 +4,7 @@
 \alias{classify}
 \title{Classify DAPI}
 \usage{
-classify(blue, mask, N, beta = 0.1, z = 1/3)
+classify(blue, mask, N, beta = 0.1, z = 1/3, silent = TRUE)
 }
 \arguments{
 \item{blue}{DAPI channel (image)}
@@ -16,6 +16,8 @@ classify(blue, mask, N, beta = 0.1, z = 1/3)
 \item{beta}{smoothing parameter used in potts model (default: 0.1)}
 
 \item{z}{scaling parameter: size of voxel in X-/Y-direction divided by the size of voxel in Z-direction (slice scaling parameter: size of voxel in X-/Y-direction divided by the size of voxel in Z-direction (slice thickness))}
+
+\item{silent}{boolean. Should algorithm be silent?}
 }
 \value{
 image with classes
