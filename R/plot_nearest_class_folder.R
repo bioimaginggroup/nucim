@@ -32,13 +32,15 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
   mfrow=ceiling(N^(2/3))
   mfrow=c(ceiling(N/mfrow),mfrow)
   graphics::par(mfrow=mfrow)
-  m<-apply(dist,1:2,mean)
-  mi<-apply(dist,1:2, min)
-  ma<-apply(dist,1:2, max)
-  ylim=c(0,max(ma))
+  m<-apply(dist,1:2,mean)+0.5*apply(dist,1:2,sd)
+  ylim=ceiling(c(0,max(m))/0.05)*0.05
   for (i in 1:N)
   {
-    barplot_with_interval(dist[i,,],xlab=paste("distance to nearest neighbour\nclass",i),horiz=TRUE)
+    border=rep(NA,classes)
+    border[classes+1-i]="red"
+    col=rep("grey",classes)
+    col[classes+1-i]="white"
+    barplot_with_interval(dist[i,,],xlab="",horiz=TRUE,method="sd",border=border, col=col,ylim=ylim)
   }
   setwd(orig)
   cat("\n")

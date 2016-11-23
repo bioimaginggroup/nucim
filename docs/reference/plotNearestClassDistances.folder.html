@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Barplot with Intervals — barplot_with_interval • nucim</title>
+<title>Plots all distances to next neighbour of all classes for folders — plotNearestClassDistances.folder • nucim</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,35 +80,33 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Barplot with Intervals</h1>
+    <h1>Plots all distances to next neighbour of all classes for folders</h1>
     </div>
 
     
-    <p>Barplot with Intervals</p>
+    <p>Plots all distances to next neighbour of all classes for folders</p>
     
 
-    <pre><span class='fu'>barplot_with_interval</span>(<span class='no'>x</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"minmax"</span>, <span class='kw'>qu</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>horiz</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>border</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>plotNearestClassDistances.folder</span>(<span class='no'>path</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"quantile"</span>, <span class='kw'>qu</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>matrix</dd>
+      <dt>path</dt>
+      <dd>path to folder</dd>
+      <dt>N</dt>
+      <dd>number of classes, default: 7</dd>
+      <dt>cores</dt>
+      <dd>number of cores to use in parallel (needs parallel package if cores&gt;1)</dd>
       <dt>method</dt>
-      <dd>method for intervals: &quot;minmax&quot; (default), &quot;quantile&quot; or &quot;sd&quot;</dd>
+      <dd>method for summarising distances, either &quot;min&quot; or &quot;quantile&quot;</dd>
       <dt>qu</dt>
-      <dd>vector of two quantiles for method=&quot;quantile</dd>
-      <dt>ylim</dt>
-      <dd>limits for y axis. Default:NULL is ylim=c(0,max(interval))</dd>
-      <dt>horiz</dt>
-      <dd>boolean: horizontal bars?</dd>
-      <dt>...</dt>
-      <dd>additional parameters forwarded to barplot</dd>
+      <dd>quantile for method=&quot;quantile&quot;, default: 0.01</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>plot</p>
+    <p>plots</p>
     
 
   </div>

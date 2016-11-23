@@ -10,7 +10,7 @@
 #' @return plot
 #' @export
 #'
-barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALSE,...){
+barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALSE,border=NA,...){
   N<-dim(x)[1]
   me<-switch(method,
              "minmax" = apply(x,1,mean),
@@ -36,7 +36,7 @@ barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALS
     for (j in 1:N)graphics::lines((j-0.4)+c(-.2,.2),rep(ma[j],2))
   }
   if(horiz){
-    graphics::barplot(rev(me),xlim=ylim,space=.5,border=FALSE,names.arg=N:1,horiz=TRUE,las=1,...)
+    graphics::barplot(rev(me),xlim=ylim,space=.5,border=border,names.arg=N:1,horiz=TRUE,las=1,...)
     for (j in 1:N)graphics::lines(c(mi[j],ma[j]),rep(N*1.5-1.5*j+1,2),lwd=1)
     for (j in 1:N)graphics::lines(rep(mi[j],2),(N*1.5-1.5*j+1)+c(-.2,.2),lwd=1)
     for (j in 1:N)graphics::lines(rep(ma[j],2),(N*1.5-1.5*j+1)+c(-.2,.2),lwd=1)

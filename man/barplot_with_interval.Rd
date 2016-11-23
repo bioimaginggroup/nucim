@@ -5,7 +5,7 @@
 \title{Barplot with Intervals}
 \usage{
 barplot_with_interval(x, method = "minmax", qu = c(0, 1), ylim = NULL,
-  horiz = FALSE, ...)
+  horiz = FALSE, border = NA, ...)
 }
 \arguments{
 \item{x}{matrix}
