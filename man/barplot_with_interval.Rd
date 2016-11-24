@@ -18,6 +18,8 @@ barplot_with_interval(x, method = "minmax", qu = c(0, 1), ylim = NULL,
 
 \item{horiz}{boolean: horizontal bars?}
 
+\item{border}{border parameter forwarded to barplot, default: NA is nor border}
+
 \item{...}{additional parameters forwarded to barplot}
 }
 \value{

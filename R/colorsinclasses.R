@@ -175,7 +175,7 @@ nucim.print.p<-function(p,n)
 {
   p=round(p,n)
   if (p==0){
-    cat("< 5e-")
+    cat("< 5e-0")
     cat(n+1)
   }
   else
