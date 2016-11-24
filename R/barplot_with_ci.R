@@ -5,6 +5,7 @@
 #' @param qu vector of two quantiles for method="quantile
 #' @param ylim limits for y axis. Default:NULL is ylim=c(0,max(interval))
 #' @param horiz boolean: horizontal bars?
+#' @param border border parameter forwarded to barplot, default: NA is nor border
 #' @param ... additional parameters forwarded to barplot
 #'
 #' @return plot

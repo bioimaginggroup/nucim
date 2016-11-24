@@ -36,10 +36,10 @@ plot_nearestClassDistances.folder<-function(path, N=7, cores=1, method="quantile
   ylim=ceiling(c(0,max(m))/0.05)*0.05
   for (i in 1:N)
   {
-    border=rep(NA,classes)
-    border[classes+1-i]="red"
-    col=rep("grey",classes)
-    col[classes+1-i]="white"
+    border=rep(NA,N)
+    border[N+1-i]="red"
+    col=rep("grey",N)
+    col[N+1-i]="white"
     barplot_with_interval(dist[i,,],xlab="",horiz=TRUE,method="sd",border=border, col=col,ylim=ylim)
   }
   setwd(orig)

@@ -134,9 +134,3 @@ splitchannels<-function(...){
  .Deprecated("splitchannels.folder",package="nucim")
  splitchannels.folder(...)
  }
-
-  find.mode<-function(x)
-{
-  d<-density(x)
-  return(d$x[which(d$y==max(d$y))[1]])
-}
