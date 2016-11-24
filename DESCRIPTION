@@ -1,5 +1,5 @@
 Package: nucim
-Title: Nucleus Imaging Toolbox
+Title: Nucleome Imaging Toolbox
 Version: 1.0
 Date: 2016-11-24
 Author: Volker Schmid [aut, cre]
@@ -8,7 +8,7 @@ Authors@R: c(person("Volker", "Schmid", role = c("aut", "cre"),
 Maintainer: Volker Schmid <stats@volkerschmid.de>
 Depends: R (>= 3.0.0), EBImage, bioimagetools (>= 1.0)
 Imports: fields, parallel, stringr
-Description: Code for quantitative analysis of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
+Description: Tools for 4D nucleome imaging. Quantitative analysis of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
 License: GPL-3
 URL: https://bioimaginggroup.github.io/nucim
 RoxygenNote: 5.0.1

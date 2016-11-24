@@ -8,7 +8,6 @@
 src/bioimagetools.so
 vignettes/*.tif
 vignettes/*.pdf
-vignettes/*cache
 vignettes/*files
 inst/doc
 .RData

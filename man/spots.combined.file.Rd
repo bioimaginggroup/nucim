@@ -26,6 +26,10 @@ spots.combined.file(file, folder = "./", thresh.offset = 0.1,
 \item{full.voxel}{Logical; output contains full voxel instead of rgb intensities}
 
 \item{output}{output folder}
+
+\item{size}{size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic}
+
+\item{voxelsize}{size of voxel in microns}
 }
 \value{
 RGB image with spots will be written to output folder

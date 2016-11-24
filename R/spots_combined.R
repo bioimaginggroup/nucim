@@ -1,6 +1,8 @@
 #' Find spots using information from two channels for folder
 #'
 #' @param path path to folder
+#' @param size size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic
+#' @param voxelsize size of voxel in microns
 #' @param thresh.offset Thresh offest used in EBImage::thresh() 
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
@@ -14,7 +16,7 @@
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE, output="markers", cores=1)
+spots.combined.folder<-function(path, size=NULL, voxelsize=NULL, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE, output="markers", cores=1)
 {
   orig<-getwd()
   setwd(path)
@@ -26,8 +28,8 @@ spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensity=2,max
   if(length(list.files(paste0(output,"_red")))==0)dir.create(paste0(output,"_red"))
   if(length(list.files(paste0(output,"_green")))==0)dir.create(paste0(output,"_green"))
         
-  if(cores>1)jobs <- parallel::mclapply(files, spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output, mc.preschedule=FALSE, mc.cores=cores)
-  if(cores==1)jobs <- lapply(files, spots.combined.file, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output)
+  if(cores>1)jobs <- parallel::mclapply(files, spots.combined.file, size=size, voxelsize=voxelsize, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output, mc.preschedule=FALSE, mc.cores=cores)
+  if(cores==1)jobs <- lapply(files, spots.combined.file, size=size, voxelsize=voxelsize, folder=path, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel, output=output)
   setwd(orig)
   #return(jobs)
 }
@@ -37,6 +39,8 @@ spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensity=2,max
 #'
 #' @param file File name
 #' @param folder Folder
+#' @param size size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic
+#' @param voxelsize size of voxel in microns
 #' @param thresh.offset Thresh offest used in EBImage::thresh() 
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
@@ -49,7 +53,7 @@ spots.combined.folder<-function(path, thresh.offset=0.1, min.sum.intensity=2,max
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE, output="markers")
+spots.combined.file<-function(file, size=NULL, voxelsize=NULL, folder="./", thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=2, full.voxel=FALSE, output="markers")
 {
   oldwd=getwd()
   setwd(folder)
@@ -57,13 +61,13 @@ spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.inte
   mask<-bioimagetools::readTIF(paste0("dapimask/",file))
   red<-bioimagetools::readTIF(paste0("red/",file))
   green<-bioimagetools::readTIF(paste0("green/",file))
-  size<-scan(paste0("XYZmic/",file,".txt"))
+  if (is.null(size)&is.null(voxelsize)){
+    size<-scan(paste0("XYZmic/",file,".txt"))}
   
   result <- spots.combined(red, green, mask, size, thresh.offset=thresh.offset, min.sum.intensity=min.sum.intensity,max.distance=max.distance, use.brightest=use.brightest,  max.spots=max.spots, full.voxel=full.voxel)
     
   writeTIF(result$red,file=paste0(output,"_red/",file),bps=16L,reduce=TRUE)
   writeTIF(result$green,file=paste0(output,"_green/",file),bps=16L,reduce=TRUE)
-  #})
   setwd(oldwd)
 }
 
@@ -72,7 +76,8 @@ spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.inte
 #' @param red image
 #' @param green image
 #' @param mask image mask
-#' @param size real size of image in microns
+#' @param size size of img in microns 
+#' @param voxelsize size of voxel in microns
 #' @param thresh.offset Thresh offest used in EBImage::thresh() 
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
@@ -84,8 +89,11 @@ spots.combined.file<-function(file, folder="./", thresh.offset=0.1, min.sum.inte
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-spots.combined<-function(red, green, mask, size, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=NA, full.voxel=FALSE)
+spots.combined<-function(red, green, mask, size=NULL, voxelsize=NULL, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=NA, full.voxel=FALSE)
 {
+  if (is.null(size)&is.null(voxelsize)){stop("Either size or voxelsize is required")}
+  if(is.null(voxelsize))voxelsize<-size/dim(img)
+  
   red.s<-bioimagetools::spots(red, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
   green.s<-bioimagetools::spots(green, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
 
