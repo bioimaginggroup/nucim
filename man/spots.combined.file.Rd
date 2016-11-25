@@ -4,12 +4,17 @@
 \alias{spots.combined.file}
 \title{Find spots using information from two channels}
 \usage{
-spots.combined.file(file, folder = "./", thresh.offset = 0.1,
-  min.sum.intensity = 2, max.distance = 0.5, use.brightest = FALSE,
-  max.spots = 2, full.voxel = FALSE, output = "markers")
+spots.combined.file(file, size = NULL, voxelsize = NULL, folder = "./",
+  thresh.offset = 0.1, min.sum.intensity = 2, max.distance = 0.5,
+  use.brightest = FALSE, max.spots = 2, full.voxel = FALSE,
+  output = "markers")
 }
 \arguments{
 \item{file}{File name}
+
+\item{size}{size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic}
+
+\item{voxelsize}{size of voxel in microns}
 
 \item{folder}{Folder}
 
@@ -26,10 +31,6 @@ spots.combined.file(file, folder = "./", thresh.offset = 0.1,
 \item{full.voxel}{Logical; output contains full voxel instead of rgb intensities}
 
 \item{output}{output folder}
-
-\item{size}{size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic}
-
-\item{voxelsize}{size of voxel in microns}
 }
 \value{
 RGB image with spots will be written to output folder
