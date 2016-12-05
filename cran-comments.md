@@ -9,6 +9,8 @@
 
 ---
 
+* "checking files in ‘vignettes’ ... WARNING has been" fixed
+
 * Version 1.0: Functions finalized for upcoming manuscript on Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy (Schmid, Cremer, Cremer).
 
 * There are no reverse dependencies.
