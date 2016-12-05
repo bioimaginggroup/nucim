@@ -1,5 +1,0 @@
-To Do
-
-* add add=TRUE option to all *.folder() functions
-* test single classes in t_colors.in.classes.folder()
-* cores=auto
