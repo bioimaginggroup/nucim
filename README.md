@@ -1,6 +1,6 @@
 # nucim R package
 
-nucim (Nucleus Imaging Toolbox) is an R package for quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
+nucim (Nucleome Imaging Toolbox) is an R package for quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
 
 ## Installation 
 

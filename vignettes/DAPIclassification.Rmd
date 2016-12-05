@@ -11,15 +11,13 @@ vignette: >
 ## Preparation
 
     setRepositories(ind=c(1,2))
-    install.packages(c("EBImage","devtools"))
-    library("devtools")
-    install_github("bioimaginggroup/bioimagetools")
-    install_github("bioimaginggroup/nucim")
+    install.packages("nucim")
 
 ## code to classify one rgb image
 
     library(bioimagetools)
     library(nucim)
+    
 choose RGB file
 
     img = readTIF(file.choose())
