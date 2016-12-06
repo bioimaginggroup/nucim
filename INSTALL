@@ -1,2 +1,4 @@
+install.packages("devtools")
 library(devtools)
-install_bitbucket("volkerschmid/nucim")
+install_github("bioimaginggroup/bioimagetools")
+install_bitbucket("bioimaginggroup/nucim")
