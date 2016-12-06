@@ -87,9 +87,9 @@
     <p>Find spots using information from two channels</p>
     
 
-    <pre><span class='fu'>spots.combined</span>(<span class='no'>red</span>, <span class='no'>green</span>, <span class='no'>mask</span>, <span class='no'>size</span>, <span class='kw'>thresh.offset</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>min.sum.intensity</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>max.distance</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>use.brightest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>max.spots</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>full.voxel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre><span class='fu'>spots.combined</span>(<span class='no'>red</span>, <span class='no'>green</span>, <span class='no'>mask</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>voxelsize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>thresh.offset</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>min.sum.intensity</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>max.distance</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>use.brightest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>max.spots</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>full.voxel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -100,7 +100,9 @@
       <dt>mask</dt>
       <dd>image mask</dd>
       <dt>size</dt>
-      <dd>real size of image in microns</dd>
+      <dd>size of img in microns</dd>
+      <dt>voxelsize</dt>
+      <dd>size of voxel in microns</dd>
       <dt>thresh.offset</dt>
       <dd>Thresh offest used in EBImage::thresh()</dd>
       <dt>min.sum.intensity</dt>

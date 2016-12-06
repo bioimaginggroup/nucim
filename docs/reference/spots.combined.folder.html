@@ -87,14 +87,19 @@
     <p>Find spots using information from two channels for folder</p>
     
 
-    <pre><span class='fu'>spots.combined.folder</span>(<span class='no'>path</span>, <span class='kw'>thresh.offset</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>min.sum.intensity</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>max.distance</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>use.brightest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>max.spots</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>full.voxel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"markers"</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre><span class='fu'>spots.combined.folder</span>(<span class='no'>path</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>voxelsize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>thresh.offset</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>min.sum.intensity</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>max.distance</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>use.brightest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>max.spots</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>full.voxel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"markers"</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>path</dt>
       <dd>path to folder</dd>
+      <dt>size</dt>
+      <dd>size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic</dd>
+      <dt>voxelsize</dt>
+      <dd>size of voxel in microns</dd>
       <dt>thresh.offset</dt>
       <dd>Thresh offest used in EBImage::thresh()</dd>
       <dt>min.sum.intensity</dt>
