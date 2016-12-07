@@ -77,7 +77,7 @@ classify<-function(blue, mask, N, beta=0.1, z=1/3, silent=TRUE)
   classes<-array(as.integer(img.seg$class),dim(blue))
   return(classes)
 }
-#' Classify DAPI from class image
+#' Count classes in classified image
 #'
 #' @param class classes image
 #' @param N number of classes
