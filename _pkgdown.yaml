@@ -19,9 +19,7 @@ navbar:
 
 home:
   links:
-  - text: nucim source code
-    href: https://github.com/bioimaginggroup/nucim
-  - text: "bioimagetools"
+  - text: "bioimagetools R package"
     href: http://bioimaginggroup.github.io/bioimagetools
 
 articles:
@@ -29,9 +27,50 @@ articles:
   contents:
   - DAPIclassification
   - workflow
+  - workflow_many
 
-
-references:
+reference:
+- title: "Main functions"
+  contents: 
+      - classify
+      - class.neighbours
+      - colors.in.classes
+      - compute.distance2border
+      - dapimask
+      - splitchannel
+      - spots.combined
 - title: "Functions on folders"
   contents: 
-      - ends_with("folder")
+      - classify.folder
+      - class.neighbours.folder
+      - colors.in.classes.folder
+      - dapimask.folder
+      - find.spots.folder
+      - nearestClassDistances.folder
+      - plot_classify.folder
+      - plot_colors.in.classes.folder
+      - plot_nearestClassDistances.folder
+      - splitchannels.folder
+      - spots.combined.folder
+      - t_colors.in.classes.folder
+- title: "Plotting"
+  contents: 
+      - barplot_with_interval_23
+      - barplot_with_interval
+      - heatmap.color
+      - plot_classify.folder
+      - plot_colors.in.classes.folder
+      - plot_nearestClassDistances.folder
+- title: "Functions on files"
+  contents: 
+      - dapimask.file
+      - find.spots.file
+      - splitchannels.file
+      - spots.combined.file
+- title: "Deprectated"
+  contents: 
+      - classify.single
+      - classify.table
+      - heatmap7
+      - splitchannels
+

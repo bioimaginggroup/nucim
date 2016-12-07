@@ -2,7 +2,7 @@
 % Please edit documentation in R/classes.R
 \name{classify.table}
 \alias{classify.table}
-\title{Classify DAPI from class image}
+\title{Count classes in classified image}
 \usage{
 classify.table(class, N)
 }
@@ -15,6 +15,6 @@ classify.table(class, N)
 table with number of voxels per class
 }
 \description{
-Classify DAPI from class image
+Count classes in classified image
 }
 

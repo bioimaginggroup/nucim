@@ -26,7 +26,7 @@ library(nucim)
 ```
 
 # Read image and mask from DAPI
-```{r cache=TRUE, echo=FALSE, warning=FALSE, collapse=TRUE}
+```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 img = readTIF("http://ex.volkerschmid.de/cell.tif")
 sections = dim(img)[4]
 x = y = 0.395
@@ -36,7 +36,7 @@ mask = dapimask(blue, c(x,y,z)*dim(img)[1:3], thresh="auto")
 ```
 
 # Chromatin compaction classification
-```{r cache=TRUE, echo=FALSE, warning=FALSE, collapse=TRUE}
+```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 classes = classify(blue, mask, 7, beta=0.1, z=x/z)
 tab<-table.n(classes, 7, percentage=TRUE)
 barplot(tab, ylab="percentage", xlab="chromatin compaction level",col=heatmap7())
@@ -46,7 +46,7 @@ writeTIF(classes, "classes.tif")
 ```
 
 # Distances of chromatin compaction classes
-```{r cache=TRUE, echo=FALSE, warning=FALSE, collapse=TRUE, eval=FALSE}
+```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE, eval=FALSE}
 classes<-readClassTIF("classes.tif")
 distances = nearestClassDistances(classes,  voxelsize=c(x,y,z), classes=7, cores=24L)
 save(distances,file="distances.Rdata")
@@ -66,7 +66,7 @@ green = img[,,2,]
 cc1<-colors.in.classes(classes,red,green,mask,7,type="thresh",plot=TRUE,col1="red",col2="green",thresh1=0.05,thresh2=0.05,test="Wilcoxon",ylim=c(0,.5),xlab="chromatin compaction levels",ylab="percentage")
 cc2<-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,col1="red",col2="green",thresh1=0.05,thresh2=0.05,test="Wilcoxon",ylim=c(0,.5),xlab="chromatin compaction levels",ylab="percentage")
 ```
-```{r cache=TRUE, echo=FALSE, warning=FALSE, collapse=TRUE}
+```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 spots<-spots.combined(red=red,green=green,mask=mask,size=c(x,y,z),full.voxel=FALSE,thresh.offset=0.05)
 ```
 ```{r cache=TRUE, collapse=TRUE, warning=FALSE}
