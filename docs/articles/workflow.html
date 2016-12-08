@@ -44,7 +44,7 @@
       <h1>Workflow</h1>
                         <h4 class="author">Volker Schmid</h4>
             
-            <h4 class="date">2016-12-06</h4>
+            <h4 class="date">2016-12-07</h4>
           </div>
 
     
@@ -62,16 +62,39 @@
 </div>
 <div id="read-image-and-mask-from-dapi" class="section level1">
 <h1 class="hasAnchor"><html><body><a href="#read-image-and-mask-from-dapi" class="anchor"> </a></body></html>Read image and mask from DAPI</h1>
-<pre><code>## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">img =<span class="st"> </span><span class="kw">readTIF</span>(<span class="st">"http://ex.volkerschmid.de/cell.tif"</span>)
+sections =<span class="st"> </span><span class="kw">dim</span>(img)[<span class="dv">4</span>]
+x =<span class="st"> </span>y =<span class="st"> </span><span class="fl">0.395</span>
+z =<span class="st"> </span><span class="fl">0.125</span>
+blue =<span class="st"> </span>img[,,<span class="dv">3</span>,] 
+mask =<span class="st"> </span><span class="kw"><a href="../reference/dapimask.html">dapimask</a></span>(blue, <span class="kw">c</span>(x,y,z)*<span class="kw">dim</span>(img)[<span class="dv">1</span>:<span class="dv">3</span>], <span class="dt">thresh=</span><span class="st">"auto"</span>)
+## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx</code></pre></div>
 </div>
 <div id="chromatin-compaction-classification" class="section level1">
 <h1 class="hasAnchor"><html><body><a href="#chromatin-compaction-classification" class="anchor"> </a></body></html>Chromatin compaction classification</h1>
-<pre><code>## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0</code></pre>
-<p><img src="workflow_files/figure-html/unnamed-chunk-3-1.png" width="672"><img src="workflow_files/figure-html/unnamed-chunk-3-2.png" width="672"></p>
-<pre><code>## [1] 52</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">classes =<span class="st"> </span><span class="kw"><a href="../reference/classify.html">classify</a></span>(blue, mask, <span class="dv">7</span>, <span class="dt">beta=</span><span class="fl">0.1</span>, <span class="dt">z=</span>x/z)
+## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0
+tab&lt;-<span class="kw">table.n</span>(classes, <span class="dv">7</span>, <span class="dt">percentage=</span><span class="ot">TRUE</span>)
+<span class="kw">barplot</span>(tab, <span class="dt">ylab=</span><span class="st">"percentage"</span>, <span class="dt">xlab=</span><span class="st">"chromatin compaction level"</span>,<span class="dt">col=</span><span class="kw"><a href="../reference/heatmap7.html">heatmap7</a></span>())</code></pre></div>
+<p><img src="workflow_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">pty=</span><span class="st">"s"</span>)
+<span class="kw">img</span>(classes, <span class="dt">z=</span><span class="dv">16</span>, <span class="dt">col=</span><span class="kw"><a href="../reference/heatmap7.html">heatmap7</a></span>(), <span class="dt">mask=</span>mask)</code></pre></div>
+<p><img src="workflow_files/figure-html/unnamed-chunk-3-2.png" width="672"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">writeTIF</span>(classes, <span class="st">"classes.tif"</span>)
+## [1] 52</code></pre></div>
 </div>
 <div id="distances-of-chromatin-compaction-classes" class="section level1">
 <h1 class="hasAnchor"><html><body><a href="#distances-of-chromatin-compaction-classes" class="anchor"> </a></body></html>Distances of chromatin compaction classes</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">classes&lt;-<span class="kw">readClassTIF</span>(<span class="st">"classes.tif"</span>)
+distances =<span class="st"> </span><span class="kw">nearestClassDistances</span>(classes,  <span class="dt">voxelsize=</span><span class="kw">c</span>(x,y,z), <span class="dt">classes=</span><span class="dv">7</span>, <span class="dt">cores=</span>24L)
+<span class="kw">save</span>(distances,<span class="dt">file=</span><span class="st">"distances.Rdata"</span>)
+<span class="kw">plotNearestClassDistances</span>(distances, <span class="dt">method=</span><span class="st">"min"</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">1</span>),<span class="dt">qu=</span>.<span class="dv">01</span>)
+<span class="kw">tiff</span>(<span class="dt">filename=</span><span class="st">"fig-vs-7.tiff"</span>,<span class="dt">width=</span><span class="dv">960</span>)<span class="co">#remove</span>
+<span class="kw">plotNearestClassDistances</span>(distances, <span class="dt">method=</span><span class="st">"quantile"</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">22</span>),<span class="dt">qu=</span>.<span class="dv">01</span>)
+<span class="kw">dev.off</span>()<span class="co">#remove</span>
+<span class="kw">tiff</span>(<span class="dt">filename=</span><span class="st">"fig-vs-6.tiff"</span>,<span class="dt">width=</span><span class="dv">960</span>)<span class="co">#remove</span>
+<span class="kw">plotNearestClassDistances</span>(distances, <span class="dt">method=</span><span class="st">"boxplot"</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">1.5</span>))
+<span class="kw">dev.off</span>()<span class="co">#remove</span></code></pre></div>
 </div>
 <div id="map-spots-to-classes" class="section level1">
 <h1 class="hasAnchor"><html><body><a href="#map-spots-to-classes" class="anchor"> </a></body></html>Map spots to classes</h1>
@@ -87,7 +110,8 @@ cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,co
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.0336103</code></pre>
-<pre><code>## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">spots&lt;-<span class="kw"><a href="../reference/spots.combined.html">spots.combined</a></span>(<span class="dt">red=</span>red,<span class="dt">green=</span>green,<span class="dt">mask=</span>mask,<span class="dt">size=</span><span class="kw">c</span>(x,y,z),<span class="dt">full.voxel=</span><span class="ot">FALSE</span>,<span class="dt">thresh.offset=</span><span class="fl">0.05</span>)
+## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cc&lt;-<span class="kw"><a href="../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,spots$red,spots$green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"i"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,<span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">8</span>),<span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</code></pre></div>
 <p><img src="workflow_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
