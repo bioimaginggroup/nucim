@@ -1,0 +1,17 @@
+---
+title: "Publications using nucim"
+author: "Volker Schmid"
+date: "4th January 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Publications using alpha/beta versions of nucim
+
+* Popken J., Schmid V.J., Strauss, A., Guengoer, T., Wolf, E., Zakhartchenko, T.: Stage-dependent remodeling of the nuclear envelope and lamina during rabbit early embryonic development. Journal of Reproduction and Development 62:2 (2016) 127–135. [[DOI]](http://doi.org/10.1262/jrd.2015-100)
+* Popken J., Graf A., Krebs S., Blum H., Schmid V.J., Strauss, A., Guengoer, T., Zakhartchenko, T., Wolf, E., Cremer, T.: Remodeling of the Nuclear Envelope and Lamina during Bovine Preimplantation Development and Its Functional Implications. PLoS One 10:5 (2015) e0124619. [[DOI]](http://dx.doi.org/10.1371/journal.pone.0124619)
+* Popken, J., Brero, A., Koehler, D., Schmid, V.J., Strauss, A., Wuensch, A., Guengoer, T., Graf, A., Krebs, S., Blum, H., Zakhartchenko, V., Wolf, E., Cremer, T.: Reprogramming of ﬁbroblast nuclei in cloned bovine embryos is paralleled by major structural remodeling with both striking similarities and differences to nuclear phenotypes of embryos fertilized in vitro. Nucleus 5:6 (2014) 555–589. [[DOI]](http://dx.doi.org/10.4161/19491034.2014.979712)
+* Smeets, D., Markaki, Y., Schmid, V.J., Kraus, F., Tattermusch, A., Cerase, A., Sterr, M., Fiedler, S., Demmerle, J., Popken, J., Leonhardt, H., Brockdorff, N., Cremer, T., Schermelleh, L., Cremer, M.: Three-dimensional super-resolution microscopy of the inactive X chromosome territory reveals a collapse of its active nuclear compartment harboring distinct Xist RNA foci. Epigenetics & Chromatin 7:8 (2014). [[DOI]](http://dx.doi.org/10.1186/1756-8935-7-8)
