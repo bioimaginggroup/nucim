@@ -20,7 +20,6 @@ vignette: >
 choose one of the files in a folder of RGB files
       
     folder = folder.choose()
-    folder = "/home/schmid/temp/DHS"#folder.choose()
 
 scripts can use parallel computing, if available (not under windows)
      
@@ -28,7 +27,7 @@ scripts can use parallel computing, if available (not under windows)
 
 split channels
 
-    splitchannels.folder(folder, rgb.folder="rgb", cores=nr.cores)
+    splitchannels.folder(folder, rgb.folder="./", cores=nr.cores)
 
 masks
 
