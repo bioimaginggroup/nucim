@@ -26,4 +26,3 @@ Split RGB images into channels and pixel size information
 splitchannels.folder("./")
 
 }
-

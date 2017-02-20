@@ -24,4 +24,3 @@ plots
 \description{
 Plots all distances to next neighbour of all classes for folders
 }
-

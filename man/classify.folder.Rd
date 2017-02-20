@@ -23,4 +23,3 @@ results in "output" and "output"-n
 \description{
 Classify DAPI
 }
-

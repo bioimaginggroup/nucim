@@ -25,4 +25,3 @@ image with classes
 \description{
 Classify DAPI
 }
-

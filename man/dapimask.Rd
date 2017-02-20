@@ -26,4 +26,3 @@ mask image, array with same dimension as img.
 \description{
 Mask DAPI in kernel
 }
-

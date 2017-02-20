@@ -24,4 +24,3 @@ plots
 \description{
 Plot barplot for classified images in a folder
 }
-

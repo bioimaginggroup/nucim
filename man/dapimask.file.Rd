@@ -26,4 +26,3 @@ nothing, DAPI mask image will be saved to dapimask/
 \description{
 Automatic DAPI mask segmentation for files
 }
-

@@ -26,4 +26,3 @@ plot
 \description{
 Barplot with Intervals for two or three bars beside
 }
-

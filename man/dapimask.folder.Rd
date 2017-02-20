@@ -24,4 +24,3 @@ nothing, results are in folder dapimask
 \description{
 Automatic DAPI mask segmentation for folder
 }
-

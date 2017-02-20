@@ -19,4 +19,3 @@ plot
 \description{
 Plot for colors in classes distribution for folders
 }
-

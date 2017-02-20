@@ -48,7 +48,7 @@ writeTIF(classes, "classes.tif")
 # Distances of chromatin compaction classes
 ```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE, eval=FALSE}
 classes<-readClassTIF("classes.tif")
-distances = nearestClassDistances(classes,  voxelsize=c(x,y,z), classes=7, cores=24L)
+distances = nearestClassDistances(classes,  voxelsize=c(x,y,z), classes=7, cores=16L)
 save(distances,file="distances.Rdata")
 plotNearestClassDistances(distances, method="min",ylim=c(0,.1),qu=.01)
 tiff(filename="fig-vs-7.tiff",width=960)#remove

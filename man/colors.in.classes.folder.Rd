@@ -39,4 +39,3 @@ Results are in folder colorsinclasses
 \description{
 Compute colors in classes distribution for folders
 }
-

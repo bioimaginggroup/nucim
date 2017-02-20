@@ -28,4 +28,3 @@ plot
 \description{
 Barplot with Intervals
 }
-

@@ -15,4 +15,3 @@ Heatmap colors for n classes
 \examples{
 barplot(8:1,col=heatmap.color(8))
 }
-

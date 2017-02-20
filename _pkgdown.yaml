@@ -9,8 +9,10 @@ navbar:
       href: index.html
     - text: "Reference"
       href: reference/index.html
-    - text: "Articles"
+    - text: "Workflows"
       href: articles/index.html
+    - text: "Publications"
+      href: articles/publications.html
   right:
     - text: "Bioimaging Group"
       href: http://bioimaginggroup.github.io

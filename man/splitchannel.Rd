@@ -17,4 +17,3 @@ list with red, green, blue channels and size in microns.
 \description{
 Split RGB channels
 }
-

@@ -21,4 +21,3 @@ vector of length N.max
 \description{
 Class neighbourhood distribution
 }
-

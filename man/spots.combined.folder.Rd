@@ -38,4 +38,3 @@ RGB image with spots will be written to output folder
 \description{
 Find spots using information from two channels for folder
 }
-

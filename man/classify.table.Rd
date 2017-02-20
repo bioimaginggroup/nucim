@@ -17,4 +17,3 @@ table with number of voxels per class
 \description{
 Count classes in classified image
 }
-

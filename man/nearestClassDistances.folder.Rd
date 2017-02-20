@@ -24,4 +24,3 @@ nothing, results are in folder distances in RData format
 \description{
 Find all distances to next neighbour of all classes for folders
 }
-

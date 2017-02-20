@@ -26,4 +26,3 @@ spot images in spot-color/, number of spots as txt files in spot-color/
 \description{
 Detects spots
 }
-

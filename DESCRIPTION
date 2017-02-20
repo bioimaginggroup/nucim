@@ -11,7 +11,7 @@ Imports: fields, parallel, stringr
 Description: Tools for 4D nucleome imaging. Quantitative analysis of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
 License: GPL-3
 URL: https://github.com/bioimaginggroup/nucim
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

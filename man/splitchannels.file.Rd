@@ -21,4 +21,3 @@ files in "./red/", "./green", "./blue" and "./XYZmic"
 \description{
 Split channels into files and extracts size in microns
 }
-

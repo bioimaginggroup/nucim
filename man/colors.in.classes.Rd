@@ -57,4 +57,3 @@ Type of spot definitions:
 "voxel" or "v": Spots are given as binary voxel mask
 "intensity" or "i": Voxels are weighted with voxel intensity
 }
-

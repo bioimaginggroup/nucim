@@ -20,4 +20,3 @@ plots
 \description{
 class.neighbours.folder
 }
-

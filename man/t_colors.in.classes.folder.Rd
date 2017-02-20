@@ -17,4 +17,3 @@ test results
 \description{
 Test for colors in classes distribution for folders
 }
-

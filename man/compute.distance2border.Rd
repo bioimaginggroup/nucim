@@ -26,4 +26,3 @@ images in output"-"color"-"N
 \description{
 Compute distance to border of classes
 }
-
