@@ -13,6 +13,11 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+### Description and instructions
+* Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
+Methods (2017), available online first. [[DOI]] (https://doi.org/10.1016/j.ymeth.2017.03.013)
+)
+
 ### Publications using alpha/beta versions of nucim
 
 * Popken J., Schmid V.J., Strauss, A., Guengoer, T., Wolf, E., Zakhartchenko, T.: Stage-dependent remodeling of the nuclear envelope and lamina during rabbit early embryonic development. Journal of Reproduction and Development 62:2 (2016) 127–135. [[DOI]](http://doi.org/10.1262/jrd.2015-100)
