@@ -20,12 +20,11 @@ bibentry(entry = "Article",
 )
 
 bibentry(entry = "Manual",
-    title = {{nucim}: Nucleome Imaging Toolbox
-},
+    title = "nucim: Nucleome Imaging Toolbox",
     author = as.person("Volker J. Schmid"),
     year = year,
     note = note,
-    url = {https://bioimaginggroup.github.io/nucim},
+    url = "https://bioimaginggroup.github.io/nucim",
   }
   
   
