@@ -1,0 +1,18 @@
+citHeader("To cite nucim in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy",
+  author       = personList(as.person("Volker J. Schmid"), as.person("Marion Cremer"), as.person("Thomas Cremer")),
+  journal      = "Methods",
+  year         = "2017",
+  volume       = "",
+  number       = "",
+  pages        = "",
+  doi          = "10.1016/j.ymeth.2017.03.013",
+
+  textVersion  =
+  paste("Volker J. Schmid, Marion Cremer, Thomas Cremer (2017).",
+        "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.",
+        "Methods, available online first.",
+        "DOI 10.1016/j.ymeth.2017.03.013")
+)
