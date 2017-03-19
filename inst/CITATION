@@ -10,6 +10,18 @@ citEntry(entry = "Article",
   pages        = "",
   doi          = "10.1016/j.ymeth.2017.03.013",
 
+year <- sub(“-.*”, “”, meta$Date) 
+note <- sprintf(“R package version %s”, meta$Version) 
+
+citEntry(entry = "Manual",
+    title = {{nucim}: Nucleome Imaging Toolbox
+},
+    author = as.person("Volker J. Schmid"),
+    year = year,
+    note = note,
+    url = {https://bioimaginggroup.github.io/nucim},
+  }
+  
   textVersion  =
   paste("Volker J. Schmid, Marion Cremer, Thomas Cremer (2017).",
         "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.",
