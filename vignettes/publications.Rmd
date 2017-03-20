@@ -15,8 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Description and instructions
 * Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
-Methods (2017), available online first. [[DOI]] (https://dx.doi.org/10.1016/j.ymeth.2017.03.013)
-)
+Methods (2017), available online first. [[DOI]](https://dx.doi.org/10.1016/j.ymeth.2017.03.013)
 
 ### Publications using alpha/beta versions of nucim
 

@@ -1,9 +1,10 @@
-citHeader("To cite nucim in publications use:")
+citHeader("To cite nucim in publications please use:")
 
-year <- sub(“-.*”, “”, meta$Date) 
-note <- sprintf(“R package version %s”, meta$Version) 
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("nucim")
+year <- sub("-.*", "", meta$Date) 
+note <- sprintf("R package version %s", meta$Version) 
 
-bibentry(entry = "Article",
+bibentry(bibtype = "Article",
   title        = "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy",
   author       = personList(as.person("Volker J. Schmid"), as.person("Marion Cremer"), as.person("Thomas Cremer")),
   journal      = "Methods",
@@ -13,18 +14,22 @@ bibentry(entry = "Article",
   pages        = "",
   doi          = "10.1016/j.ymeth.2017.03.013",
   textVersion  =
-  paste("Volker J. Schmid, Marion Cremer, Thomas Cremer (2017).",
+  paste("Volker J. Schmid, Marion Cremer, Thomas Cremer.",
         "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.",
-        "Methods, available online first.",
+        "Methods (2017).",
         "DOI 10.1016/j.ymeth.2017.03.013")
 )
-
-bibentry(entry = "Manual",
-    title = "nucim: Nucleome Imaging Toolbox",
-    author = as.person("Volker J. Schmid"),
-    year = year,
-    note = note,
-    url = "https://bioimaginggroup.github.io/nucim",
-  }
-  
-  
+citEntry(header = "To refer to the current version of the package you could use:",
+         entry = "manual",
+         title = "{nucim}: Nucleome Imaging Toolbox",
+         author = personList(as.person("Volker J. Schmid")),                              
+         year = year,
+         note = note,
+         url = "https://cran.r-project.org/package=nucim",
+         textVersion =
+           paste("Volker J. Schmid",
+                 sprintf("(%s).", year),	 
+                 "nucim: Nucleome Imaging Toolbox.",
+                 paste(note, ".", sep = ""),
+                 "https://cran.r-project.org/package=nucim")
+)

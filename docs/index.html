@@ -69,14 +69,26 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"> </a>Installation</h2>
-<p>The stable version is available on CRAN:</p>
+<p>The stable version is available on <a href="https://cran.r-project.org/">[CRAN]</a>:</p>
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw">setRepositories</span>(<span class="dt">ind=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 <span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">"nucim"</span>))</code></pre></div>
-<p>The developement version is available on github. The developement version probably depends on the developement version of bioimagetools:</p>
+<p>The developement version is available on <a href="https://github.com/bioimaginggroup">[github]</a>. The developement version probably depends on the developement version of bioimagetools:</p>
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw">setRepositories</span>(<span class="dt">ind=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 <span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">"devtools"</span>,<span class="st">"tiff"</span>,<span class="st">"EBImage"</span>))
 devtools::<span class="kw">install_github</span>(<span class="st">"bioimaginggroup/bioimagetools"</span>)
 devtools::<span class="kw">install_github</span>(<span class="st">"bioimaginggroup/nucim"</span>)</code></pre></div>
+<p>You may need to install additional libraries on your OS before you can install nucim. E.g. on Ubuntu/Debian systems, please execute:</p>
+<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">sudo apt install libcurl4-openssl-dev libtiff5-dev libfftw3-dev</code></pre></div>
+<p>in the terminal before installing nucim.</p>
+</div>
+<div id="more-information" class="section level2">
+<h2 class="hasAnchor">
+<a href="#more-information" class="anchor"> </a>More information</h2>
+<p>Description of the package andinstructions can be found in:</p>
+<ul>
+<li>Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy. Methods (2017), available online first. <a href="https://dx.doi.org/10.1016/j.ymeth.2017.03.013">[DOI]</a>
+</li>
+</ul>
 </div>
 <div id="contributors" class="section level2">
 <h2 class="hasAnchor">
