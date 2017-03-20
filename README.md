@@ -23,7 +23,7 @@ in the terminal before installing nucim.
 
 ## More information
 
-Description of the package andinstructions can be found in:
+Description of the package and basic instructions can be found in:
 
 * Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
 Methods (2017), available online first. [[DOI]](https://dx.doi.org/10.1016/j.ymeth.2017.03.013)
