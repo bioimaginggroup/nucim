@@ -36,3 +36,5 @@ This package is developed at the BioImaging group at the Department of Statistic
 * Main development and implementation: Volker J Schmid
 * Developement of workflow: Marion and Thomas Cremer
 * Input on specific parts: Barbara Hübner, Yolanda Markaki, Jens Popken, Lothar Schermelleh, Daniel Smeets
+
+![](http://vs.lupus.uberspace.de/count/nucim.php)
