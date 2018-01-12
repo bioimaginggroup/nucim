@@ -18,7 +18,7 @@ The developement version is available on [[github]](https://github.com/bioimagin
 
 You may need to install additional libraries on your OS before you can install nucim. E.g. on Ubuntu/Debian systems, please execute: 
 
-    sudo apt install libcurl4-openssl-dev libtiff5-dev libfftw3-dev
+    sudo apt install libssl-dev libcurl4-openssl-dev libtiff5-dev libfftw3-dev
 in the terminal before installing nucim.
 
 ## More information
