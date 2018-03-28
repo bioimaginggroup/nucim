@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -83,192 +85,260 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>Function reference</h1>
-      <h4>version&nbsp;1.0.4</h4>
+      <h1>
+        Reference
+        <small>version&nbsp;1.0.5</small>
+      </h1>
     </div>
 
     <div class="contents">
-      <h2 id="section-main-functions" class="hasAnchor"><a href="#section-main-functions" class="anchor"></a>Main functions</h2>
-      <p class="section-desc"></p>
+      <table class="ref-index">
 
-      
-      <p><a href="class.neighbours.html">Class neighbourhood distribution</a></p>
-      <ul>
-        <li><code><a href="class.neighbours.html">class.neighbours</a></code></li>
-      </ul>
-      
-      <p><a href="classify.html">Classify DAPI</a></p>
-      <ul>
-        <li><code><a href="classify.html">classify</a></code></li>
-      </ul>
-      
-      <p><a href="colors.in.classes.html">Compute colors in classes distribution</a></p>
-      <ul>
-        <li><code><a href="colors.in.classes.html">colors.in.classes</a></code></li>
-      </ul>
-      
-      <p><a href="compute.distance2border.html">Compute distance to border of classes</a></p>
-      <ul>
-        <li><code><a href="compute.distance2border.html">compute.distance2border</a></code></li>
-      </ul>
-      
-      <p><a href="dapimask.html">Mask DAPI in kernel</a></p>
-      <ul>
-        <li><code><a href="dapimask.html">dapimask</a></code></li>
-      </ul>
-      
-      <p><a href="splitchannel.html">Split RGB channels</a></p>
-      <ul>
-        <li><code><a href="splitchannel.html">splitchannel</a></code></li>
-      </ul>
-      
-      <p><a href="spots.combined.html">Find spots using information from two channels</a></p>
-      <ul>
-        <li><code><a href="spots.combined.html">spots.combined</a></code></li>
-      </ul>
-          <h2 id="section-functions-on-folders" class="hasAnchor"><a href="#section-functions-on-folders" class="anchor"></a>Functions on folders</h2>
-      <p class="section-desc"></p>
+      <colgroup>
+        <col class="alias" />
+        <col class="title" />
+      </colgroup>
 
-      
-      <p><a href="class.neighbours.folder.html">class.neighbours.folder</a></p>
-      <ul>
-        <li><code><a href="class.neighbours.folder.html">class.neighbours.folder</a></code></li>
-      </ul>
-      
-      <p><a href="classify.folder.html">Classify DAPI</a></p>
-      <ul>
-        <li><code><a href="classify.folder.html">classify.folder</a></code></li>
-      </ul>
-      
-      <p><a href="colors.in.classes.folder.html">Compute colors in classes distribution for folders</a></p>
-      <ul>
-        <li><code><a href="colors.in.classes.folder.html">colors.in.classes.folder</a></code></li>
-      </ul>
-      
-      <p><a href="dapimask.folder.html">Automatic DAPI mask segmentation for folder</a></p>
-      <ul>
-        <li><code><a href="dapimask.folder.html">dapimask.folder</a></code></li>
-      </ul>
-      
-      <p><a href="find.spots.folder.html">Detects spots</a></p>
-      <ul>
-        <li><code><a href="find.spots.folder.html">find.spots.folder</a></code></li>
-      </ul>
-      
-      <p><a href="nearestClassDistances.folder.html">Find all distances to next neighbour of all classes for folders</a></p>
-      <ul>
-        <li><code><a href="nearestClassDistances.folder.html">nearestClassDistances.folder</a></code></li>
-      </ul>
-      
-      <p><a href="plot_classify.folder.html">Plot barplot for classified images in a folder</a></p>
-      <ul>
-        <li><code><a href="plot_classify.folder.html">plot_classify.folder</a></code></li>
-      </ul>
-      
-      <p><a href="plot_colors.in.classes.folder.html">Plot for colors in classes distribution for folders</a></p>
-      <ul>
-        <li><code><a href="plot_colors.in.classes.folder.html">plot_colors.in.classes.folder</a></code></li>
-      </ul>
-      
-      <p><a href="plot_nearestClassDistances.folder.html">Plots all distances to next neighbour of all classes for folders</a></p>
-      <ul>
-        <li><code><a href="plot_nearestClassDistances.folder.html">plot_nearestClassDistances.folder</a></code></li>
-      </ul>
-      
-      <p><a href="splitchannels.folder.html">Split RGB images into channels and pixel size information</a></p>
-      <ul>
-        <li><code><a href="splitchannels.folder.html">splitchannels.folder</a></code></li>
-      </ul>
-      
-      <p><a href="spots.combined.folder.html">Find spots using information from two channels for folder</a></p>
-      <ul>
-        <li><code><a href="spots.combined.folder.html">spots.combined.folder</a></code></li>
-      </ul>
-      
-      <p><a href="t_colors.in.classes.folder.html">Test for colors in classes distribution for folders</a></p>
-      <ul>
-        <li><code><a href="t_colors.in.classes.folder.html">t_colors.in.classes.folder</a></code></li>
-      </ul>
-          <h2 id="section-plotting" class="hasAnchor"><a href="#section-plotting" class="anchor"></a>Plotting</h2>
-      <p class="section-desc"></p>
-
-      
-      <p><a href="barplot_with_interval_23.html">Barplot with Intervals for two or three bars beside</a></p>
-      <ul>
-        <li><code><a href="barplot_with_interval_23.html">barplot_with_interval_23</a></code></li>
-      </ul>
-      
-      <p><a href="barplot_with_interval.html">Barplot with Intervals</a></p>
-      <ul>
-        <li><code><a href="barplot_with_interval.html">barplot_with_interval</a></code></li>
-      </ul>
-      
-      <p><a href="heatmap.color.html">Heatmap colors for n classes</a></p>
-      <ul>
-        <li><code><a href="heatmap.color.html">heatmap.color</a></code></li>
-      </ul>
-      
-      <p><a href="plot_classify.folder.html">Plot barplot for classified images in a folder</a></p>
-      <ul>
-        <li><code><a href="plot_classify.folder.html">plot_classify.folder</a></code></li>
-      </ul>
-      
-      <p><a href="plot_colors.in.classes.folder.html">Plot for colors in classes distribution for folders</a></p>
-      <ul>
-        <li><code><a href="plot_colors.in.classes.folder.html">plot_colors.in.classes.folder</a></code></li>
-      </ul>
-      
-      <p><a href="plot_nearestClassDistances.folder.html">Plots all distances to next neighbour of all classes for folders</a></p>
-      <ul>
-        <li><code><a href="plot_nearestClassDistances.folder.html">plot_nearestClassDistances.folder</a></code></li>
-      </ul>
-          <h2 id="section-functions-on-files" class="hasAnchor"><a href="#section-functions-on-files" class="anchor"></a>Functions on files</h2>
-      <p class="section-desc"></p>
-
-      
-      <p><a href="dapimask.file.html">Automatic DAPI mask segmentation for files</a></p>
-      <ul>
-        <li><code><a href="dapimask.file.html">dapimask.file</a></code></li>
-      </ul>
-      
-      <p><a href="find.spots.file.html">Detects spotsfor one file</a></p>
-      <ul>
-        <li><code><a href="find.spots.file.html">find.spots.file</a></code></li>
-      </ul>
-      
-      <p><a href="splitchannels.file.html">Split channels into files and extracts size in microns</a></p>
-      <ul>
-        <li><code><a href="splitchannels.file.html">splitchannels.file</a></code></li>
-      </ul>
-      
-      <p><a href="spots.combined.file.html">Find spots using information from two channels</a></p>
-      <ul>
-        <li><code><a href="spots.combined.file.html">spots.combined.file</a></code></li>
-      </ul>
-          <h2 id="section-deprectated" class="hasAnchor"><a href="#section-deprectated" class="anchor"></a>Deprectated</h2>
-      <p class="section-desc"></p>
-
-      
-      <p><a href="classify.single.html">Classify DAPI</a></p>
-      <ul>
-        <li><code><a href="classify.single.html">classify.single</a></code></li>
-      </ul>
-      
-      <p><a href="classify.table.html">Count classes in classified image</a></p>
-      <ul>
-        <li><code><a href="classify.table.html">classify.table</a></code></li>
-      </ul>
-      
-      <p><a href="heatmap7.html">Heatmap colors for 7 classes</a></p>
-      <ul>
-        <li><code><a href="heatmap7.html">heatmap7</a></code></li>
-      </ul>
-      
-      <p><a href="splitchannels.html">Split RGB images into channels and pixel size information</a></p>
-      <ul>
-        <li><code><a href="splitchannels.html">splitchannels</a></code></li>
-      </ul>
-    
+      <tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-main-functions" class="hasAnchor"><a href="#section-main-functions" class="anchor"></a>Main functions</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="classify.html">classify</a></code> </p>
+          </td>
+          <td><p>Classify DAPI</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="class.neighbours.html">class.neighbours</a></code> </p>
+          </td>
+          <td><p>Class neighbourhood distribution</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="colors.in.classes.html">colors.in.classes</a></code> </p>
+          </td>
+          <td><p>Compute colors in classes distribution</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="compute.distance2border.html">compute.distance2border</a></code> </p>
+          </td>
+          <td><p>Compute distance to border of classes</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="dapimask.html">dapimask</a></code> </p>
+          </td>
+          <td><p>Mask DAPI in kernel</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="splitchannel.html">splitchannel</a></code> </p>
+          </td>
+          <td><p>Split RGB channels</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="spots.combined.html">spots.combined</a></code> </p>
+          </td>
+          <td><p>Find spots using information from two channels</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-functions-on-folders" class="hasAnchor"><a href="#section-functions-on-folders" class="anchor"></a>Functions on folders</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="classify.folder.html">classify.folder</a></code> </p>
+          </td>
+          <td><p>Classify DAPI</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="class.neighbours.folder.html">class.neighbours.folder</a></code> </p>
+          </td>
+          <td><p>class.neighbours.folder</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="colors.in.classes.folder.html">colors.in.classes.folder</a></code> </p>
+          </td>
+          <td><p>Compute colors in classes distribution for folders</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="dapimask.folder.html">dapimask.folder</a></code> </p>
+          </td>
+          <td><p>Automatic DAPI mask segmentation for folder</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="find.spots.folder.html">find.spots.folder</a></code> </p>
+          </td>
+          <td><p>Detects spots</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nearestClassDistances.folder.html">nearestClassDistances.folder</a></code> </p>
+          </td>
+          <td><p>Find all distances to next neighbour of all classes for folders</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot_classify.folder.html">plot_classify.folder</a></code> </p>
+          </td>
+          <td><p>Plot barplot for classified images in a folder</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot_colors.in.classes.folder.html">plot_colors.in.classes.folder</a></code> </p>
+          </td>
+          <td><p>Plot for colors in classes distribution for folders</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot_nearestClassDistances.folder.html">plot_nearestClassDistances.folder</a></code> </p>
+          </td>
+          <td><p>Plots all distances to next neighbour of all classes for folders</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="splitchannels.folder.html">splitchannels.folder</a></code> </p>
+          </td>
+          <td><p>Split RGB images into channels and pixel size information</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="spots.combined.folder.html">spots.combined.folder</a></code> </p>
+          </td>
+          <td><p>Find spots using information from two channels for folder</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="t_colors.in.classes.folder.html">t_colors.in.classes.folder</a></code> </p>
+          </td>
+          <td><p>Test for colors in classes distribution for folders</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-plotting" class="hasAnchor"><a href="#section-plotting" class="anchor"></a>Plotting</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="barplot_with_interval_23.html">barplot_with_interval_23</a></code> </p>
+          </td>
+          <td><p>Barplot with Intervals for two or three bars beside</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="barplot_with_interval.html">barplot_with_interval</a></code> </p>
+          </td>
+          <td><p>Barplot with Intervals</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="heatmap.color.html">heatmap.color</a></code> </p>
+          </td>
+          <td><p>Heatmap colors for n classes</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot_classify.folder.html">plot_classify.folder</a></code> </p>
+          </td>
+          <td><p>Plot barplot for classified images in a folder</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot_colors.in.classes.folder.html">plot_colors.in.classes.folder</a></code> </p>
+          </td>
+          <td><p>Plot for colors in classes distribution for folders</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot_nearestClassDistances.folder.html">plot_nearestClassDistances.folder</a></code> </p>
+          </td>
+          <td><p>Plots all distances to next neighbour of all classes for folders</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-functions-on-files" class="hasAnchor"><a href="#section-functions-on-files" class="anchor"></a>Functions on files</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="dapimask.file.html">dapimask.file</a></code> </p>
+          </td>
+          <td><p>Automatic DAPI mask segmentation for files</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="find.spots.file.html">find.spots.file</a></code> </p>
+          </td>
+          <td><p>Detects spotsfor one file</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="splitchannels.file.html">splitchannels.file</a></code> </p>
+          </td>
+          <td><p>Split channels into files and extracts size in microns</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="spots.combined.file.html">spots.combined.file</a></code> </p>
+          </td>
+          <td><p>Find spots using information from two channels</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-deprectated" class="hasAnchor"><a href="#section-deprectated" class="anchor"></a>Deprectated</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="classify.single.html">classify.single</a></code> </p>
+          </td>
+          <td><p>Classify DAPI</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="classify.table.html">classify.table</a></code> </p>
+          </td>
+          <td><p>Count classes in classified image</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="heatmap7.html">heatmap7</a></code> </p>
+          </td>
+          <td><p>Heatmap colors for 7 classes</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="splitchannels.html">splitchannels</a></code> </p>
+          </td>
+          <td><p>Split RGB images into channels and pixel size information</p></td>
+        </tr>
+      </tbody>
+      </table>
     </div>
   </div>
 

@@ -1,7 +1,7 @@
 Package: nucim
 Title: Nucleome Imaging Toolbox
-Version: 1.0.4
-Date: 2017-11-17
+Version: 1.0.5
+Date: 2018-03-28
 Author: Volker Schmid [aut, cre]
 Authors@R: c(person("Volker", "Schmid", role = c("aut", "cre"),
 		     email = "volker.schmid@lmu.de"))

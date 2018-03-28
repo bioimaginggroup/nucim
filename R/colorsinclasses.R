@@ -109,6 +109,8 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   
   if (test=="Wilcox"|test=="Wilcoxon"|test=="U")
   {
+    if (sum(t10)==0)stop("No observations in DAPI classes")
+    if (sum(t200)==0)stop("No observations in channel 1")
     ch1<-wilcox.test(rep(1:N,t10),rep(1:N,t200))
     cat("Wilcoxon rank-sum test DAPI vs. channel 1: p-value ")
     nucim.print.p(ch1$p.value,8)
@@ -116,6 +118,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     
     if (!no2)
     {
+      if (sum(t300)==0)stop("No observations in channel 1")
       cat("Wilcoxon rank-sum test DAPI vs. channel 2: p-value ")
       ch2<-wilcox.test(rep(1:N,t10),rep(1:N,t300))
       nucim.print.p(ch2$p.value,8)

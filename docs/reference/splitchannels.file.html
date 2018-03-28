@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -90,23 +92,32 @@
     <p>Split channels into files and extracts size in microns</p>
     
 
-    <pre><span class='fu'>splitchannels.file</span>(<span class='no'>file</span>, <span class='no'>channels</span>, <span class='no'>rgb.folder</span>, <span class='kw'>normalize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>splitchannels.file</span>(<span class='no'>file</span>, <span class='no'>channels</span>, <span class='no'>rgb.folder</span>, <span class='kw'>normalize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>file name</dd>
-      <dt>channels</dt>
-      <dd>e.g. c(&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;)</dd>
-      <dt>rgb.folder</dt>
-      <dd>folder with file</dd>
-      <dt>normalize</dt>
-      <dd>boolean. Should we try to do some normalization?</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>file name</p></td>
+    </tr>
+    <tr>
+      <th>channels</th>
+      <td><p>e.g. c("red","green","blue")</p></td>
+    </tr>
+    <tr>
+      <th>rgb.folder</th>
+      <td><p>folder with file</p></td>
+    </tr>
+    <tr>
+      <th>normalize</th>
+      <td><p>boolean. Should we try to do some normalization?</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>files in &quot;./red/&quot;, &quot;./green&quot;, &quot;./blue&quot; and &quot;./XYZmic&quot;</p>
+    <p>files in "./red/", "./green", "./blue" and "./XYZmic"</p>
     
 
   </div>
