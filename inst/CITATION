@@ -5,31 +5,31 @@ year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version) 
 
 bibentry(bibtype = "Article",
-  title        = "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy",
-  author       = personList(as.person("Volker J. Schmid"), as.person("Marion Cremer"), as.person("Thomas Cremer")),
-  journal      = "Methods",
-  year         = "2017",
-  volume       = "123",
-  number       = "",
-  pages        = "33–46",
-  doi          = "10.1016/j.ymeth.2017.03.013",
-  textVersion  =
-  paste("Volker J. Schmid, Marion Cremer, Thomas Cremer.",
-        "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.",
-        "Methods 123 (2017) 33–46.",
-        "DOI 10.1016/j.ymeth.2017.03.013")
+title = "Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy",
+author = personList(as.person("Volker J. Schmid"), as.person("Marion Cremer"), as.person("Thomas Cremer")),
+journal= "Methods",
+year = "2017",
+volume = "123",
+number = "",
+pages= "33-46",
+doi= "10.1016/j.ymeth.2017.03.013",
+textVersion=
+paste("Volker J. Schmid, Marion Cremer, Thomas Cremer.",
+"Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.",
+"Methods 123 (2017) 33-46.",
+"DOI 10.1016/j.ymeth.2017.03.013")
 )
 citEntry(header = "To refer to the current version of the package you could use:",
-         entry = "manual",
-         title = "{nucim}: Nucleome Imaging Toolbox",
-         author = personList(as.person("Volker J. Schmid")),                              
-         year = year,
-         note = note,
-         url = "https://github.com/bioimaginggroup/nucim",
-         textVersion =
-           paste("Volker J. Schmid",
-                 sprintf("(%s).", year),	 
-                 "nucim: Nucleome Imaging Toolbox.",
-                 paste(note, ".", sep = ""),
-                 "https://github.com/bioimaginggroup/nucim")
+ entry = "manual",
+ title = "{nucim}: Nucleome Imaging Toolbox",
+author = personList(as.person("Volker J. Schmid")),
+year = year,
+note = note,
+url = "https://github.com/bioimaginggroup/nucim",
+textVersion =
+paste("Volker J. Schmid",
+sprintf("(%s).", year),	 
+"nucim: Nucleome Imaging Toolbox.",
+paste(note, ".", sep = ""),
+"https://github.com/bioimaginggroup/nucim")
 )

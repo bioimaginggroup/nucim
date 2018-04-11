@@ -18,6 +18,8 @@ navbar:
       href: http://www.bioimg.statistik.uni-muenchen.de
     - icon: fa-github fa-lg
       href: https://github.com
+    - icon: fa-twitter
+      href: https://twitter.com/vjsstat
 
 home:
   links:
