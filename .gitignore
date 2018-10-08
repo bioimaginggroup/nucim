@@ -10,5 +10,9 @@ vignettes/*.tif
 vignettes/*.pdf
 vignettes/*_files/
 vignettes/*_cache/
+vignettes/largevignettes/*.tif
+vignettes/largevignettes/*.pdf
+vignettes/largevignettes/*_files/
+vignettes/largevignettes/*_cache/
 inst/doc
 .RData

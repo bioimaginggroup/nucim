@@ -6,9 +6,9 @@
 \usage{
 colors.in.classes(classes, color1, color2 = NULL, mask = array(TRUE,
   dim(classes)), N = max(classes, na.rm = TRUE), type = "tresh",
-  thresh1 = NULL, thresh2 = NULL, sd1 = 2, sd2 = 2, col1 = "green",
-  col2 = "red", test = FALSE, plot = TRUE, beside = TRUE, ylim = NULL,
-  ...)
+  thresh1 = NULL, thresh2 = NULL, sd1 = 2, sd2 = 2,
+  col1 = "green", col2 = "red", test = FALSE, plot = TRUE,
+  beside = TRUE, ylim = NULL, ...)
 }
 \arguments{
 \item{classes}{Image of classes}

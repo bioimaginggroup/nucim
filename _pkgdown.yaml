@@ -30,7 +30,7 @@ articles:
 - title: "How to..."
   contents:
   - DAPIclassification
-  - workflow
+  - largevignettes/workflow
   - workflow_many
 
 reference:
