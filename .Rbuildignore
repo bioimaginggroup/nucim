@@ -12,5 +12,5 @@ _pkgdown.yaml
 .gitignore
 ^.*\.git$
 TODO
-vignettes/*cache
+vignettes/*cache/
 vignettes/largevignettes/
