@@ -2,7 +2,7 @@
 % Please edit documentation in R/find_spots.R
 \name{find.spots.file}
 \alias{find.spots.file}
-\title{Detects spotsfor one file}
+\title{Detects spots for one file}
 \usage{
 find.spots.file(file, dir, color, thresh = NULL, thresh.auto = FALSE,
   thresh.quantile = 0.9, filter = NULL, cores = 1)
@@ -28,5 +28,5 @@ find.spots.file(file, dir, color, thresh = NULL, thresh.auto = FALSE,
 spot images in spot-color/, number of spots as txt files in spot-color/
 }
 \description{
-Detects spotsfor one file
+Detects spots for one file
 }

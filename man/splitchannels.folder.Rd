@@ -17,7 +17,7 @@ splitchannels.folder(path, channels = c("red", "green", "blue"),
 \item{cores}{Number of cores used in parallel, cores=1 implies no parallelization}
 }
 \value{
-Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+Nothing, folders red, green, blue and XYZmic include separate channels and pixel size information
 }
 \description{
 Split RGB images into channels and pixel size information

@@ -3,7 +3,7 @@
 #' @param file file to read
 #' @param folder with 
 #' @param voxelsize real size of voxel (in microns), if NULL (default), look in folder XYZmic
-#' @param size real size of image (in microns), if NULL (dafault), look in folder XYZmic
+#' @param size real size of image (in microns), if NULL (default), look in folder XYZmic
 #' @param silent Keep silent?
 #' @param cores Number of cores available for parallel computing
 #' @return nothing, DAPI mask image will be saved to dapimask/

@@ -18,7 +18,7 @@ compute.distance2border(f, color, N, from.spots = FALSE,
 
 \item{output}{output folder}
 
-\item{cores}{numer of parallel cores used}
+\item{cores}{number of parallel cores which can be used}
 }
 \value{
 images in output"-"color"-"N

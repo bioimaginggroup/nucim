@@ -14,7 +14,7 @@ dapimask.file(file, folder = "blue", voxelsize = NULL, size = NULL,
 
 \item{voxelsize}{real size of voxel (in microns), if NULL (default), look in folder XYZmic}
 
-\item{size}{real size of image (in microns), if NULL (dafault), look in folder XYZmic}
+\item{size}{real size of image (in microns), if NULL (default), look in folder XYZmic}
 
 \item{silent}{Keep silent?}
 

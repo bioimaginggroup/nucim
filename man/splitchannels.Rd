@@ -14,6 +14,6 @@ Nothing, folders red, green, blue and XYZmic include seperate channels and pixel
 }
 \description{
 These functions are provided for compatibility with older version of
-the yourPackageName package.  They may eventually be completely
+the nucim package.  They may eventually be completely
 removed.
 }

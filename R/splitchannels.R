@@ -93,7 +93,7 @@ else(cat(paste0(file," OK\n")))
 #' @param channels Vector of channels in images
 #' @param rgb.folder Folder with RGB images
 #' @param cores Number of cores used in parallel, cores=1 implies no parallelization
-#' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+#' @return Nothing, folders red, green, blue and XYZmic include separate channels and pixel size information
 #' @export
 #' @import bioimagetools
 #' @examples splitchannels.folder("./")
@@ -124,7 +124,7 @@ splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder=
 #' Split RGB images into channels and pixel size information
 #'
 #' These functions are provided for compatibility with older version of
-#' the yourPackageName package.  They may eventually be completely
+#' the nucim package.  They may eventually be completely
 #' removed.
 #' @param ... parameters for splitchannels.folder
 #' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information

@@ -3,7 +3,7 @@
 #' @param path path to folder
 #' @param size size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic
 #' @param voxelsize size of voxel in microns
-#' @param thresh.offset Thresh offest used in EBImage::thresh() 
+#' @param thresh.offset Thresh offset used in EBImage::thresh() 
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
 #' @param use.brightest Logical; use only brightest in max.distance?
@@ -41,7 +41,7 @@ spots.combined.folder<-function(path, size=NULL, voxelsize=NULL, thresh.offset=0
 #' @param folder Folder
 #' @param size size of img in microns, if size and voxelsize are NULL, size is determined from folder XYZmic
 #' @param voxelsize size of voxel in microns
-#' @param thresh.offset Thresh offest used in EBImage::thresh() 
+#' @param thresh.offset Thresh offset used in EBImage::thresh() 
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
 #' @param use.brightest Logical; use only brightest in max.distance?
@@ -78,7 +78,7 @@ spots.combined.file<-function(file, size=NULL, voxelsize=NULL, folder="./", thre
 #' @param mask image mask
 #' @param size size of img in microns 
 #' @param voxelsize size of voxel in microns
-#' @param thresh.offset Thresh offest used in EBImage::thresh() 
+#' @param thresh.offset Thresh offset used in EBImage::thresh() 
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
 #' @param use.brightest Logical; use only brightest in max.distance?

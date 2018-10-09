@@ -4,7 +4,7 @@
 #' @param color folder of color images ("spots-"color for spots images)
 #' @param N which class
 #' @param from.spots Logical. 
-#' @param cores numer of parallel cores used
+#' @param cores number of parallel cores which can be used
 #' @param output output folder
 #'
 #' @return images in output"-"color"-"N

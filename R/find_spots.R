@@ -32,7 +32,7 @@ setwd(f)
     setwd(orig)
 }
 
-#' Detects spotsfor one file
+#' Detects spots for one file
 #'
 #' @param file file
 #' @param dir directory for results

@@ -148,19 +148,19 @@ cc1&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors
 <p><img src="workflow_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
-## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00015297
+## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.0001366
 cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,col1="red",col2="green",thresh1=0.05,thresh2=0.05,test="Wilcoxon",ylim=c(0,.5),xlab="chromatin compaction levels",ylab="percentage")</code></pre>
 <p><img src="workflow_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
-## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.02559821</code></pre>
+## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.03799133</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">spots&lt;-<span class="kw"><a href="../../reference/spots.combined.html">spots.combined</a></span>(<span class="dt">red=</span>red,<span class="dt">green=</span>green,<span class="dt">mask=</span>mask,<span class="dt">size=</span><span class="kw">c</span>(x,y,z),<span class="dt">full.voxel=</span><span class="ot">FALSE</span>,<span class="dt">thresh.offset=</span><span class="fl">0.05</span>)
 ## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cc&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,spots<span class="op">$</span>red,spots<span class="op">$</span>green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"i"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,<span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">8</span>),<span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</code></pre></div>
 <p><img src="workflow_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
-## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00057962</code></pre>
+## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00088183</code></pre>
 </div>
   </div>
 

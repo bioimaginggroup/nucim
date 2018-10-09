@@ -18,7 +18,7 @@ spots.combined.file(file, size = NULL, voxelsize = NULL,
 
 \item{folder}{Folder}
 
-\item{thresh.offset}{Thresh offest used in EBImage::thresh()}
+\item{thresh.offset}{Thresh offset used in EBImage::thresh()}
 
 \item{min.sum.intensity}{spots smaller than min.sum.intensity are ignored}
 
