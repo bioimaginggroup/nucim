@@ -14,7 +14,7 @@
 
 <meta name="date" content="2018-10-09" />
 
-<title>Chromatin compaction classification using DAPI intensity</title>
+<title>Workflow on a folder</title>
 
 
 
@@ -212,7 +212,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 
-<h1 class="title toc-ignore">Chromatin compaction classification using DAPI intensity</h1>
+<h1 class="title toc-ignore">Workflow on a folder</h1>
 <h4 class="author"><em>Volker Schmid</em></h4>
 <h4 class="date"><em>2018-10-09</em></h4>
 
@@ -221,54 +221,36 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="preparation" class="section level2">
 <h2>Preparation</h2>
 <pre><code>setRepositories(ind=c(1,2))
-install.packages(&quot;nucim&quot;)</code></pre>
-</div>
-<div id="code-to-classify-one-rgb-image" class="section level2">
-<h2>code to classify one rgb image</h2>
-<pre><code>library(bioimagetools)
+install.packages(&quot;nucim&quot;)
+library(bioimagetools)
 library(nucim)</code></pre>
-<p>choose RGB file</p>
-<pre><code>img = readTIF(file.choose())</code></pre>
-<p>number of slices</p>
-<pre><code>slices = dim(img)[4]</code></pre>
-<p>we need the dimensions of the image in microns</p>
-<pre><code>x = attributes(img)$x.resolution
-y = attributes(img)$y.resolution
-z = as.numeric(attributes(img)$spacing) * slices</code></pre>
-<p>and the dimensions of each voxel</p>
-<pre><code>X = x/dim(img)[1]
-Y = y/dim(img)[2]
-Z = as.numeric(attributes(img)$spacing)
-zscale=mean(c(X,Y))/Z</code></pre>
-<p>we assume that the third channel is blue, ie, DAPI</p>
-<pre><code>blue = img[,,3,] </code></pre>
-<p>we mask the kernel</p>
-<pre><code>mask = dapimask(blue, c(x,y,z), thresh=&quot;auto&quot;)</code></pre>
-<p>classify the DAPI channel</p>
-<pre><code>classes = classify(blue, mask, 7, z=zscale)</code></pre>
-<p>count voxel per class</p>
-<pre><code>counts &lt;- table.n(classes, 7)</code></pre>
-<p>percentages</p>
-<pre><code>perc &lt;- print(counts/sum(counts)*100, 1)
-barplot(perc, names.arg=1:7, xlab=&quot;DAPI intensity class&quot;, ylab=&quot;percentage&quot;)</code></pre>
 </div>
-<div id="code-to-classify-a-folder-full-of-rgb-images" class="section level2">
-<h2>code to classify a folder full of rgb images</h2>
-<pre><code>library(bioimagetools)
-library(nucim)</code></pre>
+<div id="workflow" class="section level2">
+<h2>Workflow</h2>
 <p>choose one of the files in a folder of RGB files</p>
-<pre><code>folder = file.choose()
-f = unlist(gregexpr(&quot;/&quot;,folder))
-folder = substr(folder,1,f[length(f)])</code></pre>
+<pre><code>folder = folder.choose()</code></pre>
 <p>scripts can use parallel computing, if available (not under windows)</p>
-<pre><code>nr.cores=ifelse(.Platform$OS.type==&quot;windows&quot;, 1, 4)</code></pre>
+<pre><code> nr.cores=ifelse(.Platform$OS.type==&quot;windows&quot;, 1, parallel::detectCores())</code></pre>
 <p>split channels</p>
 <pre><code>splitchannels.folder(folder, rgb.folder=&quot;./&quot;, cores=nr.cores)</code></pre>
 <p>masks</p>
-<pre><code>dapimask.folder(folder, cores=nr.cores)</code></pre>
+<pre><code>dapimask.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)</code></pre>
 <p>classification</p>
-<pre><code>classify.folder(folder, 7, cores=nr.cores)</code></pre>
+<pre><code>classify.folder(folder, 7, cores=nr.cores)
+plot_classify.folder(folder, 7, cores=nr.cores, col=heatmap7())</code></pre>
 <p>results will be in folders “class7” und “class7-n”</p>
+<p>class distances</p>
+<pre><code>nearestClassDistances.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)
+plot_nearestClassDistances.folder(folder, cores=nr.cores)</code></pre>
+<p>colors in classes</p>
+<pre><code>colors.in.classes.folder(folder, &quot;green&quot;, color2=&quot;red&quot;, cores=nr.cores, thresh1=0.05, thresh2=0.05, type=&quot;intensity&quot;)
+plot_colors.in.classes.folder(folder,&quot;green&quot;,&quot;red&quot;)
+t_colors.in.classes.folder(folder,test=&quot;wilcox&quot;)  </code></pre>
+<p>Works also for contiguous targeted sequences</p>
+<pre><code>spots.combined.folder(folder, cores=nr.cores, thresh.offset=0.02, full.voxel=FALSE)
+colors.in.classes.folder(folder, &quot;markers_red&quot;, color2=&quot;markers_green&quot;, cores=nr.cores,type=&quot;i&quot;)
+plot_colors.in.classes.folder(folder,&quot;red&quot;,&quot;green&quot;)
+t_colors.in.classes.folder(folder,test=&quot;wilcox&quot;)  </code></pre>
 </div>
 
 

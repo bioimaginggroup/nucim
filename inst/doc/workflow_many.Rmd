@@ -1,0 +1,59 @@
+---
+title: "Workflow on a folder"
+author: "Volker Schmid"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Workflow for nucleome analysis of many 3D SIM images}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+## Preparation
+
+    setRepositories(ind=c(1,2))
+    install.packages("nucim")
+    library(bioimagetools)
+    library(nucim)
+    
+## Workflow 
+
+choose one of the files in a folder of RGB files
+      
+    folder = folder.choose()
+
+scripts can use parallel computing, if available (not under windows)
+     
+     nr.cores=ifelse(.Platform$OS.type=="windows", 1, parallel::detectCores())
+
+split channels
+
+    splitchannels.folder(folder, rgb.folder="./", cores=nr.cores)
+
+masks
+
+    dapimask.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)
+
+classification 
+    
+    classify.folder(folder, 7, cores=nr.cores)
+    plot_classify.folder(folder, 7, cores=nr.cores, col=heatmap7())
+
+results will be in folders "class7" und "class7-n"
+
+class distances
+
+    nearestClassDistances.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)
+    plot_nearestClassDistances.folder(folder, cores=nr.cores)
+
+colors in classes
+
+    colors.in.classes.folder(folder, "green", color2="red", cores=nr.cores, thresh1=0.05, thresh2=0.05, type="intensity")
+    plot_colors.in.classes.folder(folder,"green","red")
+    t_colors.in.classes.folder(folder,test="wilcox")  
+
+Works also for contiguous targeted sequences
+
+    spots.combined.folder(folder, cores=nr.cores, thresh.offset=0.02, full.voxel=FALSE)
+    colors.in.classes.folder(folder, "markers_red", color2="markers_green", cores=nr.cores,type="i")
+    plot_colors.in.classes.folder(folder,"red","green")
+    t_colors.in.classes.folder(folder,test="wilcox")  
