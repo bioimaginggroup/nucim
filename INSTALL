@@ -1,4 +1,4 @@
-install.packages("devtools")
-library(devtools)
-install_github("bioimaginggroup/bioimagetools")
-install_bitbucket("bioimaginggroup/nucim")
+setRepositories(ind=c(1,2))
+install.packages(c("devtools","tiff","EBImage"))
+devtools::install_github("bioimaginggroup/bioimagetools")
+devtools::install_github("bioimaginggroup/nucim")

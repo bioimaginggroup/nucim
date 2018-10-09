@@ -1,3 +1,5 @@
+Small bug fixes
+
 ## Test environments
 * local ubuntu 18.04 (devel and release)
 * local debian 4.9.110-3+deb9u4, R 3.5.0
