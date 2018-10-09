@@ -17,3 +17,4 @@ vignettes/largevignettes/*_cache
 inst/doc
 .RData
 docs/articles/*_cache
+docs/articles/*.tif
