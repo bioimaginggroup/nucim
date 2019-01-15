@@ -1,7 +1,7 @@
-templates:
+template:
   params:
     bootswatch: cerulean
-    
+
 navbar:
   type: inverse
   left:
@@ -12,7 +12,7 @@ navbar:
     - text: "Workflows"
       href: articles/index.html
     - text: "Publications"
-      href: articles/publications.html
+      href: articles/publications/index.html
   right:
     - text: "Bioimaging Group"
       href: http://www.bioimg.statistik.uni-muenchen.de
@@ -71,7 +71,7 @@ reference:
       - find.spots.file
       - splitchannels.file
       - spots.combined.file
-- title: "Deprectated"
+- title: "Deprecated"
   contents: 
       - classify.single
       - classify.table

@@ -1,12 +1,5 @@
 ---
 title: "Publications using nucim"
-author: "Volker Schmid"
-date: "4th January 2017"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Chromatin compaction classification using DAPI intensity}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
