@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nucim</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6.1</span>
       </span>
     </div>
 
@@ -84,15 +84,15 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>The stable version is available on <a href="https://cran.r-project.org/">CRAN</a>:</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/setRepositories">setRepositories</a></span>(<span class="dt">ind=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"nucim"</span>))</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/setRepositories">setRepositories</a></span>(<span class="dt">ind=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"nucim"</span>))</a></code></pre></div>
 <p>The developement version is available on <a href="https://github.com/bioimaginggroup">github</a>. The developement version probably depends on the developement version of bioimagetools:</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/setRepositories">setRepositories</a></span>(<span class="dt">ind=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"devtools"</span>,<span class="st">"tiff"</span>,<span class="st">"EBImage"</span>))
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bioimaginggroup/bioimagetools"</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bioimaginggroup/nucim"</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/setRepositories">setRepositories</a></span>(<span class="dt">ind=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"devtools"</span>,<span class="st">"tiff"</span>,<span class="st">"EBImage"</span>))</a>
+<a class="sourceLine" id="cb2-3" title="3">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bioimaginggroup/bioimagetools"</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"bioimaginggroup/nucim"</span>)</a></code></pre></div>
 <p>You may need to install additional libraries on your OS before you can install nucim. E.g. on Ubuntu/Debian systems, please execute:</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">sudo apt install libssl<span class="op">-</span>dev libcurl4<span class="op">-</span>openssl<span class="op">-</span>dev libtiff5<span class="op">-</span>dev libfftw3<span class="op">-</span>dev</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">sudo apt install libssl<span class="op">-</span>dev libcurl4<span class="op">-</span>openssl<span class="op">-</span>dev libtiff5<span class="op">-</span>dev libfftw3<span class="op">-</span>dev</a></code></pre></div>
 <p>in the terminal before installing nucim.</p>
 </div>
 <div id="more-information" class="section level2">

@@ -39,7 +39,6 @@ test<-try({
     gc()
     bioimagetools::writeTIF(classes/N,paste0(output,"/",file),bps=8)
   
-    classes<-classes
     classes<-classes[classes!=0]
     t=table(classes)
     print(file)
