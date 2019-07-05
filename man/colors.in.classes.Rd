@@ -55,5 +55,5 @@ Compute colors in classes distribution
 Type of spot definitions:
 "thresh" or "t": Threshold based (threshold can be given by thresh1/2 or automatically derived)
 "voxel" or "v": Spots are given as binary voxel mask
-"intensity" or "i": Voxels are weighted with voxel intensity
+"intensity" or "i": Voxels are weighted with voxel intensity. Intensity is scaled to [0,1] after subtracting thresh1/2 (or automatic threshold)
 }
