@@ -64,11 +64,15 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     weight<-color1
     color1<-color1>ifelse(is.null(thresh1),0,thresh1)
     weight<-weight[color1]
+    weight<-weight-min(weight)
+    weight<-weight/max(weight)
     
     if (!no2){
       weight2<-color2
       color2<-color2>ifelse(is.null(thresh2),0,thresh2)
       weight2<-weight2[color2]
+      weight2<-weight2-min(weight2)
+      weight2<-weight2/max(weight2)
     }
   }
   
