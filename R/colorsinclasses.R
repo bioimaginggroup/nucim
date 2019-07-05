@@ -59,8 +59,15 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   }
   
   weight <- weight2 <- NULL
-  if (type=="intensity")
+  if (type=="intensity"|type=="ti")
   {
+
+    if (type=="ti")
+      {
+        if(is.null(thresh1))thresh1<-mean(color1)+sd1*sd(color1)
+        if(!no2)if(is.null(thresh2))thresh2<-mean(color2)+sd2*sd(color2)
+    }
+    
     weight<-color1
     color1<-color1>ifelse(is.null(thresh1),0,thresh1)
     weight<-weight[color1]
