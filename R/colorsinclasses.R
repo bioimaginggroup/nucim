@@ -22,7 +22,7 @@
 #' "thresh" or "t": Threshold based (threshold can be given by thresh1/2 or automatically derived)
 #' "voxel" or "v": Spots are given as binary voxel mask
 #' "intensity" or "i": Voxels are weighted with voxel intensity
-#'
+#'  
 #' @return Table of classes with color 1 (and 2)
 #' @export
 #' @import stats bioimagetools
@@ -62,12 +62,9 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
   if (type=="intensity"|type=="ti")
   {
 
-    if (type=="ti")
-      {
-        if(is.null(thresh1))thresh1<-mean(color1)+sd1*sd(color1)
-        if(!no2)if(is.null(thresh2))thresh2<-mean(color2)+sd2*sd(color2)
-    }
-    
+    if(is.null(thresh1))thresh1<-mean(color1)+sd1*sd(color1)
+    if(!no2)if(is.null(thresh2))thresh2<-mean(color2)+sd2*sd(color2)
+
     weight<-color1
     color1<-color1>ifelse(is.null(thresh1),0,thresh1)
     weight<-weight[color1]
