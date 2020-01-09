@@ -4,8 +4,13 @@
 \alias{plot_classify.folder}
 \title{Plot barplot for classified images in a folder}
 \usage{
-plot_classify.folder(path, N = 7, cores = 1,
-  col = grDevices::grey(0.7), method = "sd")
+plot_classify.folder(
+  path,
+  N = 7,
+  cores = 1,
+  col = grDevices::grey(0.7),
+  method = "sd"
+)
 }
 \arguments{
 \item{path}{path to folder}

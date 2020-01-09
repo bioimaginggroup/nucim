@@ -4,8 +4,14 @@
 \alias{dapimask}
 \title{Mask DAPI in kernel}
 \usage{
-dapimask(img, size = NULL, voxelsize = NULL, thresh = "auto",
-  silent = TRUE, cores = 1)
+dapimask(
+  img,
+  size = NULL,
+  voxelsize = NULL,
+  thresh = "auto",
+  silent = TRUE,
+  cores = 1
+)
 }
 \arguments{
 \item{img}{DAPI channel image (3d)}

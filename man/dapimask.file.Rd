@@ -4,8 +4,14 @@
 \alias{dapimask.file}
 \title{Automatic DAPI mask segmentation for files}
 \usage{
-dapimask.file(file, folder = "blue", voxelsize = NULL, size = NULL,
-  silent = FALSE, cores = 1)
+dapimask.file(
+  file,
+  folder = "blue",
+  voxelsize = NULL,
+  size = NULL,
+  silent = FALSE,
+  cores = 1
+)
 }
 \arguments{
 \item{file}{file to read}

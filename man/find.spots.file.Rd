@@ -4,8 +4,16 @@
 \alias{find.spots.file}
 \title{Detects spots for one file}
 \usage{
-find.spots.file(file, dir, color, thresh = NULL, thresh.auto = FALSE,
-  thresh.quantile = 0.9, filter = NULL, cores = 1)
+find.spots.file(
+  file,
+  dir,
+  color,
+  thresh = NULL,
+  thresh.auto = FALSE,
+  thresh.quantile = 0.9,
+  filter = NULL,
+  cores = 1
+)
 }
 \arguments{
 \item{file}{file}

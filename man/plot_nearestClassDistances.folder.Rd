@@ -4,8 +4,13 @@
 \alias{plot_nearestClassDistances.folder}
 \title{Plots all distances to next neighbour of all classes for folders}
 \usage{
-plot_nearestClassDistances.folder(path, N = 7, cores = 1,
-  method = "quantile", qu = 0.01)
+plot_nearestClassDistances.folder(
+  path,
+  N = 7,
+  cores = 1,
+  method = "quantile",
+  qu = 0.01
+)
 }
 \arguments{
 \item{path}{path to folder}

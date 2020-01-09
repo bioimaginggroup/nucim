@@ -4,9 +4,20 @@
 \alias{colors.in.classes.folder}
 \title{Compute colors in classes distribution for folders}
 \usage{
-colors.in.classes.folder(path, color1, color2 = NULL, N = 7,
-  type = "intensity", thresh1 = NULL, thresh2 = NULL, sd1 = 2,
-  sd2 = 2, col1 = "green", col2 = "red", cores = 1)
+colors.in.classes.folder(
+  path,
+  color1,
+  color2 = NULL,
+  N = 7,
+  type = "intensity",
+  thresh1 = NULL,
+  thresh2 = NULL,
+  sd1 = 2,
+  sd2 = 2,
+  col1 = "green",
+  col2 = "red",
+  cores = 1
+)
 }
 \arguments{
 \item{path}{Path to root folder}

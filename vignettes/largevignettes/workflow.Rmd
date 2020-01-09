@@ -16,28 +16,44 @@ library(nucim)
 ```
 
 ## Workflow example
-
 # Installation
-```{r eval=FALSE, collapse=TRUE}
+
+Install *nucim* using *install.packages()*. The package relies on the *EBImage* package, which is available on [bioconductor](https://www.bioconductor.org), hence you need to set the repositories accordingly:
+
+```{r install, eval=FALSE, collapse=TRUE}
 setRepositories(ind=c(1,2))
 install.packages("nucim")
+```
+
+Start with loading the necessary libraries:
+```{r libraries, collapse=TRUE}
 library(bioimagetools)
 library(nucim)
 ```
 
 # Read image and mask from DAPI
-```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
+In the following, we use an example dataset available online. Use the *readTIF* function in *bioimagetools* to load the RGB image.
+
+```{r read, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 img = readTIF("http://ex.volkerschmid.de/cell.tif")
 sections = dim(img)[4]
-x = y = 0.395
+x = y = 0.0395
 z = 0.125
 blue = img[,,3,] 
-mask = dapimask(blue, c(x,y,z)*dim(img)[1:3], thresh="auto")
 ```
 
+The *dapimask* function automatically finds the kernel using the DAPI (blue) channel. This takes about 30 seconds (all computation times are using MacBookPro 2019, 2,4 GhZ Quad-Core i5, 16 GB RAM)
+
+```{r read, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
+mask = dapimask(blue, c(x,y,z)*dim(img)[1:3], thresh="auto")
+```
 # Chromatin compaction classification
-```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
+
+Next we find compaction classes from the DAPI channel (Computation time around 180 sec.).
+
+```{r classes, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 classes = classify(blue, mask, 7, beta=0.1, z=x/z)
+
 tab<-table.n(classes, 7, percentage=TRUE)
 barplot(tab, ylab="percentage", xlab="chromatin compaction level",col=heatmap7())
 par(pty="s")
@@ -45,30 +61,39 @@ img(classes, z=16, col=heatmap7(), mask=mask)
 writeTIF(classes, "classes.tif")
 ```
 
+
+
 # Distances of chromatin compaction classes
-```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE, eval=FALSE}
+```{r distances, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE, eval=FALSE}
 classes<-readClassTIF("classes.tif")
-distances = nearestClassDistances(classes,  voxelsize=c(x,y,z), classes=7, cores=16L)
+system.time({
+distances = nearestClassDistances(classes,  voxelsize=c(x,y,z), classes=7, cores=4L)
+})
 save(distances,file="distances.Rdata")
 plotNearestClassDistances(distances, method="min",ylim=c(0,.1),qu=.01)
-tiff(filename="fig-vs-7.tiff",width=960)#remove
 plotNearestClassDistances(distances, method="quantile",ylim=c(0,.22),qu=.01)
-dev.off()#remove
-tiff(filename="fig-vs-6.tiff",width=960)#remove
 plotNearestClassDistances(distances, method="boxplot",ylim=c(0,1.5))
-dev.off()#remove
 ```
 
 # Map spots to classes
-```{r cache=TRUE, collapse=TRUE, warning=FALSE}
+```{r cic, cache=TRUE, collapse=TRUE, warning=FALSE}
 red = img[,,1,]
 green = img[,,2,]
-cc1<-colors.in.classes(classes,red,green,mask,7,type="thresh",plot=TRUE,col1="red",col2="green",thresh1=0.05,thresh2=0.05,test="Wilcoxon",ylim=c(0,.5),xlab="chromatin compaction levels",ylab="percentage")
-cc2<-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,col1="red",col2="green",thresh1=0.05,thresh2=0.05,test="Wilcoxon",ylim=c(0,.5),xlab="chromatin compaction levels",ylab="percentage")
+cc1<-colors.in.classes(classes,red,green,mask,7,type="thresh",plot=TRUE,
+                       col1="red",col2="green",thresh1=0.05,thresh2=0.05,
+                       test="Wilcoxon",ylim=c(0,.5),
+                       xlab="chromatin compaction levels",ylab="percentage")
+cc2<-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,
+                       col1="red",col2="green",thresh1=0.05,thresh2=0.05,
+                       test="Wilcoxon",ylim=c(0,.5),
+                       xlab="chromatin compaction levels",ylab="percentage")
 ```
-```{r cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
-spots<-spots.combined(red=red,green=green,mask=mask,size=c(x,y,z),full.voxel=FALSE,thresh.offset=0.05)
+```{r spots, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
+spots<-spots.combined(red=red,green=green,mask=mask,size=c(x,y,z),
+                      full.voxel=FALSE,thresh.offset=0.05)
 ```
-```{r cache=TRUE, collapse=TRUE, warning=FALSE}
-cc<-colors.in.classes(classes,spots$red,spots$green,mask,7,type="i",plot=TRUE,col1="red",col2="green",test="Wilcoxon",ylim=c(0,.8),xlab="chromatin compaction levels",ylab="percentage")
+```{r cicspots, cache=TRUE, collapse=TRUE, warning=FALSE}
+cc<-colors.in.classes(classes,spots$red,spots$green,mask,7,type="i",plot=TRUE,
+                      col1="red",col2="green",test="Wilcoxon",ylim=c(0,.8),
+                      xlab="chromatin compaction levels",ylab="percentage")
 ```

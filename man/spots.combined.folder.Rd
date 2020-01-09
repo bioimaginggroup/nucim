@@ -4,10 +4,19 @@
 \alias{spots.combined.folder}
 \title{Find spots using information from two channels for folder}
 \usage{
-spots.combined.folder(path, size = NULL, voxelsize = NULL,
-  thresh.offset = 0.1, min.sum.intensity = 2, max.distance = 0.5,
-  use.brightest = FALSE, max.spots = 2, full.voxel = FALSE,
-  output = "markers", cores = 1)
+spots.combined.folder(
+  path,
+  size = NULL,
+  voxelsize = NULL,
+  thresh.offset = 0.1,
+  min.sum.intensity = 2,
+  max.distance = 0.5,
+  use.brightest = FALSE,
+  max.spots = 2,
+  full.voxel = FALSE,
+  output = "markers",
+  cores = 1
+)
 }
 \arguments{
 \item{path}{path to folder}

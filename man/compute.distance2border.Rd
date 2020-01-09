@@ -4,8 +4,14 @@
 \alias{compute.distance2border}
 \title{Compute distance to border of classes}
 \usage{
-compute.distance2border(f, color, N, from.spots = FALSE,
-  output = "dist2border", cores = 1)
+compute.distance2border(
+  f,
+  color,
+  N,
+  from.spots = FALSE,
+  output = "dist2border",
+  cores = 1
+)
 }
 \arguments{
 \item{f}{folder of classes images}

@@ -9,6 +9,8 @@ The stable version is available on [CRAN](https://cran.r-project.org/):
     setRepositories(ind=c(1,2))
     install.packages(c("nucim"))
 
+Installation will take about 5 to 10 seconds. Tested platforms can be found [here](https://cloud.r-project.org/web/checks/check_results_nucim.html).
+
 The developement version is available on [github](https://github.com/bioimaginggroup). The developement version probably depends on the developement version of bioimagetools:
 
     setRepositories(ind=c(1,2))

@@ -4,10 +4,19 @@
 \alias{spots.combined.file}
 \title{Find spots using information from two channels}
 \usage{
-spots.combined.file(file, size = NULL, voxelsize = NULL,
-  folder = "./", thresh.offset = 0.1, min.sum.intensity = 2,
-  max.distance = 0.5, use.brightest = FALSE, max.spots = 2,
-  full.voxel = FALSE, output = "markers")
+spots.combined.file(
+  file,
+  size = NULL,
+  voxelsize = NULL,
+  folder = "./",
+  thresh.offset = 0.1,
+  min.sum.intensity = 2,
+  max.distance = 0.5,
+  use.brightest = FALSE,
+  max.spots = 2,
+  full.voxel = FALSE,
+  output = "markers"
+)
 }
 \arguments{
 \item{file}{File name}

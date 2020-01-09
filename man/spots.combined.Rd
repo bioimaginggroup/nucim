@@ -4,9 +4,19 @@
 \alias{spots.combined}
 \title{Find spots using information from two channels}
 \usage{
-spots.combined(red, green, mask, size = NULL, voxelsize = NULL,
-  thresh.offset = 0.1, min.sum.intensity = 2, max.distance = 0.5,
-  use.brightest = FALSE, max.spots = NA, full.voxel = FALSE)
+spots.combined(
+  red,
+  green,
+  mask,
+  size = NULL,
+  voxelsize = NULL,
+  thresh.offset = 0.1,
+  min.sum.intensity = 2,
+  max.distance = 0.5,
+  use.brightest = FALSE,
+  max.spots = NA,
+  full.voxel = FALSE
+)
 }
 \arguments{
 \item{red}{image}

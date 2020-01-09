@@ -4,8 +4,12 @@
 \alias{splitchannels.folder}
 \title{Split RGB images into channels and pixel size information}
 \usage{
-splitchannels.folder(path, channels = c("red", "green", "blue"),
-  rgb.folder = "rgb", cores = 1)
+splitchannels.folder(
+  path,
+  channels = c("red", "green", "blue"),
+  rgb.folder = "rgb",
+  cores = 1
+)
 }
 \arguments{
 \item{path}{Path to root folder}

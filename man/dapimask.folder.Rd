@@ -4,8 +4,13 @@
 \alias{dapimask.folder}
 \title{Automatic DAPI mask segmentation for folder}
 \usage{
-dapimask.folder(path, folder = "blue", voxelsize = NULL, size = NULL,
-  cores = 1)
+dapimask.folder(
+  path,
+  folder = "blue",
+  voxelsize = NULL,
+  size = NULL,
+  cores = 1
+)
 }
 \arguments{
 \item{path}{path to folder with DAPI}
