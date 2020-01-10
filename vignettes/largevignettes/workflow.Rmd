@@ -2,7 +2,8 @@
 title: "Workflow"
 author: "Volker Schmid"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+#output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{Workflow for 3D SIM nucleome analysis}
   %\VignetteEngine{knitr::rmarkdown}
@@ -44,7 +45,7 @@ blue = img[,,3,]
 
 The *dapimask* function automatically finds the kernel using the DAPI (blue) channel. This takes about 30 seconds (all computation times are using MacBookPro 2019, 2,4 GhZ Quad-Core i5, 16 GB RAM)
 
-```{r read, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
+```{r mask, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 mask = dapimask(blue, c(x,y,z)*dim(img)[1:3], thresh="auto")
 ```
 # Chromatin compaction classification
@@ -53,7 +54,11 @@ Next we find compaction classes from the DAPI channel (Computation time around 1
 
 ```{r classes, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 classes = classify(blue, mask, 7, beta=0.1, z=x/z)
+```
 
+Barplot of classes and heatmap, finally save the classes image.
+
+```{r plotclasses, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 tab<-table.n(classes, 7, percentage=TRUE)
 barplot(tab, ylab="percentage", xlab="chromatin compaction level",col=heatmap7())
 par(pty="s")
@@ -62,13 +67,13 @@ writeTIF(classes, "classes.tif")
 ```
 
 
-
 # Distances of chromatin compaction classes
+
+Find the distances between compation classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.
+
 ```{r distances, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE, eval=FALSE}
 classes<-readClassTIF("classes.tif")
-system.time({
 distances = nearestClassDistances(classes,  voxelsize=c(x,y,z), classes=7, cores=4L)
-})
 save(distances,file="distances.Rdata")
 plotNearestClassDistances(distances, method="min",ylim=c(0,.1),qu=.01)
 plotNearestClassDistances(distances, method="quantile",ylim=c(0,.22),qu=.01)
@@ -76,6 +81,9 @@ plotNearestClassDistances(distances, method="boxplot",ylim=c(0,1.5))
 ```
 
 # Map spots to classes
+
+We can compute the distribution of other color channels on compaction classes. Here we use a threshold approach and an intensity-weighted approach for comparison. A test on independence of color channels and compaction classes is automatically done (computation  time around 4 sec.).
+
 ```{r cic, cache=TRUE, collapse=TRUE, warning=FALSE}
 red = img[,,1,]
 green = img[,,2,]
@@ -88,9 +96,14 @@ cc2<-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,
                        test="Wilcoxon",ylim=c(0,.5),
                        xlab="chromatin compaction levels",ylab="percentage")
 ```
+
+Alternatively, we can find spots first and then use this to find the distribution on compaction classes (somputation time *spots* around 90 sec.). 
+
 ```{r spots, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
+system.time({
 spots<-spots.combined(red=red,green=green,mask=mask,size=c(x,y,z),
                       full.voxel=FALSE,thresh.offset=0.05)
+})
 ```
 ```{r cicspots, cache=TRUE, collapse=TRUE, warning=FALSE}
 cc<-colors.in.classes(classes,spots$red,spots$green,mask,7,type="i",plot=TRUE,

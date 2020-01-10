@@ -15,3 +15,5 @@ TODO
 vignettes/*cache/
 vignettes/largevignettes/
 vignettes/publications/
+^doc$
+^Meta$
