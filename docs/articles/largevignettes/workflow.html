@@ -84,7 +84,7 @@
             
             <h4 class="date">2020-01-16</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/master/vignettes/largevignettes/workflow.Rmd"><code>vignettes/largevignettes/workflow.Rmd</code></a></small>
+      
       <div class="hidden name"><code>workflow.Rmd</code></div>
 
     </div>
@@ -137,7 +137,7 @@
 <div id="distances-of-chromatin-compaction-classes" class="section level1">
 <h1 class="hasAnchor">
 <a href="#distances-of-chromatin-compaction-classes" class="anchor"></a>Distances of chromatin compaction classes</h1>
-<p>Find the distances between compation classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.</p>
+<p>Find the distances between compaction classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">classes&lt;-<span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/readClassTIF.html">readClassTIF</a></span>(<span class="st">"classes.tif"</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">distances =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/nearestClassDistances.html">nearestClassDistances</a></span>(classes,  <span class="dt">voxelsize=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(x,y,z), <span class="dt">classes=</span><span class="dv">7</span>, <span class="dt">cores=</span>4L)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/save.html">save</a></span>(distances,<span class="dt">file=</span><span class="st">"distances.Rdata"</span>)</a>
@@ -174,7 +174,7 @@ cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,
 <a class="sourceLine" id="cb13-4" data-line-number="4">})</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</span></a>
 <a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">##        User      System verstrichen </span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">##      70.551      13.829      84.404</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">##      71.495      14.506      86.187</span></a></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">cc&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,spots<span class="op">$</span>red,spots<span class="op">$</span>green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"i"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2">                      <span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,.<span class="dv">8</span>),</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3">                      <span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</a></code></pre></div>
