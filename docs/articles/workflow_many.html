@@ -84,7 +84,7 @@
             
             <h4 class="date">2020-01-16</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/master/vignettes/workflow_many.Rmd"><code>vignettes/workflow_many.Rmd</code></a></small>
+      
       <div class="hidden name"><code>workflow_many.Rmd</code></div>
 
     </div>
@@ -104,7 +104,7 @@ library(nucim)</a></code></pre>
 <a href="#workflow" class="anchor"></a>Workflow</h2>
 <p>choose one of the files in a folder of RGB files</p>
 <pre><code>folder = folder.choose()</code></pre>
-<p>scripts can use parallel computing, if available (not under windows)</p>
+<p>scripts can use parallel computing, if available (not under Windows)</p>
 <pre><code> nr.cores=ifelse(.Platform$OS.type=="windows", 1, parallel::detectCores())</code></pre>
 <p>split channels</p>
 <pre><code><a href="../reference/splitchannels.folder.html">splitchannels.folder(folder, rgb.folder="./", cores=nr.cores)</a></code></pre>
@@ -113,7 +113,7 @@ library(nucim)</a></code></pre>
 <p>classification</p>
 <pre><code><a href="../reference/classify.folder.html">classify.folder(folder, 7, cores=nr.cores)
 plot_classify.folder(folder, 7, cores=nr.cores, col=heatmap7())</a></code></pre>
-<p>results will be in folders “class7” und “class7-n”</p>
+<p>results will be in folders “class7” and “class7-n”</p>
 <p>class distances</p>
 <pre><code><a href="../reference/nearestClassDistances.folder.html">nearestClassDistances.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)
 plot_nearestClassDistances.folder(folder, cores=nr.cores)</a></code></pre>

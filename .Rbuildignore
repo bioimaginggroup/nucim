@@ -17,3 +17,4 @@ vignettes/largevignettes/
 vignettes/publications/
 ^doc$
 ^Meta$
+^CRAN-RELEASE$

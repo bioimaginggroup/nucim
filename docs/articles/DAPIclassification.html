@@ -84,7 +84,7 @@
             
             <h4 class="date">2020-01-16</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/master/vignettes/DAPIclassification.Rmd"><code>vignettes/DAPIclassification.Rmd</code></a></small>
+      
       <div class="hidden name"><code>DAPIclassification.Rmd</code></div>
 
     </div>
@@ -136,7 +136,7 @@ library(nucim)</a></code></pre>
 <pre><code>folder = file.choose()
 f = unlist(gregexpr("/",folder))
 folder = substr(folder,1,f[length(f)])</code></pre>
-<p>scripts can use parallel computing, if available (not under windows)</p>
+<p>scripts can use parallel computing, if available (not under Windows)</p>
 <pre><code>nr.cores=ifelse(.Platform$OS.type=="windows", 1, 4)</code></pre>
 <p>split channels</p>
 <pre><code><a href="../reference/splitchannels.folder.html">splitchannels.folder(folder, rgb.folder="./", cores=nr.cores)</a></code></pre>
@@ -144,7 +144,7 @@ folder = substr(folder,1,f[length(f)])</code></pre>
 <pre><code><a href="../reference/dapimask.folder.html">dapimask.folder(folder, cores=nr.cores)</a></code></pre>
 <p>classification</p>
 <pre><code><a href="../reference/classify.folder.html">classify.folder(folder, 7, cores=nr.cores)</a></code></pre>
-<p>results will be in folders “class7” und “class7-n”</p>
+<p>results will be in folders “class7” and “class7-n”</p>
 </div>
   </div>
 
