@@ -10,7 +10,7 @@ splitchannels(...)
 \item{...}{parameters for splitchannels.folder}
 }
 \value{
-Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+Nothing, folders red, green, blue and XYZmic include separate channels and pixel size information
 }
 \description{
 These functions are provided for compatibility with older version of

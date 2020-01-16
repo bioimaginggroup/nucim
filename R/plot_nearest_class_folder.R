@@ -3,7 +3,7 @@
 #' @param path path to folder 
 #' @param N number of classes, default: 7
 #' @param cores number of cores to use in parallel (needs parallel package if cores>1)
-#' @param method method for summarising distances, either "min" or "quantile"
+#' @param method method for summarizing distances, either "min" or "quantile"
 #' @param qu quantile for method="quantile", default: 0.01
 #' @export
 #' @return plots

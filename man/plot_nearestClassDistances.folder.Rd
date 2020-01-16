@@ -19,7 +19,7 @@ plot_nearestClassDistances.folder(
 
 \item{cores}{number of cores to use in parallel (needs parallel package if cores>1)}
 
-\item{method}{method for summarising distances, either "min" or "quantile"}
+\item{method}{method for summarizing distances, either "min" or "quantile"}
 
 \item{qu}{quantile for method="quantile", default: 0.01}
 }

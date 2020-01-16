@@ -13,7 +13,7 @@ splitchannels.file(file, channels, rgb.folder, normalize = FALSE)
 
 \item{rgb.folder}{folder with file}
 
-\item{normalize}{boolean. Should we try to do some normalization?}
+\item{normalize}{boolean. Should we try to do normalization?}
 }
 \value{
 files in "./red/", "./green", "./blue" and "./XYZmic"

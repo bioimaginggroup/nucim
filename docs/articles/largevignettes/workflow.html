@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Workflow • nucim</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
 <script src="../../pkgdown.js"></script><meta property="og:title" content="Workflow">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">nucim</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8</span>
       </span>
     </div>
 
@@ -74,13 +75,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Workflow</h1>
                         <h4 class="author">Volker Schmid</h4>
             
-            <h4 class="date">2019-07-05</h4>
+            <h4 class="date">2020-01-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/master/vignettes/largevignettes/workflow.Rmd"><code>vignettes/largevignettes/workflow.Rmd</code></a></small>
       <div class="hidden name"><code>workflow.Rmd</code></div>
@@ -96,76 +98,95 @@
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/setRepositories">setRepositories</a></span>(<span class="dt">ind=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"nucim"</span>)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(bioimagetools)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nucim)</a></code></pre></div>
+<p>Install <em>nucim</em> using <em>install.packages()</em>. The package relies on the <em>EBImage</em> package, which is available on <a href="https://www.bioconductor.org">bioconductor</a>, hence you need to set the repositories accordingly:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/setRepositories.html">setRepositories</a></span>(<span class="dt">ind=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"nucim"</span>)</a></code></pre></div>
+<p>Start with loading the necessary libraries:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(bioimagetools)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nucim)</a></code></pre></div>
 </div>
 <div id="read-image-and-mask-from-dapi" class="section level1">
 <h1 class="hasAnchor">
 <a href="#read-image-and-mask-from-dapi" class="anchor"></a>Read image and mask from DAPI</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">img =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/readTIF">readTIF</a></span>(<span class="st">"http://ex.volkerschmid.de/cell.tif"</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">sections =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim</a></span>(img)[<span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb2-3" title="3">x =<span class="st"> </span>y =<span class="st"> </span><span class="fl">0.395</span></a>
-<a class="sourceLine" id="cb2-4" title="4">z =<span class="st"> </span><span class="fl">0.125</span></a>
-<a class="sourceLine" id="cb2-5" title="5">blue =<span class="st"> </span>img[,,<span class="dv">3</span>,] </a>
-<a class="sourceLine" id="cb2-6" title="6">mask =<span class="st"> </span><span class="kw"><a href="../../reference/dapimask.html">dapimask</a></span>(blue, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(x,y,z)<span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim</a></span>(img)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dt">thresh=</span><span class="st">"auto"</span>)</a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx</span></a></code></pre></div>
+<p>In the following, we use an example dataset available online. Use the <em>readTIF</em> function in <em>bioimagetools</em> to load the RGB image.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">img =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/readTIF.html">readTIF</a></span>(<span class="st">"http://ex.volkerschmid.de/cell.tif"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">sections =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(img)[<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">x =<span class="st"> </span>y =<span class="st"> </span><span class="fl">0.0395</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">z =<span class="st"> </span><span class="fl">0.125</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">blue =<span class="st"> </span>img[,,<span class="dv">3</span>,] </a></code></pre></div>
+<p>The <em>dapimask</em> function automatically finds the kernel using the DAPI (blue) channel. This takes about 30 seconds (all computation times are using MacBookPro 2019, 2,4 GhZ Quad-Core i5, 16 GB RAM)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">mask =<span class="st"> </span><span class="kw"><a href="../../reference/dapimask.html">dapimask</a></span>(blue, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(x,y,z)<span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(img)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dt">thresh=</span><span class="st">"auto"</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.</span></a></code></pre></div>
 </div>
 <div id="chromatin-compaction-classification" class="section level1">
 <h1 class="hasAnchor">
 <a href="#chromatin-compaction-classification" class="anchor"></a>Chromatin compaction classification</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">classes =<span class="st"> </span><span class="kw"><a href="../../reference/classify.html">classify</a></span>(blue, mask, <span class="dv">7</span>, <span class="dt">beta=</span><span class="fl">0.1</span>, <span class="dt">z=</span>x<span class="op">/</span>z)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0</span></a>
-<a class="sourceLine" id="cb3-3" title="3">tab&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/table.n">table.n</a></span>(classes, <span class="dv">7</span>, <span class="dt">percentage=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/barplot">barplot</a></span>(tab, <span class="dt">ylab=</span><span class="st">"percentage"</span>, <span class="dt">xlab=</span><span class="st">"chromatin compaction level"</span>,<span class="dt">col=</span><span class="kw"><a href="../../reference/heatmap7.html">heatmap7</a></span>())</a></code></pre></div>
-<p><img src="workflow_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">pty=</span><span class="st">"s"</span>)</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/img">img</a></span>(classes, <span class="dt">z=</span><span class="dv">16</span>, <span class="dt">col=</span><span class="kw"><a href="../../reference/heatmap7.html">heatmap7</a></span>(), <span class="dt">mask=</span>mask)</a></code></pre></div>
-<p><img src="workflow_files/figure-html/unnamed-chunk-3-2.png" width="700"></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/writeTIF">writeTIF</a></span>(classes, <span class="st">"classes.tif"</span>)</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co">## [1] 52</span></a></code></pre></div>
+<p>Next we find compaction classes from the DAPI channel (Computation time around 180 sec.).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">classes =<span class="st"> </span><span class="kw"><a href="../../reference/classify.html">classify</a></span>(blue, mask, <span class="dv">7</span>, <span class="dt">beta=</span><span class="fl">0.1</span>, <span class="dt">z=</span>x<span class="op">/</span>z)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0</span></a></code></pre></div>
+<p>Barplot of classes and heatmap, finally save the classes image.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">tab&lt;-<span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/table.n.html">table.n</a></span>(classes, <span class="dv">7</span>, <span class="dt">percentage=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(tab, <span class="dt">ylab=</span><span class="st">"percentage"</span>, <span class="dt">xlab=</span><span class="st">"chromatin compaction level"</span>,<span class="dt">col=</span><span class="kw"><a href="../../reference/heatmap7.html">heatmap7</a></span>())</a></code></pre></div>
+<p><img src="workflow_files/figure-html/plotclasses-1.png" width="700"></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="dt">pty=</span><span class="st">"s"</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/img.html">img</a></span>(classes, <span class="dt">z=</span><span class="dv">16</span>, <span class="dt">col=</span><span class="kw"><a href="../../reference/heatmap7.html">heatmap7</a></span>(), <span class="dt">mask=</span>mask)</a></code></pre></div>
+<p><img src="workflow_files/figure-html/plotclasses-2.png" width="700"></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/writeTIF.html">writeTIF</a></span>(classes, <span class="st">"classes.tif"</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">## [1] 52</span></a></code></pre></div>
 </div>
 <div id="distances-of-chromatin-compaction-classes" class="section level1">
 <h1 class="hasAnchor">
 <a href="#distances-of-chromatin-compaction-classes" class="anchor"></a>Distances of chromatin compaction classes</h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">classes&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/readClassTIF">readClassTIF</a></span>(<span class="st">"classes.tif"</span>)</a>
-<a class="sourceLine" id="cb6-2" title="2">distances =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/nearestClassDistances">nearestClassDistances</a></span>(classes,  <span class="dt">voxelsize=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(x,y,z), <span class="dt">classes=</span><span class="dv">7</span>, <span class="dt">cores=</span>16L)</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/save">save</a></span>(distances,<span class="dt">file=</span><span class="st">"distances.Rdata"</span>)</a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/plotNearestClassDistances">plotNearestClassDistances</a></span>(distances, <span class="dt">method=</span><span class="st">"min"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,.<span class="dv">1</span>),<span class="dt">qu=</span>.<span class="dv">01</span>)</a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/png">tiff</a></span>(<span class="dt">filename=</span><span class="st">"fig-vs-7.tiff"</span>,<span class="dt">width=</span><span class="dv">960</span>)<span class="co">#remove</span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/plotNearestClassDistances">plotNearestClassDistances</a></span>(distances, <span class="dt">method=</span><span class="st">"quantile"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,.<span class="dv">22</span>),<span class="dt">qu=</span>.<span class="dv">01</span>)</a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/dev">dev.off</a></span>()<span class="co">#remove</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/png">tiff</a></span>(<span class="dt">filename=</span><span class="st">"fig-vs-6.tiff"</span>,<span class="dt">width=</span><span class="dv">960</span>)<span class="co">#remove</span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="kw"><a href="https://www.rdocumentation.org/packages/bioimagetools/topics/plotNearestClassDistances">plotNearestClassDistances</a></span>(distances, <span class="dt">method=</span><span class="st">"boxplot"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="fl">1.5</span>))</a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/dev">dev.off</a></span>()<span class="co">#remove</span></a></code></pre></div>
+<p>Find the distances between compation classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">classes&lt;-<span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/readClassTIF.html">readClassTIF</a></span>(<span class="st">"classes.tif"</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">distances =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/nearestClassDistances.html">nearestClassDistances</a></span>(classes,  <span class="dt">voxelsize=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(x,y,z), <span class="dt">classes=</span><span class="dv">7</span>, <span class="dt">cores=</span>4L)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/save.html">save</a></span>(distances,<span class="dt">file=</span><span class="st">"distances.Rdata"</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/plotNearestClassDistances.html">plotNearestClassDistances</a></span>(distances, <span class="dt">method=</span><span class="st">"min"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,.<span class="dv">1</span>),<span class="dt">qu=</span>.<span class="dv">01</span>)</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/plotNearestClassDistances.html">plotNearestClassDistances</a></span>(distances, <span class="dt">method=</span><span class="st">"quantile"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,.<span class="dv">22</span>),<span class="dt">qu=</span>.<span class="dv">01</span>)</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/pkg/bioimagetools/man/plotNearestClassDistances.html">plotNearestClassDistances</a></span>(distances, <span class="dt">method=</span><span class="st">"boxplot"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,<span class="fl">1.5</span>))</a></code></pre></div>
 </div>
 <div id="map-spots-to-classes" class="section level1">
 <h1 class="hasAnchor">
 <a href="#map-spots-to-classes" class="anchor"></a>Map spots to classes</h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">red =<span class="st"> </span>img[,,<span class="dv">1</span>,]</a>
-<a class="sourceLine" id="cb7-2" title="2">green =<span class="st"> </span>img[,,<span class="dv">2</span>,]</a>
-<a class="sourceLine" id="cb7-3" title="3">cc1&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,red,green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"thresh"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,<span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">thresh1=</span><span class="fl">0.05</span>,<span class="dt">thresh2=</span><span class="fl">0.05</span>,<span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,.<span class="dv">5</span>),<span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</a></code></pre></div>
-<p><img src="workflow_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p>We can compute the distribution of other color channels on compaction classes. Here we use a threshold approach and an intensity-weighted approach for comparison. A test on independence of color channels and compaction classes is automatically done (computation time around 4 sec.).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">red =<span class="st"> </span>img[,,<span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">green =<span class="st"> </span>img[,,<span class="dv">2</span>,]</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">cc1&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,red,green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"thresh"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">                       <span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">thresh1=</span><span class="fl">0.05</span>,<span class="dt">thresh2=</span><span class="fl">0.05</span>,</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">                       <span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,.<span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">                       <span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</a></code></pre></div>
+<p><img src="workflow_files/figure-html/cic-1.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
-## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 8.63e-05
-cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,col1="red",col2="green",thresh1=0.05,thresh2=0.05,test="Wilcoxon",ylim=c(0,.5),xlab="chromatin compaction levels",ylab="percentage")</code></pre>
-<p><img src="workflow_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
+## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00021042
+cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,
+                       col1="red",col2="green",thresh1=0.05,thresh2=0.05,
+                       test="Wilcoxon",ylim=c(0,.5),
+                       xlab="chromatin compaction levels",ylab="percentage")</code></pre>
+<p><img src="workflow_files/figure-html/cic-2.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
-## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.02812029</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">spots&lt;-<span class="kw"><a href="../../reference/spots.combined.html">spots.combined</a></span>(<span class="dt">red=</span>red,<span class="dt">green=</span>green,<span class="dt">mask=</span>mask,<span class="dt">size=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(x,y,z),<span class="dt">full.voxel=</span><span class="ot">FALSE</span>,<span class="dt">thresh.offset=</span><span class="fl">0.05</span>)</a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</span></a></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">cc&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,spots<span class="op">$</span>red,spots<span class="op">$</span>green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"i"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,<span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,.<span class="dv">8</span>),<span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</a></code></pre></div>
-<p><img src="workflow_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00362231</code></pre>
+<p>Alternatively, we can find spots first and then use this to find the distribution on compaction classes (computation time <em>spots()</em> around 90 sec.).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span>({</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">spots&lt;-<span class="kw"><a href="../../reference/spots.combined.html">spots.combined</a></span>(<span class="dt">red=</span>red,<span class="dt">green=</span>green,<span class="dt">mask=</span>mask,<span class="dt">size=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(x,y,z),</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">                      <span class="dt">full.voxel=</span><span class="ot">FALSE</span>,<span class="dt">thresh.offset=</span><span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">})</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">##        User      System verstrichen </span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">##      70.551      13.829      84.404</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">cc&lt;-<span class="kw"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span>(classes,spots<span class="op">$</span>red,spots<span class="op">$</span>green,mask,<span class="dv">7</span>,<span class="dt">type=</span><span class="st">"i"</span>,<span class="dt">plot=</span><span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                      <span class="dt">col1=</span><span class="st">"red"</span>,<span class="dt">col2=</span><span class="st">"green"</span>,<span class="dt">test=</span><span class="st">"Wilcoxon"</span>,<span class="dt">ylim=</span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,.<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">                      <span class="dt">xlab=</span><span class="st">"chromatin compaction levels"</span>,<span class="dt">ylab=</span><span class="st">"percentage"</span>)</a></code></pre></div>
+<p><img src="workflow_files/figure-html/cicspots-1.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
-## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00063115</code></pre>
+## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 6.801e-05</code></pre>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -183,17 +204,20 @@ cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,co
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Volker Schmid.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

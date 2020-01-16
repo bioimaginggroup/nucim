@@ -79,6 +79,7 @@ spots.combined.file<-function(file, size=NULL, voxelsize=NULL, folder="./", thre
 #' @param size size of img in microns 
 #' @param voxelsize size of voxel in microns
 #' @param thresh.offset Thresh offset used in EBImage::thresh() 
+#' @param window Half width and height of the moving rectangular window.
 #' @param min.sum.intensity spots smaller than min.sum.intensity are ignored
 #' @param max.distance use only spots with distance to other color spot smaller than max.distance
 #' @param use.brightest Logical; use only brightest in max.distance?
@@ -89,13 +90,16 @@ spots.combined.file<-function(file, size=NULL, voxelsize=NULL, folder="./", thre
 #' @export
 #' @import bioimagetools fields EBImage
 #'
-spots.combined<-function(red, green, mask, size=NULL, voxelsize=NULL, thresh.offset=0.1, min.sum.intensity=2,max.distance=0.5, use.brightest=FALSE,  max.spots=NA, full.voxel=FALSE)
+spots.combined<-function(red, green, mask, size=NULL, voxelsize=NULL, 
+                         thresh.offset=0.1, window=c(5,5), min.sum.intensity=2, max.distance=0.5, 
+                         use.brightest=FALSE, max.spots=NA, full.voxel=FALSE)
 {
   if (is.null(size)&is.null(voxelsize)){stop("Either size or voxelsize is required")}
-  if(is.null(voxelsize))voxelsize<-size/dim(img)
+  if(is.null(voxelsize))voxelsize<-size/dim(mask)
+  xyz<-voxelsize
   
-  red.s<-bioimagetools::spots(red, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
-  green.s<-bioimagetools::spots(green, mask, thresh.offset, min.sum.intensity, zero=NA, return="l")
+  red.s<-bioimagetools::spots(red, mask, thresh.offset, window, min.sum.intensity, zero=NA, return="l")
+  green.s<-bioimagetools::spots(green, mask, thresh.offset, window, min.sum.intensity, zero=NA, return="l")
 
   red.c<-bioimagetools::cmoments3d(red.s,red)
   green.c<-bioimagetools::cmoments3d(green.s,green)
@@ -103,7 +107,6 @@ spots.combined<-function(red, green, mask, size=NULL, voxelsize=NULL, thresh.off
   if (is.null(dim(red.c)))red.c<-rbind(array(red.c,c(1,length(red.c))),c(0,0,0))
   if (is.null(dim(green.c)))green.c<-rbind(array(green.c,c(1,length(green.c))),c(100,100,10))
   
-  xyz<-size/dim(mask)
   for (i in 1:dim(red.c)[1])red.c[i,2:4]<-red.c[i,2:4]*xyz
   for (i in 1:dim(green.c)[1])green.c[i,2:4]<-green.c[i,2:4]*xyz
   

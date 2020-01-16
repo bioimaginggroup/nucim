@@ -21,7 +21,7 @@ choose one of the files in a folder of RGB files
       
     folder = folder.choose()
 
-scripts can use parallel computing, if available (not under windows)
+scripts can use parallel computing, if available (not under Windows)
      
      nr.cores=ifelse(.Platform$OS.type=="windows", 1, parallel::detectCores())
 
@@ -38,7 +38,7 @@ classification
     classify.folder(folder, 7, cores=nr.cores)
     plot_classify.folder(folder, 7, cores=nr.cores, col=heatmap7())
 
-results will be in folders "class7" und "class7-n"
+results will be in folders "class7" and "class7-n"
 
 class distances
 

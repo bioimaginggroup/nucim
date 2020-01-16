@@ -3,7 +3,7 @@
 #' @param file file name
 #' @param channels e.g. c("red","green","blue")
 #' @param rgb.folder folder with file
-#' @param normalize boolean. Should we try to do some normalization?
+#' @param normalize boolean. Should we try to do normalization?
 #'
 #' @return files in "./red/", "./green", "./blue" and "./XYZmic"
 #' @export
@@ -127,7 +127,7 @@ splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder=
 #' the nucim package.  They may eventually be completely
 #' removed.
 #' @param ... parameters for splitchannels.folder
-#' @return Nothing, folders red, green, blue and XYZmic include seperate channels and pixel size information
+#' @return Nothing, folders red, green, blue and XYZmic include separate channels and pixel size information
 #' @export
 #' 
 splitchannels<-function(...){

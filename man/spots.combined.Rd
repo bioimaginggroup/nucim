@@ -11,6 +11,7 @@ spots.combined(
   size = NULL,
   voxelsize = NULL,
   thresh.offset = 0.1,
+  window = c(5, 5),
   min.sum.intensity = 2,
   max.distance = 0.5,
   use.brightest = FALSE,
@@ -30,6 +31,8 @@ spots.combined(
 \item{voxelsize}{size of voxel in microns}
 
 \item{thresh.offset}{Thresh offset used in EBImage::thresh()}
+
+\item{window}{Half width and height of the moving rectangular window.}
 
 \item{min.sum.intensity}{spots smaller than min.sum.intensity are ignored}
 

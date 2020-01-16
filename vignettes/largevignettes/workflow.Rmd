@@ -2,8 +2,7 @@
 title: "Workflow"
 author: "Volker Schmid"
 date: "`r Sys.Date()`"
-#output: rmarkdown::html_vignette
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Workflow for 3D SIM nucleome analysis}
   %\VignetteEngine{knitr::rmarkdown}
@@ -69,7 +68,7 @@ writeTIF(classes, "classes.tif")
 
 # Distances of chromatin compaction classes
 
-Find the distances between compation classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.
+Find the distances between compaction classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.
 
 ```{r distances, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE, eval=FALSE}
 classes<-readClassTIF("classes.tif")
@@ -97,7 +96,7 @@ cc2<-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,
                        xlab="chromatin compaction levels",ylab="percentage")
 ```
 
-Alternatively, we can find spots first and then use this to find the distribution on compaction classes (somputation time *spots* around 90 sec.). 
+Alternatively, we can find spots first and then use this to find the distribution on compaction classes (computation time *spots()* around 90 sec.). 
 
 ```{r spots, cache=TRUE, echo=TRUE, warning=FALSE, collapse=TRUE}
 system.time({
