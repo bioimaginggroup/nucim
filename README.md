@@ -4,7 +4,7 @@ nucim (Nucleome Imaging Toolbox) is an R package for quantitative analyses of th
 
 ## Installation 
 
-The stable version is available on [CRAN](https://cran.r-project.org/web/packages/nucim):
+The stable version is available on [CRAN](https://CRAN.R-project.org/package=nucim):
 
     setRepositories(ind=c(1,2))
     install.packages(c("nucim"))

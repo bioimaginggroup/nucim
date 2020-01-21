@@ -1,17 +1,15 @@
-* URL has been changed to canonical form
-* Reference has been added to Description field.
-
+* URL has been fixed
 ---
 Found the following (possibly) invalid URLs:
-   URL: https://cloud.r-project.org/web/checks/check_results_nucim.html
+   URL: https://cran.r-project.org/web/packages/nucim (moved to https://cran.r-project.org/web/packages/nucim/)
      From: README.md
      Status: 200
      Message: OK
      CRAN URL not in canonical form
+   The canonical URL of the CRAN page for a package is
+     https://CRAN.R-project.org/package=pkgname
 
-->     Canonical: https://CRAN.R-project.org/.....
-
-Is there some reference about the method you can add in the Description field in the form Authors (year) <doi:.....>?
+Please fix and resubmit.
 ---
 ## Test environments
 - Local macos Catalina, R-3.6.2
