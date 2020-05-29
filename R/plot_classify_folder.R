@@ -24,6 +24,7 @@ plot_classify.folder<-function(path, N=7, cores=1 ,col=grDevices::grey(0.7),meth
   qu=NULL
   if (method=="quartile"){method="quantile";qu=c(.25,.75)}
   barplot_with_interval(tables,xlab="chromatin compaction levels",ylab="percentage",col=col,method=method,qu=qu)
+  setwd(orig)
 }
 
 read.table.helper<-function(file, N){
