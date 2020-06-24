@@ -18,7 +18,7 @@ plot_colors.in.classes.folder<-function(path,col1="green",col2="red")
   if (l==3)colo=c("grey",col1,col2)
   
   barplot_with_interval_23(cic, method="sd", col=colo)
-    
+  setwd(orig)
 }
 
 loadcic<-function(percentage=TRUE){
