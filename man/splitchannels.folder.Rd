@@ -8,6 +8,7 @@ splitchannels.folder(
   path,
   channels = c("red", "green", "blue"),
   rgb.folder = "rgb",
+  normalize = FALSE,
   cores = 1
 )
 }
@@ -17,6 +18,8 @@ splitchannels.folder(
 \item{channels}{Vector of channels in images}
 
 \item{rgb.folder}{Folder with RGB images}
+
+\item{normalize}{boolean. Should we try to do normalization}
 
 \item{cores}{Number of cores used in parallel, cores=1 implies no parallelization}
 }

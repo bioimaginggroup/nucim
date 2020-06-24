@@ -21,6 +21,7 @@ colors.in.classes(
   plot = TRUE,
   beside = TRUE,
   ylim = NULL,
+  verbose = FALSE,
   ...
 )
 }
@@ -56,6 +57,8 @@ colors.in.classes(
 \item{beside}{a logical value. If FALSE, the columns of height are portrayed as stacked bars, and if TRUE the columns are portrayed as juxtaposed bars.}
 
 \item{ylim}{limits for the y axis (plot)}
+
+\item{verbose}{verbose mode}
 
 \item{...}{additional plotting parameters}
 }

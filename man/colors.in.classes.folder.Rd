@@ -16,7 +16,8 @@ colors.in.classes.folder(
   sd2 = 2,
   col1 = "green",
   col2 = "red",
-  cores = 1
+  cores = 1,
+  verbose = FALSE
 )
 }
 \arguments{
