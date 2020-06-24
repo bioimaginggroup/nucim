@@ -234,6 +234,7 @@ colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensi
   
   if (cores>1)jobs<-parallel::mclapply(files,colors.in.classes.files, color1=color1, color2=color2, type=type, thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2, mc.cores=cores)
   if (cores==1)jobs<-lapply(files,colors.in.classes.files, color1=color1, color2=color2, type=type, thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
+  setwd(orig)
 }
 
 colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensity",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE, verbose=FALSE)

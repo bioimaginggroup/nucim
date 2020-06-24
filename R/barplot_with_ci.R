@@ -58,6 +58,7 @@ barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALS
 #'
 barplot_with_interval_23<-function(x,l,method="minmax",qu=c(0,1),ylim=NULL,...){
   N<-dim(x)[1]
+  l <- dim(x)[2]
   me<-switch(method,
              "minmax" = apply(x,1:2,mean),
              "sd" = apply(x,1:2,mean),
@@ -77,8 +78,8 @@ barplot_with_interval_23<-function(x,l,method="minmax",qu=c(0,1),ylim=NULL,...){
   me<-t(me)
   ma<-t(ma)
   mi<-t(mi)
-  graphics::barplot(me,ylim=ylim, names.arg=1:N,beside=TRUE,,...)
-  for(k in 1:3)for (j in 1:N)graphics::lines(4*rep(j,2)-3.5+k,c(mi[k,j],ma[k,j]),lwd=1)
-  for(k in 1:3)for (j in 1:N)graphics::lines(4*(j)-3.5+k+c(-.2,.2),rep(mi[k,j],2))
-  for(k in 1:3)for (j in 1:N)graphics::lines(4*(j)-3.5+k+c(-.2,.2),rep(ma[k,j],2))
+  graphics::barplot(me,ylim=ylim, names.arg=1:N,beside=TRUE,...)
+  for(k in 1:l)for (j in 1:N)graphics::lines(4*rep(j,2)-3.5+k,c(mi[k,j],ma[k,j]),lwd=1)
+  for(k in 1:l)for (j in 1:N)graphics::lines(4*(j)-3.5+k+c(-.2,.2),rep(mi[k,j],2))
+  for(k in 1:l)for (j in 1:N)graphics::lines(4*(j)-3.5+k+c(-.2,.2),rep(ma[k,j],2))
 }

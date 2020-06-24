@@ -11,7 +11,6 @@ t_colors.in.classes.folder<-function(path,test="Wilcoxon")
 {
   orig<-getwd()
   setwd(path)
-  
   cic<-loadcic()*100
   if (test=="chisq"){
     cic<-apply(cic,1:2,sum)
@@ -63,4 +62,6 @@ t_colors.in.classes.folder<-function(path,test="Wilcoxon")
       cat("\n")
     }
   }
+  setwd(orig)
+  
 }
