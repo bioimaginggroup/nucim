@@ -92,13 +92,14 @@ else(cat(paste0(file," OK\n")))
 #' @param path Path to root folder
 #' @param channels Vector of channels in images
 #' @param rgb.folder Folder with RGB images
+#' @param normalize boolean. Should we try to do normalization
 #' @param cores Number of cores used in parallel, cores=1 implies no parallelization
 #' @return Nothing, folders red, green, blue and XYZmic include separate channels and pixel size information
 #' @export
 #' @import bioimagetools
 #' @examples splitchannels.folder("./")
 #' 
-splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",cores=1)
+splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder="rgb",normalize=FALSE, cores=1)
 {
   orig<-getwd()
   setwd(path)
@@ -116,8 +117,8 @@ splitchannels.folder<-function(path,channels=c("red","green","blue"),rgb.folder=
   if(length(list.files("green"))==0)dir.create("green")
   if(length(list.files("XYZmic"))==0)dir.create("XYZmic")
   
-  if(cores>1)jobs <- parallel::mclapply(files,splitchannels.file,channels,rgb.folder)
-  if(cores==1)jobs <- lapply(files,splitchannels.file,channels,rgb.folder)
+  if(cores>1)jobs <- parallel::mclapply(files,splitchannels.file,channels,rgb.folder,normalize)
+  if(cores==1)jobs <- lapply(files,splitchannels.file,channels,rgb.folder,normalize)
   setwd(orig)
 }
 

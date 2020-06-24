@@ -16,6 +16,7 @@
 #' @param plot Plot barplots
 #' @param beside a logical value. If FALSE, the columns of height are portrayed as stacked bars, and if TRUE the columns are portrayed as juxtaposed bars.
 #' @param ylim limits for the y axis (plot)
+#' @param verbose verbose mode
 #' @param ... additional plotting parameters
 #' 
 #' @details Type of spot definitions:
@@ -27,7 +28,7 @@
 #' @export
 #' @import stats bioimagetools
 #' @importFrom graphics barplot
-colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(classes)),N=max(classes,na.rm=TRUE),type="tresh",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE,plot=TRUE,beside=TRUE,ylim=NULL,...)
+colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(classes)),N=max(classes,na.rm=TRUE),type="tresh",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE,plot=TRUE,beside=TRUE,ylim=NULL,verbose=FALSE,...)
 {
   no2<-ifelse(is.null(color2),TRUE,FALSE)
   classes<-array(classes,dim(classes))
@@ -65,6 +66,7 @@ colors.in.classes<-function(classes,color1,color2=NULL,mask=array(TRUE,dim(class
     if(is.null(thresh1))thresh1<-mean(color1)+sd1*sd(color1)
     if(!no2)if(is.null(thresh2))thresh2<-mean(color2)+sd2*sd(color2)
 
+    if (verbose)cat(paste("Threshold 1 is", thresh1, "; Threshold 2 is", thresh2, "\n"))
     weight<-color1
     color1<-color1>ifelse(is.null(thresh1),0,thresh1)
     weight<-weight[color1]
@@ -218,8 +220,10 @@ nucim.chisq.test<-function(t1,t2)
 #' @return Results are in folder colorsinclasses
 #' @export
 #' 
-colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensity", thresh1=NULL, thresh2=NULL, sd1=2, sd2=2, col1="green", col2="red", cores=1)
+colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensity", thresh1=NULL, thresh2=NULL, sd1=2, sd2=2, col1="green", col2="red", cores=1, verbose=FALSE)
 {
+  if (verbose)cores=1
+  
   orig<-getwd()
   setwd(path)
   
@@ -232,14 +236,14 @@ colors.in.classes.folder<-function(path, color1, color2=NULL, N=7, type="intensi
   if (cores==1)jobs<-lapply(files,colors.in.classes.files, color1=color1, color2=color2, type=type, thresh1=thresh1, thresh2=thresh2, sd1=sd1, sd2=sd2, col1=col1, col2=col2)
 }
 
-colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensity",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE)
+colors.in.classes.files<-function(file, color1, color2=NULL, N=7, type="intensity",thresh1=NULL,thresh2=NULL,sd1=2,sd2=2,col1="green",col2="red",test=FALSE, verbose=FALSE)
 {
   classes<-bioimagetools::readClassTIF(paste0("class",N,"/",file))
   color1img <- bioimagetools::readTIF(paste0(color1,"/",file))
   if (!is.null(color2))color2img <- bioimagetools::readTIF(paste0(color2,"/",file))
   if (is.null(color2))color2img <- NULL
   mask <- bioimagetools::readTIF(paste0("dapimask/",file))
-  cic <- colors.in.classes(classes,color1img,color2=color2img,mask=mask,N=N,type=type,thresh1=thresh1,thresh2=thresh2,sd1=sd1,sd2=sd2,col1=col1,col2=col2,test=test,plot=FALSE)
+  cic <- colors.in.classes(classes,color1img,color2=color2img,mask=mask,N=N,type=type,thresh1=thresh1,thresh2=thresh2,sd1=sd1,sd2=sd2,col1=col1,col2=col2,test=test,plot=FALSE,verbose=verbose)
 
   C <- 4+2*!is.null(color2)
   cic<-data.frame(array(unlist(cic),c(N,C)))
