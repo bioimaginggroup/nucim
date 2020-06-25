@@ -4,19 +4,10 @@
 \alias{barplot_with_interval_23}
 \title{Barplot with Intervals for two or three bars beside}
 \usage{
-barplot_with_interval_23(
-  x,
-  l,
-  method = "minmax",
-  qu = c(0, 1),
-  ylim = NULL,
-  ...
-)
+barplot_with_interval_23(x, method = "minmax", qu = c(0, 1), ylim = NULL, ...)
 }
 \arguments{
 \item{x}{array}
-
-\item{l}{number of bars beside (second dimension of x)}
 
 \item{method}{method for intervals: "minmax" (default), "quantile" or "sd"}
 
