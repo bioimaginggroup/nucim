@@ -44,6 +44,8 @@ colors.in.classes.folder(
 \item{col2}{Name of color 2}
 
 \item{cores}{Number of cores used in parallel, cores=1 implies no parallelization}
+
+\item{verbose}{verbose mode}
 }
 \value{
 Results are in folder colorsinclasses

@@ -217,6 +217,7 @@ nucim.chisq.test<-function(t1,t2)
 #' @param col1 Name of color 1
 #' @param col2 Name of color 2
 #' @param cores Number of cores used in parallel, cores=1 implies no parallelization
+#' @param verbose verbose mode
 #' @return Results are in folder colorsinclasses
 #' @export
 #' 
