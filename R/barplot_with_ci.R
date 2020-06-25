@@ -47,7 +47,6 @@ barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALS
 #' Barplot with Intervals for two or three bars beside
 #'
 #' @param x array
-#' @param l number of bars beside (second dimension of x)
 #' @param method method for intervals: "minmax" (default), "quantile" or "sd"
 #' @param qu vector of two quantiles for method="quantile
 #' @param ylim limits for y axis. Default:NULL is ylim=c(0,max(interval))
@@ -56,7 +55,7 @@ barplot_with_interval<-function(x,method="minmax",qu=c(0,1),ylim=NULL,horiz=FALS
 #' @return plot
 #' @export
 #'
-barplot_with_interval_23<-function(x,l,method="minmax",qu=c(0,1),ylim=NULL,...){
+barplot_with_interval_23<-function(x,method="minmax",qu=c(0,1),ylim=NULL,...){
   N<-dim(x)[1]
   l <- dim(x)[2]
   me<-switch(method,
@@ -78,8 +77,8 @@ barplot_with_interval_23<-function(x,l,method="minmax",qu=c(0,1),ylim=NULL,...){
   me<-t(me)
   ma<-t(ma)
   mi<-t(mi)
-  graphics::barplot(me,ylim=ylim, names.arg=1:N,beside=TRUE,...)
-  for(k in 1:l)for (j in 1:N)graphics::lines(4*rep(j,2)-3.5+k,c(mi[k,j],ma[k,j]),lwd=1)
-  for(k in 1:l)for (j in 1:N)graphics::lines(4*(j)-3.5+k+c(-.2,.2),rep(mi[k,j],2))
-  for(k in 1:l)for (j in 1:N)graphics::lines(4*(j)-3.5+k+c(-.2,.2),rep(ma[k,j],2))
+  graphics::barplot(me,ylim=ylim, names.arg=1:N,beside=TRUE)#,...)
+  for(k in 1:l)for (j in 1:N)graphics::lines(3-l+(l+1)*rep(j,2)-3.5+k,c(mi[k,j],ma[k,j]),lwd=1)
+  for(k in 1:l)for (j in 1:N)graphics::lines(3-l+(l+1)*(j)-3.5+k+c(-.2,.2),rep(mi[k,j],2))
+  for(k in 1:l)for (j in 1:N)graphics::lines(3-l+(l+1)*(j)-3.5+k+c(-.2,.2),rep(ma[k,j],2))
 }
