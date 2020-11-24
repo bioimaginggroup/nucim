@@ -12,6 +12,7 @@ Methods 123 (2017) 33-46. [[DOI]](https://dx.doi.org/10.1016/j.ymeth.2017.03.013
 
 ### Publications using nucim
 
+* Fischl H, McManus D, Oldenkamp R, Schermelleh L, Mellor J, Jagannath A, Furger A: Cold‐induced chromatin compaction and nuclear retention of clock mRNAs resets the circadian rhythm. The EMBO Journal (2020) 39: e105604 [[DOI]](https://doi.org/10.15252/embj.2020105604)
 * Cremer, M, Brandstetter, K, Maiser, A, Rao, SSP, Schmid, V, Guirao-Ortiz, M, Mitra, N, Mamberti, S, Klein, KN, Gilbert, DM, Leonhardt, H, Cardoso, MC, Lieberman Aiden, E, Harz, H and Cremer, T: Cohesin depleted cells rebuild functional nuclear compartments after endomitosis. bioRxiv (2020). [[DOI]](https://doi.org/10.1101/816611)
 * Miron, E, Oldenkamp, R, Brown, JMS, Pinto, DMS, Shan Xu, C, Faria, AR, Shaban, HA, Rhodes, JDP, Innocent, C, de Ornellas, S, Hess, HF, Buckle, V and Schermelleh, L.: Chromatin arranges in chains of mesoscale domains with nanoscale functional topography independent of cohesin. Science Advances 6:39, eaba8811 (2020). [[DOI]](https://doi.org/10.1126/sciadv.aba8811)
 * Cremer, M., Schmid, V.J., Kraus, F., Markaki, Y., Hellmann, I., Maiser, A., Leonhardt, H., John, S., Stamatoyannopoulos, J. and Cremer, T.: Initial high-resolution microscopic mapping of active and inactive regulatory sequences proves non-random 3D arrangements in chromatin domain clusters. Epigenetics & Chromatin 10:39 (2017). [[DOI]](https://doi.org/10.1186/s13072-017-0146-0)
