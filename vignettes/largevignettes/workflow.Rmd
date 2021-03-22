@@ -1,6 +1,6 @@
 ---
 title: "Workflow"
-author: "Volker Schmid"
+author: "Volker J Schmid"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

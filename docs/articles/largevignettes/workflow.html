@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">nucim</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.10.9911</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.10.9913</span>
       </span>
     </div>
 
@@ -56,13 +56,13 @@
 </li>
 <li>
   <a href="https://github.com/bioimaginggroup">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/vjsstat">
-    <span class="fa fa-twitter"></span>
+    <span class="fas fa-twitter"></span>
      
   </a>
 </li>
@@ -76,14 +76,13 @@
 
       
 
-      </header><script src="workflow_files/header-attrs-2.5/header-attrs.js"></script><link href="workflow_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="workflow_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="workflow_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Workflow</h1>
-                        <h4 class="author">Volker Schmid</h4>
+                        <h4 class="author">Volker J Schmid</h4>
             
-            <h4 class="date">2020-10-22</h4>
+            <h4 class="date">2021-03-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/master/vignettes/largevignettes/workflow.Rmd"><code>vignettes/largevignettes/workflow.Rmd</code></a></small>
       <div class="hidden name"><code>workflow.Rmd</code></div>
@@ -100,72 +99,72 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>Install <em>nucim</em> using <em>install.packages()</em>. The package relies on the <em>EBImage</em> package, which is available on <a href="https://www.bioconductor.org">bioconductor</a>, hence you need to set the repositories accordingly:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/setRepositories.html">setRepositories</a></span><span class="op">(</span>ind<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"nucim"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/setRepositories.html">setRepositories</a></span><span class="op">(</span>ind<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"nucim"</span><span class="op">)</span></code></pre></div>
 <p>Start with loading the necessary libraries:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioimaginggroup.github.io/bioimagetools">bioimagetools</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioimaginggroup.github.io/nucim/">nucim</a></span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioimaginggroup.github.io/bioimagetools">bioimagetools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioimaginggroup.github.io/nucim/">nucim</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="read-image-and-mask-from-dapi" class="section level1">
 <h1 class="hasAnchor">
 <a href="#read-image-and-mask-from-dapi" class="anchor"></a>Read image and mask from DAPI</h1>
 <p>In the following, we use an example dataset available online. Use the <em>readTIF</em> function in <em>bioimagetools</em> to load the RGB image.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/readTIF.html">readTIF</a></span><span class="op">(</span><span class="st">"http://ex.volkerschmid.de/cell.tif"</span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/readTIF.html">readTIF</a></span><span class="op">(</span><span class="st">"http://ex.volkerschmid.de/cell.tif"</span><span class="op">)</span>
 <span class="va">sections</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span>
 <span class="va">x</span> <span class="op">=</span> <span class="va">y</span> <span class="op">=</span> <span class="fl">0.0395</span>
 <span class="va">z</span> <span class="op">=</span> <span class="fl">0.125</span>
-<span class="va">blue</span> <span class="op">=</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">3</span>,<span class="op">]</span> </pre></div>
+<span class="va">blue</span> <span class="op">=</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">3</span>,<span class="op">]</span> </code></pre></div>
 <p>The <em>dapimask</em> function automatically finds the kernel using the DAPI (blue) channel. This takes about 30 seconds (all computation times are using MacBookPro 2019, 2,4 GhZ Quad-Core i5, 16 GB RAM)</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">mask</span> <span class="op">=</span> <span class="fu"><a href="../../reference/dapimask.html">dapimask</a></span><span class="op">(</span><span class="va">blue</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, thresh<span class="op">=</span><span class="st">"auto"</span><span class="op">)</span>
-<span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mask</span> <span class="op">=</span> <span class="fu"><a href="../../reference/dapimask.html">dapimask</a></span><span class="op">(</span><span class="va">blue</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, thresh<span class="op">=</span><span class="st">"auto"</span><span class="op">)</span>
+<span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.</span></code></pre></div>
 </div>
 <div id="chromatin-compaction-classification" class="section level1">
 <h1 class="hasAnchor">
 <a href="#chromatin-compaction-classification" class="anchor"></a>Chromatin compaction classification</h1>
 <p>Next we find compaction classes from the DAPI channel (Computation time around 180 sec.).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">classes</span> <span class="op">=</span> <span class="fu"><a href="../../reference/classify.html">classify</a></span><span class="op">(</span><span class="va">blue</span>, <span class="va">mask</span>, <span class="fl">7</span>, beta<span class="op">=</span><span class="fl">0.1</span>, z<span class="op">=</span><span class="va">x</span><span class="op">/</span><span class="va">z</span><span class="op">)</span>
-<span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">classes</span> <span class="op">=</span> <span class="fu"><a href="../../reference/classify.html">classify</a></span><span class="op">(</span><span class="va">blue</span>, <span class="va">mask</span>, <span class="fl">7</span>, beta<span class="op">=</span><span class="fl">0.1</span>, z<span class="op">=</span><span class="va">x</span><span class="op">/</span><span class="va">z</span><span class="op">)</span>
+<span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0</span></code></pre></div>
 <p>Barplot of classes and heatmap, finally save the classes image.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">tab</span><span class="op">&lt;-</span><span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/table.n.html">table.n</a></span><span class="op">(</span><span class="va">classes</span>, <span class="fl">7</span>, percentage<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">tab</span>, ylab<span class="op">=</span><span class="st">"percentage"</span>, xlab<span class="op">=</span><span class="st">"chromatin compaction level"</span>,col<span class="op">=</span><span class="fu"><a href="../../reference/heatmap7.html">heatmap7</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tab</span><span class="op">&lt;-</span><span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/table.n.html">table.n</a></span><span class="op">(</span><span class="va">classes</span>, <span class="fl">7</span>, percentage<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">tab</span>, ylab<span class="op">=</span><span class="st">"percentage"</span>, xlab<span class="op">=</span><span class="st">"chromatin compaction level"</span>,col<span class="op">=</span><span class="fu"><a href="../../reference/heatmap7.html">heatmap7</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="workflow_files/figure-html/plotclasses-1.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>pty<span class="op">=</span><span class="st">"s"</span><span class="op">)</span>
-<span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/img.html">img</a></span><span class="op">(</span><span class="va">classes</span>, z<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="fu"><a href="../../reference/heatmap7.html">heatmap7</a></span><span class="op">(</span><span class="op">)</span>, mask<span class="op">=</span><span class="va">mask</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>pty<span class="op">=</span><span class="st">"s"</span><span class="op">)</span>
+<span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/img.html">img</a></span><span class="op">(</span><span class="va">classes</span>, z<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="fu"><a href="../../reference/heatmap7.html">heatmap7</a></span><span class="op">(</span><span class="op">)</span>, mask<span class="op">=</span><span class="va">mask</span><span class="op">)</span></code></pre></div>
 <p><img src="workflow_files/figure-html/plotclasses-2.png" width="700"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/writeTIF.html">writeTIF</a></span><span class="op">(</span><span class="va">classes</span>, <span class="st">"classes.tif"</span><span class="op">)</span>
-<span class="co">## [1] 52</span></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/writeTIF.html">writeTIF</a></span><span class="op">(</span><span class="va">classes</span>, <span class="st">"classes.tif"</span><span class="op">)</span>
+<span class="co">## [1] 52</span></code></pre></div>
 </div>
 <div id="distances-of-chromatin-compaction-classes" class="section level1">
 <h1 class="hasAnchor">
 <a href="#distances-of-chromatin-compaction-classes" class="anchor"></a>Distances of chromatin compaction classes</h1>
 <p>Find the distances between compaction classes (computation time around 480 seconds, due to parallelization this depends on number of cores). The plotting function defines what we mean by distance: the minimum distance between class voxels, a quantile or plot a boxplot.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">classes</span><span class="op">&lt;-</span><span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/readClassTIF.html">readClassTIF</a></span><span class="op">(</span><span class="st">"classes.tif"</span><span class="op">)</span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">classes</span><span class="op">&lt;-</span><span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/readClassTIF.html">readClassTIF</a></span><span class="op">(</span><span class="st">"classes.tif"</span><span class="op">)</span>
 <span class="va">distances</span> <span class="op">=</span> <span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/nearestClassDistances.html">nearestClassDistances</a></span><span class="op">(</span><span class="va">classes</span>,  voxelsize<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span>, classes<span class="op">=</span><span class="fl">7</span>, cores<span class="op">=</span><span class="fl">4L</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">distances</span>,file<span class="op">=</span><span class="st">"distances.Rdata"</span><span class="op">)</span>
 <span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/plotNearestClassDistances.html">plotNearestClassDistances</a></span><span class="op">(</span><span class="va">distances</span>, method<span class="op">=</span><span class="st">"min"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.1</span><span class="op">)</span>,qu<span class="op">=</span><span class="fl">.01</span><span class="op">)</span>
 <span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/plotNearestClassDistances.html">plotNearestClassDistances</a></span><span class="op">(</span><span class="va">distances</span>, method<span class="op">=</span><span class="st">"quantile"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.22</span><span class="op">)</span>,qu<span class="op">=</span><span class="fl">.01</span><span class="op">)</span>
-<span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/plotNearestClassDistances.html">plotNearestClassDistances</a></span><span class="op">(</span><span class="va">distances</span>, method<span class="op">=</span><span class="st">"boxplot"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/plotNearestClassDistances.html">plotNearestClassDistances</a></span><span class="op">(</span><span class="va">distances</span>, method<span class="op">=</span><span class="st">"boxplot"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="map-spots-to-classes" class="section level1">
 <h1 class="hasAnchor">
 <a href="#map-spots-to-classes" class="anchor"></a>Map spots to classes</h1>
 <p>We can compute the distribution of other color channels on compaction classes. Here we use a threshold approach and an intensity-weighted approach for comparison. A test on independence of color channels and compaction classes is automatically done (computation time around 4 sec.).</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">red</span> <span class="op">=</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span>,<span class="op">]</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">red</span> <span class="op">=</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span>,<span class="op">]</span>
 <span class="va">green</span> <span class="op">=</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">2</span>,<span class="op">]</span>
 <span class="va">cc1</span><span class="op">&lt;-</span><span class="fu"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span><span class="op">(</span><span class="va">classes</span>,<span class="va">red</span>,<span class="va">green</span>,<span class="va">mask</span>,<span class="fl">7</span>,type<span class="op">=</span><span class="st">"thresh"</span>,plot<span class="op">=</span><span class="cn">TRUE</span>,
                        col1<span class="op">=</span><span class="st">"red"</span>,col2<span class="op">=</span><span class="st">"green"</span>,thresh1<span class="op">=</span><span class="fl">0.05</span>,thresh2<span class="op">=</span><span class="fl">0.05</span>,
                        test<span class="op">=</span><span class="st">"Wilcoxon"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.5</span><span class="op">)</span>,
-                       xlab<span class="op">=</span><span class="st">"chromatin compaction levels"</span>,ylab<span class="op">=</span><span class="st">"percentage"</span><span class="op">)</span></pre></div>
+                       xlab<span class="op">=</span><span class="st">"chromatin compaction levels"</span>,ylab<span class="op">=</span><span class="st">"percentage"</span><span class="op">)</span></code></pre></div>
 <p><img src="workflow_files/figure-html/cic-1.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
@@ -179,18 +178,18 @@ cc2&lt;-colors.in.classes(classes,red,green,mask,7,type="intensity",plot=TRUE,
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test channel 1 vs. channel 2: p-value = 0.00362231</code></pre>
 <p>Alternatively, we can find spots first and then use this to find the distribution on compaction classes (computation time <em>spots()</em> around 90 sec.).</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="op">{</span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="op">{</span>
 <span class="va">spots</span><span class="op">&lt;-</span><span class="fu"><a href="../../reference/spots.combined.html">spots.combined</a></span><span class="op">(</span>red<span class="op">=</span><span class="va">red</span>,green<span class="op">=</span><span class="va">green</span>,mask<span class="op">=</span><span class="va">mask</span>,size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span><span class="op">)</span>,
                       full.voxel<span class="op">=</span><span class="cn">FALSE</span>,thresh.offset<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">## 0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.0o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o0o.xXx.o</span>
 <span class="co">##        User      System verstrichen </span>
-<span class="co">##      76.649      22.940     100.247</span></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="va">cc</span><span class="op">&lt;-</span><span class="fu"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span><span class="op">(</span><span class="va">classes</span>,<span class="va">spots</span><span class="op">$</span><span class="va">red</span>,<span class="va">spots</span><span class="op">$</span><span class="va">green</span>,<span class="va">mask</span>,<span class="fl">7</span>,type<span class="op">=</span><span class="st">"i"</span>,plot<span class="op">=</span><span class="cn">TRUE</span>,
+<span class="co">##      76.649      22.940     100.247</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cc</span><span class="op">&lt;-</span><span class="fu"><a href="../../reference/colors.in.classes.html">colors.in.classes</a></span><span class="op">(</span><span class="va">classes</span>,<span class="va">spots</span><span class="op">$</span><span class="va">red</span>,<span class="va">spots</span><span class="op">$</span><span class="va">green</span>,<span class="va">mask</span>,<span class="fl">7</span>,type<span class="op">=</span><span class="st">"i"</span>,plot<span class="op">=</span><span class="cn">TRUE</span>,
                       col1<span class="op">=</span><span class="st">"red"</span>,col2<span class="op">=</span><span class="st">"green"</span>,test<span class="op">=</span><span class="st">"Wilcoxon"</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.8</span><span class="op">)</span>,
-                      xlab<span class="op">=</span><span class="st">"chromatin compaction levels"</span>,ylab<span class="op">=</span><span class="st">"percentage"</span><span class="op">)</span></pre></div>
+                      xlab<span class="op">=</span><span class="st">"chromatin compaction levels"</span>,ylab<span class="op">=</span><span class="st">"percentage"</span><span class="op">)</span></code></pre></div>
 <p><img src="workflow_files/figure-html/cicspots-1.png" width="700"></p>
 <pre><code>## Wilcoxon rank-sum test DAPI vs. channel 1: p-value &lt; 5e-09
 ## Wilcoxon rank-sum test DAPI vs. channel 2: p-value &lt; 5e-09
