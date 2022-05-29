@@ -1,10 +1,10 @@
-pandoc: 2.14.0.1
-pkgdown: 1.6.1
+pandoc: 2.17.1.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   DAPIclassification: DAPIclassification.html
-  largevignettes/workflow: workflow.html
-  publications/index: index.html
+  workflow: largevignettes/workflow.html
+  index: publications/index.html
   workflow_many: workflow_many.html
-last_built: 2021-06-09T20:44Z
+last_built: 2022-03-11T10:06Z
 
