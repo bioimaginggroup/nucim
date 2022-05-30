@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nucim</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.12</span>
       </span>
     </div>
 
@@ -86,52 +86,42 @@
 <div class="section level1">
 <div class="page-header"><h1 id="nucim-r-package">nucim R package<a class="anchor" aria-label="anchor" href="#nucim-r-package"></a>
 </h1></div>
-<p>nucim (Nucleome Imaging Toolbox) is an R package for quantitative
-analyses of the 3D nuclear landscape recorded with super-resolved
-fluorescence microscopy.</p>
+<!-- badges: start -->
+
+<p>nucim (Nucleome Imaging Toolbox) is an R package for quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>The stable version is available on <a href="https://CRAN.R-project.org/package=nucim" class="external-link">CRAN</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setRepositories</span>(<span class="at">ind=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"nucim"</span>))</span></code></pre></div>
-<p>Installation will take about 5 to 10 seconds. Tested platforms can be
-found <a href="https://cran.r-project.org/web/checks/check_results_nucim.html" class="external-link">here</a>.</p>
-<p>The development version is available on <a href="https://github.com/bioimaginggroup" class="external-link">github</a>. The development
-version probably depends on the development version of
-bioimagetools:</p>
+<p>Installation will take about 5 to 10 seconds. Tested platforms can be found <a href="https://cran.r-project.org/web/checks/check_results_nucim.html" class="external-link">here</a>.</p>
+<p>The development version is available on <a href="https://github.com/bioimaginggroup" class="external-link">github</a>. The development version probably depends on the development version of bioimagetools:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setRepositories</span>(<span class="at">ind=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>,<span class="st">"tiff"</span>,<span class="st">"EBImage"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"bioimaginggroup/bioimagetools"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"bioimaginggroup/nucim"</span>)</span></code></pre></div>
-<p>You may need to install additional libraries on your OS before you
-can install nucim. E.g. on Ubuntu/Debian systems, please execute:</p>
+<p>You may need to install additional libraries on your OS before you can install nucim. E.g. on Ubuntu/Debian systems, please execute:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sudo apt install libssl<span class="sc">-</span>dev libcurl4<span class="sc">-</span>openssl<span class="sc">-</span>dev libtiff5<span class="sc">-</span>dev libfftw3<span class="sc">-</span>dev</span></code></pre></div>
 <p>in the terminal before installing nucim.</p>
 </div>
 <div class="section level2">
 <h2 id="more-information">More information<a class="anchor" aria-label="anchor" href="#more-information"></a>
 </h2>
-<p>Description of the package and basic instructions can be found
-in:</p>
+<p>Description of the package and basic instructions can be found in:</p>
 <ul>
-<li>Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative
-analyses of the 3D nuclear landscape recorded with super-resolved
-fluorescence microscopy. Methods 123 (2017), p. 33–46. <a href="https://dx.doi.org/10.1016/j.ymeth.2017.03.013" class="external-link">[DOI]</a>
+<li>Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy. Methods 123 (2017), p. 33–46. <a href="https://dx.doi.org/10.1016/j.ymeth.2017.03.013" class="external-link">[DOI]</a>
 </li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="contributors">Contributors<a class="anchor" aria-label="anchor" href="#contributors"></a>
 </h2>
-<p>This package is developed at the BioImaging group at the Department
-of Statistics, in cooperation with the Biocenter, Department of Biology
-II, both at LMU Munich.</p>
+<p>This package is developed at the BioImaging group at the Department of Statistics, in cooperation with the Biocenter, Department of Biology II, both at LMU Munich.</p>
 <ul>
 <li>Main development and implementation: Volker J Schmid</li>
 <li>Developement of workflow: Marion and Thomas Cremer</li>
-<li>Input on specific parts: Barbara Hübner, Yolanda Markaki, Jens
-Popken, Lothar Schermelleh, Daniel Smeets</li>
+<li>Input on specific parts: Barbara Hübner, Yolanda Markaki, Jens Popken, Lothar Schermelleh, Daniel Smeets</li>
 </ul>
 </div>
 </div>
@@ -170,7 +160,14 @@ Popken, Lothar Schermelleh, Daniel Smeets</li>
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=nucim" class="external-link"><img src="https://www.r-pkg.org/badges/version/nucim" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/package=nucim" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/nucim" alt="CRAN_Download_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=nucim" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/nucim" alt="CRAN_Download_Badge"></a></li>
+</ul>
+</div>
 
   </div>
 </div>
@@ -183,8 +180,7 @@ Popken, Lothar Schermelleh, Daniel Smeets</li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

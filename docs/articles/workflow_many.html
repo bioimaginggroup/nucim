@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nucim</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.12</span>
       </span>
     </div>
 
@@ -52,17 +54,17 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="http://www.bioimg.statistik.uni-muenchen.de">Bioimaging Group</a>
+  <a href="http://www.bioimg.statistik.uni-muenchen.de" class="external-link">Bioimaging Group</a>
 </li>
 <li>
-  <a href="https://github.com/bioimaginggroup">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/bioimaginggroup" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/vjsstat">
-    <span class="fas fa-twitter"></span>
+  <a href="https://twitter.com/vjsstat" class="external-link">
+    <span class="fa fa-twitter"></span>
      
   </a>
 </li>
@@ -76,56 +78,58 @@
 
       
 
-      </header><script src="workflow_many_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Workflow on a folder</h1>
-                        <h4 class="author">Volker Schmid</h4>
+                        <h4 data-toc-skip class="author">Volker
+Schmid</h4>
             
-            <h4 class="date">2021-06-09</h4>
+            <h4 data-toc-skip class="date">2022-05-30</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/master/vignettes/workflow_many.Rmd"><code>vignettes/workflow_many.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/bioimaginggroup/nucim/blob/HEAD/vignettes/workflow_many.Rmd" class="external-link"><code>vignettes/workflow_many.Rmd</code></a></small>
       <div class="hidden name"><code>workflow_many.Rmd</code></div>
 
     </div>
 
     
     
-<div id="preparation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#preparation" class="anchor"></a>Preparation</h2>
-<pre><code><a href="https://rdrr.io/r/utils/setRepositories.html">setRepositories(ind=c(1,2))
-install.packages("nucim")
-library(bioimagetools)
-library(nucim)</a></code></pre>
+<div class="section level2">
+<h2 id="preparation">Preparation<a class="anchor" aria-label="anchor" href="#preparation"></a>
+</h2>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/utils/setRepositories.html" class="external-link">setRepositories</a></span><span class="op">(</span>ind<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nucim"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bioimaginggroup.github.io/bioimagetools/" class="external-link">bioimagetools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bioimaginggroup.github.io/nucim/" class="external-link">nucim</a></span><span class="op">)</span></code></pre>
 </div>
-<div id="workflow" class="section level2">
-<h2 class="hasAnchor">
-<a href="#workflow" class="anchor"></a>Workflow</h2>
+<div class="section level2">
+<h2 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
+</h2>
 <p>choose one of the files in a folder of RGB files</p>
-<pre><code>folder = folder.choose()</code></pre>
-<p>scripts can use parallel computing, if available (not under Windows)</p>
-<pre><code> nr.cores=ifelse(.Platform$OS.type=="windows", 1, parallel::detectCores())</code></pre>
+<pre><code><span class="va">folder</span> <span class="op">=</span> <span class="fu"><a href="https://bioimaginggroup.github.io/bioimagetools/reference/folder.choose.html" class="external-link">folder.choose</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<p>scripts can use parallel computing, if available (not under
+Windows)</p>
+<pre><code><span class="va">nr.cores</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">.Platform</span><span class="op">$</span><span class="va">OS.type</span><span class="op">==</span><span class="st">"windows"</span>, <span class="fl">1</span>, <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre>
 <p>split channels</p>
-<pre><code><a href="../reference/splitchannels.folder.html">splitchannels.folder(folder, rgb.folder="./", cores=nr.cores)</a></code></pre>
+<pre><code><span class="fu"><a href="../reference/splitchannels.folder.html">splitchannels.folder</a></span><span class="op">(</span><span class="va">folder</span>, rgb.folder<span class="op">=</span><span class="st">"./"</span>, cores<span class="op">=</span><span class="va">nr.cores</span><span class="op">)</span></code></pre>
 <p>masks</p>
-<pre><code><a href="../reference/dapimask.folder.html">dapimask.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)</a></code></pre>
+<pre><code><span class="fu"><a href="../reference/dapimask.folder.html">dapimask.folder</a></span><span class="op">(</span><span class="va">folder</span>, voxelsize<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.0395</span>,<span class="fl">0.0395</span>,<span class="fl">0.125</span><span class="op">)</span>, cores<span class="op">=</span><span class="va">nr.cores</span><span class="op">)</span></code></pre>
 <p>classification</p>
-<pre><code><a href="../reference/classify.folder.html">classify.folder(folder, 7, cores=nr.cores)
-plot_classify.folder(folder, 7, cores=nr.cores, col=heatmap7())</a></code></pre>
+<pre><code><span class="fu"><a href="../reference/classify.folder.html">classify.folder</a></span><span class="op">(</span><span class="va">folder</span>, <span class="fl">7</span>, cores<span class="op">=</span><span class="va">nr.cores</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plot_classify.folder.html">plot_classify.folder</a></span><span class="op">(</span><span class="va">folder</span>, <span class="fl">7</span>, cores<span class="op">=</span><span class="va">nr.cores</span>, col<span class="op">=</span><span class="fu"><a href="../reference/heatmap7.html">heatmap7</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre>
 <p>results will be in folders “class7” and “class7-n”</p>
 <p>class distances</p>
-<pre><code><a href="../reference/nearestClassDistances.folder.html">nearestClassDistances.folder(folder, voxelsize=c(0.0395,0.0395,0.125), cores=nr.cores)
-plot_nearestClassDistances.folder(folder, cores=nr.cores)</a></code></pre>
+<pre><code><span class="fu"><a href="../reference/nearestClassDistances.folder.html">nearestClassDistances.folder</a></span><span class="op">(</span><span class="va">folder</span>, voxelsize<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.0395</span>,<span class="fl">0.0395</span>,<span class="fl">0.125</span><span class="op">)</span>, cores<span class="op">=</span><span class="va">nr.cores</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plot_nearestClassDistances.folder.html">plot_nearestClassDistances.folder</a></span><span class="op">(</span><span class="va">folder</span>, cores<span class="op">=</span><span class="va">nr.cores</span><span class="op">)</span></code></pre>
 <p>colors in classes</p>
-<pre><code><a href="../reference/colors.in.classes.folder.html">colors.in.classes.folder(folder, "green", color2="red", cores=nr.cores, thresh1=0.05, thresh2=0.05, type="intensity")
-plot_colors.in.classes.folder(folder,"green","red")
-t_colors.in.classes.folder(folder,test="wilcox")  </a></code></pre>
+<pre><code><span class="fu"><a href="../reference/colors.in.classes.folder.html">colors.in.classes.folder</a></span><span class="op">(</span><span class="va">folder</span>, <span class="st">"green"</span>, color2<span class="op">=</span><span class="st">"red"</span>, cores<span class="op">=</span><span class="va">nr.cores</span>, thresh1<span class="op">=</span><span class="fl">0.05</span>, thresh2<span class="op">=</span><span class="fl">0.05</span>, type<span class="op">=</span><span class="st">"intensity"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plot_colors.in.classes.folder.html">plot_colors.in.classes.folder</a></span><span class="op">(</span><span class="va">folder</span>,<span class="st">"green"</span>,<span class="st">"red"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/t_colors.in.classes.folder.html">t_colors.in.classes.folder</a></span><span class="op">(</span><span class="va">folder</span>,test<span class="op">=</span><span class="st">"wilcox"</span><span class="op">)</span></code></pre>
 <p>Works also for contiguous targeted sequences</p>
-<pre><code><a href="../reference/spots.combined.folder.html">spots.combined.folder(folder, cores=nr.cores, thresh.offset=0.02, full.voxel=FALSE)
-colors.in.classes.folder(folder, "markers_red", color2="markers_green", cores=nr.cores,type="i")
-plot_colors.in.classes.folder(folder,"red","green")
-t_colors.in.classes.folder(folder,test="wilcox")  </a></code></pre>
+<pre><code><span class="fu"><a href="../reference/spots.combined.folder.html">spots.combined.folder</a></span><span class="op">(</span><span class="va">folder</span>, cores<span class="op">=</span><span class="va">nr.cores</span>, thresh.offset<span class="op">=</span><span class="fl">0.02</span>, full.voxel<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/colors.in.classes.folder.html">colors.in.classes.folder</a></span><span class="op">(</span><span class="va">folder</span>, <span class="st">"markers_red"</span>, color2<span class="op">=</span><span class="st">"markers_green"</span>, cores<span class="op">=</span><span class="va">nr.cores</span>,type<span class="op">=</span><span class="st">"i"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plot_colors.in.classes.folder.html">plot_colors.in.classes.folder</a></span><span class="op">(</span><span class="va">folder</span>,<span class="st">"red"</span>,<span class="st">"green"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/t_colors.in.classes.folder.html">t_colors.in.classes.folder</a></span><span class="op">(</span><span class="va">folder</span>,test<span class="op">=</span><span class="st">"wilcox"</span><span class="op">)</span></code></pre>
 </div>
   </div>
 
@@ -140,11 +144,13 @@ t_colors.in.classes.folder(folder,test="wilcox")  </a></code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by Volker Schmid.</p>
+  <p></p>
+<p>Developed by Volker Schmid.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -152,6 +158,8 @@ t_colors.in.classes.folder(folder,test="wilcox")  </a></code></pre>
 
   
 
+
+  
 
   </body>
 </html>

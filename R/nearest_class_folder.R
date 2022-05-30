@@ -59,7 +59,7 @@ nearestClassDistances.files<-function(file,N=7,voxelsize=NULL,cores=1)
     gc(verbose=FALSE)
     save(distances,file=paste0("distances/",file,".RData"))
   },silent=TRUE)
-if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
+if(inherits(test,"try-error"))cat(paste0(file,": ",attr(test,"condition"),"\n"))
 else(cat(paste0(file," OK\n")))
 }
 

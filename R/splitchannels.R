@@ -83,7 +83,7 @@ write(c(Xmic,Ymic,Zmic),file=paste("XYZmic/",file,".txt",sep=""))
 remove(img,red,green,blue)
 gc(verbose=FALSE)
 },silent=TRUE)
-if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
+if(inherits(test,"try-error"))cat(paste0(file,": ",attr(test,"condition"),"\n"))
 else(cat(paste0(file," OK\n")))
 }
 

@@ -25,6 +25,6 @@ dapimask.file<-function(file,folder="blue", voxelsize=NULL, size=NULL, silent=FA
     remove(blau,mask)
     gc(verbose=FALSE)
   },silent=TRUE)
-  if(class(test)=="try-error")cat(paste0(file,": ",attr(test,"condition"),"\n"))
+  if(inherits(test,"try-error"))cat(paste0(file,": ",attr(test,"condition"),"\n"))
   else(cat(paste0(file," OK\n")))
 }  

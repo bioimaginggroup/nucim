@@ -1,7 +1,7 @@
 Package: nucim
 Title: Nucleome Imaging Toolbox
-Version: 1.0.11.1
-Date: 2022-03-11
+Version: 1.0.12
+Date: 2022-05-30
 Author: Volker Schmid [aut, cre]
 Authors@R: c(person("Volker", "Schmid", role = c("aut", "cre"),
 		     email = "volker.schmid@lmu.de"))
@@ -26,7 +26,8 @@ Description:
     See Volker J. Schmid, Marion Cremer, Thomas Cremer (2017) <doi:10.1016/j.ymeth.2017.03.013>.
 License: GPL-3
 URL: https://bioimaginggroup.github.io/nucim/
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
+Encoding: UTF-8
 Suggests: knitr, rmarkdown, R.rsp
 VignetteBuilder: knitr, R.rsp
 BugReports: https://github.com/bioimaginggroup/nucim/issues

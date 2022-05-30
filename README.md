@@ -1,5 +1,11 @@
 # nucim R package
 
+<!-- badges: start -->
+  [![CRAN status](https://www.r-pkg.org/badges/version/nucim)](https://CRAN.R-project.org/package=nucim)
+[![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/nucim)](https://cran.r-project.org/package=nucim)
+[![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/grand-total/nucim)](https://cran.r-project.org/package=nucim)
+<!-- badges: end -->
+
 nucim (Nucleome Imaging Toolbox) is an R package for quantitative analyses of the 3D nuclear landscape recorded with super-resolved fluorescence microscopy.
 
 ## Installation 
