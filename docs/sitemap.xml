@@ -1,126 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/articles/DAPIclassification.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/largevignettes/publications.html</loc>
-  </url>
-  <url>
-    <loc>/articles/largevignettes/workflow.html</loc>
-  </url>
-  <url>
-    <loc>/articles/publications/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/workflow_many.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/barplot_with_interval.html</loc>
-  </url>
-  <url>
-    <loc>/reference/barplot_with_interval_23.html</loc>
-  </url>
-  <url>
-    <loc>/reference/class.neighbours.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/class.neighbours.html</loc>
-  </url>
-  <url>
-    <loc>/reference/classify.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/classify.html</loc>
-  </url>
-  <url>
-    <loc>/reference/classify.single.html</loc>
-  </url>
-  <url>
-    <loc>/reference/classify.table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/colors.in.classes.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/colors.in.classes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/compute.distance2border.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dapimask.file.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dapimask.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dapimask.html</loc>
-  </url>
-  <url>
-    <loc>/reference/find.spots.file.html</loc>
-  </url>
-  <url>
-    <loc>/reference/find.spots.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/heatmap.color.html</loc>
-  </url>
-  <url>
-    <loc>/reference/heatmap7.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/nearestClassDistances.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_classify.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_colors.in.classes.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_nearestClassDistances.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/splitchannel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/splitchannels.file.html</loc>
-  </url>
-  <url>
-    <loc>/reference/splitchannels.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/splitchannels.html</loc>
-  </url>
-  <url>
-    <loc>/reference/spots.combined.file.html</loc>
-  </url>
-  <url>
-    <loc>/reference/spots.combined.folder.html</loc>
-  </url>
-  <url>
-    <loc>/reference/spots.combined.html</loc>
-  </url>
-  <url>
-    <loc>/reference/t_colors.in.classes.folder.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://bioimaginggroup.github.io/nucim/404.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/articles/DAPIclassification.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/articles/index.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/articles/largevignettes/publications.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/articles/largevignettes/workflow.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/articles/publications/index.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/articles/workflow_many.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/authors.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/index.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/news/index.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/barplot_with_interval.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/barplot_with_interval_23.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/class.neighbours.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/class.neighbours.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/classify.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/classify.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/classify.single.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/classify.table.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/colors.in.classes.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/colors.in.classes.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/compute.distance2border.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/dapimask.file.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/dapimask.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/dapimask.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/find.spots.file.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/find.spots.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/heatmap.color.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/heatmap7.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/index.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/nearestClassDistances.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/plot_classify.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/plot_colors.in.classes.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/plot_nearestClassDistances.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/splitchannel.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/splitchannels.file.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/splitchannels.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/splitchannels.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/spots.combined.file.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/spots.combined.folder.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/spots.combined.html</loc></url>
+<url><loc>https://bioimaginggroup.github.io/nucim/reference/t_colors.in.classes.folder.html</loc></url>
 </urlset>
+

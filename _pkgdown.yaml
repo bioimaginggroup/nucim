@@ -1,4 +1,9 @@
+url: https://bioimaginggroup.github.io/nucim/
+
 template:
+  bootstrap: 5
+  bslib:
+    danger: "#A6081A"
   params:
     bootswatch: cerulean
 
@@ -14,12 +19,11 @@ navbar:
     - text: "Publications"
       href: articles/publications/index.html
   right:
-    - text: "Bioimaging Group"
+    - text: "Bayesian Inference and Spatial Statistics Group"
       href: http://www.bioimg.statistik.uni-muenchen.de
     - icon: fa-github fa-lg
       href: https://github.com/bioimaginggroup
-    - icon: fa-twitter
-      href: https://twitter.com/vjsstat
+      aria-label: Github
 
 home:
   links:
@@ -32,7 +36,8 @@ articles:
   - DAPIclassification
   - largevignettes/workflow
   - workflow_many
-
+  - publications/index
+  
 reference:
 - title: "Main functions"
   contents: 

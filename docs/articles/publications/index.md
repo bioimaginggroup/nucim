@@ -1,0 +1,62 @@
+# Publications using nucim
+
+### Description and instructions
+
+- Volker J. Schmid, Marion Cremer, Thomas Cremer: Quantitative analyses
+  of the 3D nuclear landscape recorded with super-resolved fluorescence
+  microscopy. Methods 123 (2017) 33-46.
+  [\[DOI\]](https://dx.doi.org/10.1016/j.ymeth.2017.03.013)
+
+### Some publications using nucim
+
+- Arroyo M, Hastert FD, Zhadan A, Schelter F, Zimbelmann S, Rausch C,
+  Ludwig AK, Carell T, Cardoso MC: Isoform-specific and ubiquitination
+  depen- dent recruitment of Tet1 to replicating het- erochromatin
+  modulates methylcytosine oxidation. nature communications (2022)
+  [\[DOI\]](https://doi.org/10.1038/s41467-022-32799-8)
+- Fischl H, McManus D, Oldenkamp R, Schermelleh L, Mellor J, Jagannath
+  A, Furger A: Cold‐induced chromatin compaction and nuclear retention
+  of clock mRNAs resets the circadian rhythm. The EMBO Journal
+  39:e105604 (2020) [\[DOI\]](https://doi.org/10.15252/embj.2020105604)
+- Cremer, M, Brandstetter, K, Maiser, A, Rao, SSP, Schmid, VJ,
+  Guirao-Ortiz, M, Mitra, N, Mamberti, S, Klein, KN, Gilbert, DM,
+  Leonhardt, H, Cardoso, MC, Lieberman Aiden, E, Harz, H and Cremer, T:
+  Cohesin depleted cells rebuild functional nuclear compartments after
+  endomitosis. Nature Communications 11:6146 (2020).
+  [\[DOI\]](http://dx.doi.org/10.1038/s41467-020-19876-6)
+- Miron, E, Oldenkamp, R, Brown, JMS, Pinto, DMS, Shan Xu, C, Faria, AR,
+  Shaban, HA, Rhodes, JDP, Innocent, C, de Ornellas, S, Hess, HF,
+  Buckle, V and Schermelleh, L.: Chromatin arranges in chains of
+  mesoscale domains with nanoscale functional topography independent of
+  cohesin. Science Advances 6:39, eaba8811 (2020).
+  [\[DOI\]](https://doi.org/10.1126/sciadv.aba8811)
+- Cremer, M., Schmid, V.J., Kraus, F., Markaki, Y., Hellmann, I.,
+  Maiser, A., Leonhardt, H., John, S., Stamatoyannopoulos, J. and
+  Cremer, T.: Initial high-resolution microscopic mapping of active and
+  inactive regulatory sequences proves non-random 3D arrangements in
+  chromatin domain clusters. Epigenetics & Chromatin 10:39 (2017).
+  [\[DOI\]](https://doi.org/10.1186/s13072-017-0146-0)
+- Popken J., Schmid V.J., Strauss, A., Guengoer, T., Wolf, E.,
+  Zakhartchenko, T.: Stage-dependent remodeling of the nuclear envelope
+  and lamina during rabbit early embryonic development. Journal of
+  Reproduction and Development 62:2 (2016) 127–135.
+  [\[DOI\]](https://doi.org/10.1262/jrd.2015-100)
+- Popken J., Graf A., Krebs S., Blum H., Schmid V.J., Strauss, A.,
+  Guengoer, T., Zakhartchenko, T., Wolf, E., Cremer, T.: Remodeling of
+  the Nuclear Envelope and Lamina during Bovine Preimplantation
+  Development and Its Functional Implications. PLoS One 10:5 (2015)
+  e0124619. [\[DOI\]](https://doi.org/10.1371/journal.pone.0124619)
+- Popken, J., Brero, A., Koehler, D., Schmid, V.J., Strauss, A.,
+  Wuensch, A., Guengoer, T., Graf, A., Krebs, S., Blum, H.,
+  Zakhartchenko, V., Wolf, E., Cremer, T.: Reprogramming of ﬁbroblast
+  nuclei in cloned bovine embryos is paralleled by major structural
+  remodeling with both striking similarities and differences to nuclear
+  phenotypes of embryos fertilized in vitro. Nucleus 5:6 (2014) 555–589.
+  [\[DOI\]](https://doi.org/10.4161/19491034.2014.979712)
+- Smeets, D., Markaki, Y., Schmid, V.J., Kraus, F., Tattermusch, A.,
+  Cerase, A., Sterr, M., Fiedler, S., Demmerle, J., Popken, J.,
+  Leonhardt, H., Brockdorff, N., Cremer, T., Schermelleh, L., Cremer,
+  M.: Three-dimensional super-resolution microscopy of the inactive X
+  chromosome territory reveals a collapse of its active nuclear
+  compartment harboring distinct Xist RNA foci. Epigenetics & Chromatin
+  7:8 (2014). [\[DOI\]](https://doi.org/10.1186/1756-8935-7-8)
